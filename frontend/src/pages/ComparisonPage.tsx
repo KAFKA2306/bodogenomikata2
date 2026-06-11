@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { fetchGames } from '../api/gameService';
-import { Game } from '../types/game';
+import type { Game } from '../types/game';
 
 export const ComparisonPage: React.FC = () => {
   const [games, setGames] = useState<Game[]>([]);
@@ -18,7 +19,11 @@ export const ComparisonPage: React.FC = () => {
 
   return (
     <div className='comparison-container'>
-      <h1>Board Game Comparison</h1>
+      <Helmet>
+        <title>ボドゲのミカタ | 最強のボードゲーム検索・比較ツール</title>
+        <meta name='description' content='9万件以上のボードゲームデータから、あなたにぴったりの1本を見つける。重さ、人数、プレイ時間で瞬時に比較検索。' />
+      </Helmet>
+      <h1>ボドゲのミカタ</h1>
       <div className='controls'>
         <input placeholder='Search by title...' value={query} onChange={e => setQuery(e.target.value)} />
       </div>
