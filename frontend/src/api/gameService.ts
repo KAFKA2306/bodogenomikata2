@@ -54,17 +54,34 @@ export const fetchReviews = async (slug: string) => {
     });
     return res.data;
   } catch (error) {
-    console.warn('Backend API review fetch failed, returning empty mock list');
-    return { data: [] };
+    console.warn('Backend API review fetch failed, falling back to localStorage');
+    try {
+      const localReviewsStr = localStorage.getItem(`reviews_${slug}`);
+      const localReviews = localReviewsStr ? JSON.parse(localReviewsStr) : [];
+      return { data: localReviews };
+    } catch (e) {
+      console.error('Failed to read reviews from localStorage:', e);
+      return { data: [] };
+    }
   }
 };
 
 export const postReview = async (slug: string, rating: number, comment: string) => {
+  const newReview = { rating, comment, created_at: new Date().toISOString() };
   try {
     return (await apiClient.post('/games/' + slug + '/review', { user_id: 'anonymous_user', rating, comment })).data;
   } catch (error) {
-    console.warn('Backend API review post failed, returning mock success');
-    return { status: 'success', message: 'Mocked review post' };
+    console.warn('Backend API review post failed, falling back to localStorage');
+    try {
+      const localReviewsStr = localStorage.getItem(`reviews_${slug}`);
+      const localReviews = localReviewsStr ? JSON.parse(localReviewsStr) : [];
+      localReviews.unshift(newReview);
+      localStorage.setItem(`reviews_${slug}`, JSON.stringify(localReviews));
+      return { status: 'success', message: 'Saved to localStorage' };
+    } catch (e) {
+      console.error('Failed to save review to localStorage:', e);
+      return { status: 'error', message: 'Failed to save locally' };
+    }
   }
 };
 
