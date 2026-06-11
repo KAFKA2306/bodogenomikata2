@@ -27,8 +27,11 @@ class CacheControlledStaticFiles(StaticFiles):
         return response
 
 
-app.mount("/assets", CacheControlledStaticFiles(directory=str(ASSETS_DIR)), name="assets")
-app.mount("/static", CacheControlledStaticFiles(directory=str(STATIC_DIR)), name="static")
+# Serve /assets separately for Vite build assets
+app.mount("/assets", CacheControlledStaticFiles(directory=str(STATIC_DIR / "assets")), name="assets")
+
+# Serve fallback index.html and other static files at the root
+app.mount("/", StaticFiles(directory=str(STATIC_DIR), html=True), name="static")
 
 
 @app.on_event("startup")
