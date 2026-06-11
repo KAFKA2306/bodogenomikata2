@@ -1,18 +1,14 @@
-import { apiClient } from './client';
 import type { Game } from '../types/game';
 
 export const fetchGames = async (query: string = '', limit: number = 20, offset: number = 0) => {
-    const response = await apiClient.get<{ data: Game[] }>('/games/search', {
-      params: { q: query, limit, offset }
-    });
-    return response.data;
+    const response = await fetch('/data.json');
+    const allGames: Game[] = await response.json();
+    
+    // Client-side filter for now
+    const filtered = allGames.filter(g => g.title.toLowerCase().includes(query.toLowerCase()));
+    return { data: filtered.slice(offset, offset + limit) };
 };
 
 export const fetchReviews = async (slug: string) => {
-  const res = await apiClient.get<{ data: { rating: number, comment: string }[] }>('/games/' + slug + '/review');
-  return res.data;
-};
-
-export const postReview = async (slug: string, rating: number, comment: string) => {
-  return await apiClient.post('/games/' + slug + '/review', { rating, comment });
+    return { data: [] }; // Mock for static
 };
