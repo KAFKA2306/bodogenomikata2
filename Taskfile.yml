@@ -1,0 +1,50 @@
+version: "3"
+
+tasks:
+  default:
+    cmd: task --list
+
+  setup:
+    cmds:
+      - task: setup:backend
+
+  setup:backend:
+    cmd: 'uv sync --all-groups && uv run playwright install chromium'
+
+  dev:
+    deps: [dev:backend]
+
+  dev:backend:
+    cmd: 'PYTHONPATH=backend uv run uvicorn backend.app.main:app --reload --host 0.0.0.0 --port 8000'
+
+  lint:
+    cmds:
+      - task: lint:backend
+
+  format:
+    cmds:
+      - 'uv run ruff format backend/app scripts'
+      - 'uv run ruff check --fix backend/app scripts'
+
+  lint:backend:
+    cmds:
+      - 'uv run ruff check --fix backend/app scripts'
+      - 'uv run ruff format backend/app scripts'
+
+  clean:
+    ignore_error: true
+    cmds:
+      - 'find . -type d -name "__pycache__" -exec rm -rf {} +'
+      - 'rm -rf .ruff_cache'
+
+  kill:
+    ignore_error: true
+    cmds:
+      - 'fuser -k 8000/tcp'
+
+  test:
+    cmd: 'PYTHONPATH=backend uv run python -m pytest backend/tests/ -v'
+
+  verify:
+    desc: 'Verify the entire BGG to NotebookLM pipeline'
+    cmd: 'cd backend && uv run python verify_total_pipeline.py'
