@@ -8,9 +8,11 @@ export const fetchGames = async (query: string = '', limit: number = 20, offset:
   return response.data;
 };
 export const postReview = async (slug: string, rating: number, comment: string) => {
-  return await apiClient.post(`/games/${slug}/review`, { rating, comment });
+  return await apiClient.post(`/games/${slug}/review`, { user_id: "anonymous_user", rating, comment });
 };
 export const fetchReviews = async (slug: string) => {
-  const res = await apiClient.get('/games/' + slug + '/review');
+  const res = await apiClient.get('/games/' + slug + '/review', {
+    params: { user_id: 'anonymous_user' }
+  });
   return res.data;
 };

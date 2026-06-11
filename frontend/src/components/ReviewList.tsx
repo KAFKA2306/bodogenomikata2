@@ -17,7 +17,7 @@ export const ReviewList: React.FC<{ slug: string }> = ({ slug }) => {
         reviews.map((r, i) => (
           <div key={i} className='review-item'>
             <div className='review-item-header'>
-              <span className='review-rating-stars'>{'★'.repeat(r.rating)}{'☆'.repeat(5 - r.rating)}</span>
+              <span className='review-rating-stars'>{'★'.repeat(Math.round(r.rating))}{'☆'.repeat(5 - Math.round(r.rating))}</span>
               <span className='review-rating-num'>{r.rating}/5</span>
             </div>
             <p className='review-comment'>{r.comment}</p>
