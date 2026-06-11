@@ -2,13 +2,17 @@ import { apiClient } from './client';
 import type { Game } from '../types/game';
 
 export const fetchGames = async (query: string = '', limit: number = 20, offset: number = 0) => {
-  try {
     const response = await apiClient.get<{ data: Game[] }>('/games/search', {
       params: { q: query, limit, offset }
     });
     return response.data;
-  } catch (error) {
-    console.error('API Fetch Error:', error);
-    throw error;
-  }
+};
+
+export const fetchReviews = async (slug: string) => {
+  const res = await apiClient.get<{ data: { rating: number, comment: string }[] }>('/games/' + slug + '/review');
+  return res.data;
+};
+
+export const postReview = async (slug: string, rating: number, comment: string) => {
+  return await apiClient.post('/games/' + slug + '/review', { rating, comment });
 };
