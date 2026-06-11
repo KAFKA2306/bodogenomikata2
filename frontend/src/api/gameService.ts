@@ -31,6 +31,22 @@ export const fetchGames = async (query: string = '', limit: number = 20, offset:
   }
 };
 
+export const fetchGameBySlug = async (slug: string): Promise<{ data: Game }> => {
+  try {
+    const response = await apiClient.get<{ data: Game }>(`/games/${slug}`);
+    // Extract Axios response data structure containing the game object inside 'data' property
+    return response.data;
+  } catch (error) {
+    console.warn(`Backend API fetch for slug "${slug}" failed, falling back to static data.json...`, error);
+    const response = await fetch('/data.json');
+    if (!response.ok) throw new Error('Failed to fetch data.json');
+    const allGames: Game[] = await response.json();
+    const game = allGames.find(g => g.slug === slug);
+    if (!game) throw new Error(`Game with slug "${slug}" not found in static data`);
+    return { data: game };
+  }
+};
+
 export const fetchReviews = async (slug: string) => {
   try {
     const res = await apiClient.get<{ data: { rating: number, comment: string }[] }>('/games/' + slug + '/review', {

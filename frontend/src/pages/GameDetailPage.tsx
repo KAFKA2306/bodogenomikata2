@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { apiClient } from '../api/client';
 import { ReviewForm } from "../components/ReviewForm";
 import { ReviewList } from "../components/ReviewList";
+import { fetchGameBySlug } from '../api/gameService';
 import type { Game } from '../types/game';
 
 export const GameDetailPage: React.FC = () => {
@@ -12,7 +12,7 @@ export const GameDetailPage: React.FC = () => {
   const [reviewsUpdated, setReviewsUpdated] = useState(0);
 
   useEffect(() => {
-    apiClient.get(`/games/${slug}`).then(res => setGame(res.data.data));
+    fetchGameBySlug(slug!).then(res => setGame(res.data));
   }, [slug]);
 
   if (!game) {
