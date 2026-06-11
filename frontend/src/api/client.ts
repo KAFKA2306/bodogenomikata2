@@ -3,11 +3,11 @@ const getBaseUrl = () => {
     const envUrl = import.meta.env.VITE_API_BASE_URL;
     if (envUrl) return envUrl;
     if (typeof window !== 'undefined') {
-        // Fallback to absolute url if on localhost, else use relative /api
         if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
             return 'http://localhost:8000/api';
         }
-        return '/api';
+        // Change to public backend endpoint if pages.dev deployment
+        return 'https://bodogenomikata2.onrender.com/api';
     }
     return 'http://localhost:8000/api';
 };
