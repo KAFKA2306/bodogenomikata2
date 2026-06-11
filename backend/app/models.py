@@ -146,15 +146,19 @@ class SyncPushRequest(BaseSchema):
 
 class UserReview(BaseSchema):
     game_slug: str
+    user_id: str
     rating: float = Field(..., ge=1.0, le=10.0)
     comment: str | None = None
+    verified_purchase: bool = False
     created_at: str | None = None
     updated_at: str | None = None
 
 
 class UserReviewUpdate(BaseSchema):
+    user_id: str
     rating: float = Field(..., ge=1.0, le=10.0)
     comment: str | None = None
+    verified_purchase: bool = False
 
 
 class UserCollection(BaseSchema):

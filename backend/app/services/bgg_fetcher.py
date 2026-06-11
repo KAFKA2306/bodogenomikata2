@@ -28,6 +28,37 @@ class BGGFetcher:
             await browser.close()
             return self._parse_html_response(content, game_id)
 
+    async def search_game(self, title: str) -> int | None:
+        async with async_playwright() as p:
+            browser = await p.chromium.launch(headless=True)
+            context = await browser.new_context(
+                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+            )
+            page = await context.new_page()
+
+            # Perform search
+            search_url = f"https://boardgamegeek.com/geeksearch.php?action=search&q={title.replace(' ', '+')}"
+            await page.goto(search_url, wait_until="domcontentloaded")
+
+            # Find the first result link
+            # The search results page typically has links like /boardgame/12345/...
+            try:
+                # Look for the first link that starts with /boardgame/
+                selector = "a[href^='/boardgame/']"
+                await page.wait_for_selector(selector, timeout=5000)
+                link = await page.get_attribute(selector, "href")
+
+                # Extract the ID
+                match = re.search(r"/boardgame/(\d+)", link)
+                if match:
+                    await browser.close()
+                    return int(match.group(1))
+            except Exception:
+                pass
+
+            await browser.close()
+            return None
+
     def _parse_html_response(self, html: str, game_id: int) -> dict[str, Any]:
         # Robust regex to find the preload data
         match = re.search(r"GEEK\.geekitemPreload\s*=\s*(\{.*?\});", html, re.DOTALL)

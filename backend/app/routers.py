@@ -148,20 +148,30 @@ async def sync_push(payload: SyncPushRequest):
 
 
 @router.get("/games/{slug}/review")
-async def get_user_review(slug: str):
-    review = sqlite_client.get_user_review(slug)
+async def get_user_review(slug: str, user_id: str = Query(..., description="User ID of the reviewer")):
+    review = sqlite_client.get_user_review(slug, user_id)
     return {"success": True, "data": review}
 
 
 @router.post("/games/{slug}/review")
 async def create_or_update_user_review(slug: str, review_data: UserReviewUpdate):
-    review = sqlite_client.upsert_user_review(slug, review_data.rating, review_data.comment)
+    # Mock authentication - check if user_id is provided
+    if not review_data.user_id:
+        raise HTTPException(status_code=403, detail="User ID is required")
+        
+    review = sqlite_client.upsert_user_review(
+        slug, 
+        review_data.user_id, 
+        review_data.rating, 
+        review_data.comment, 
+        review_data.verified_purchase
+    )
     return {"success": True, "data": review}
 
 
 @router.delete("/games/{slug}/review")
-async def delete_user_review(slug: str):
-    sqlite_client.delete_user_review(slug)
+async def delete_user_review(slug: str, user_id: str = Query(..., description="User ID of the reviewer")):
+    sqlite_client.delete_user_review(slug, user_id)
     return {"success": True, "message": "Review deleted"}
 
 

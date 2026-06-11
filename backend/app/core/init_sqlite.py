@@ -117,11 +117,14 @@ def init_database(db_path: str) -> None:
     cursor.execute(
         """
         CREATE TABLE IF NOT EXISTS user_reviews (
-            game_slug TEXT PRIMARY KEY,
+            game_slug TEXT,
+            user_id TEXT,
             rating REAL NOT NULL CHECK(rating >= 1.0 AND rating <= 10.0),
             comment TEXT,
+            verified_purchase INTEGER DEFAULT 0,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            PRIMARY KEY(game_slug, user_id),
             FOREIGN KEY(game_slug) REFERENCES games(slug) ON DELETE CASCADE
         )
         """
