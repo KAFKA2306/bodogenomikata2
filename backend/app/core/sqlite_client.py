@@ -18,10 +18,18 @@ def get_connection() -> sqlite3.Connection:
     return conn
 
 
+def init_fts() -> None:
+    conn = get_connection()
+    conn.execute("CREATE VIRTUAL TABLE IF NOT EXISTS games_fts USING fts5(title, description, content='games', content_rowid='id')")
+    conn.commit()
+    conn.close()
+
+
 def init_database() -> None:
     from app.core.init_sqlite import init_database as _init
 
     _init(str(get_db_path()))
+    init_fts()
 
 
 def _parse_game_row(row: Any) -> dict[str, Any]:
@@ -63,6 +71,11 @@ def upsert_game(game_data: dict[str, Any]) -> dict[str, Any]:
             f"INSERT INTO games ({', '.join(keys)}) VALUES ({', '.join(['?'] * len(keys))})", list(valid_data.values())
         )
 
+    conn.commit()
+    cursor.execute("SELECT id, title, description FROM games WHERE slug = ?", (slug,))
+    row = cursor.fetchone()
+    game_id, title, desc = row[0], row[1], row[2]
+    cursor.execute("INSERT OR REPLACE INTO games_fts(rowid, title, description) VALUES (?, ?, ?)", (game_id, title, desc))
     conn.commit()
     cursor.execute("SELECT * FROM games WHERE slug = ?", (slug,))
     row = cursor.fetchone()
@@ -273,32 +286,33 @@ def search_games(
     conn = get_connection()
     cursor = conn.cursor()
 
-    sql = "SELECT DISTINCT * FROM games WHERE 1=1"
-    params = []
-
     if query:
-        sql += " AND (title LIKE ? OR title_ja LIKE ? OR title_en LIKE ? OR description LIKE ?)"
-        like_query = f"%{query}%"
-        params.extend([like_query, like_query, like_query, like_query])
+        sql = "SELECT DISTINCT g.* FROM games g JOIN games_fts f ON g.id = f.rowid WHERE games_fts MATCH ?"
+        params = [query]
+    else:
+        sql = "SELECT DISTINCT * FROM games WHERE 1=1"
+        params = []
 
     if min_players is not None:
-        sql += " AND min_players >= ?"
+        sql += " AND g.min_players >= ?" if query else " AND min_players >= ?"
         params.append(min_players)
 
     if max_players is not None:
-        sql += " AND max_players <= ?"
+        sql += " AND g.max_players <= ?" if query else " AND max_players <= ?"
         params.append(max_players)
 
     if play_time is not None:
-        sql += " AND play_time <= ?"
+        sql += " AND g.play_time <= ?" if query else " AND play_time <= ?"
         params.append(play_time)
 
     if mechanics:
         for mech in mechanics:
-            sql += " AND EXISTS (SELECT 1 FROM json_each(structured_data, '$.mechanics') WHERE value = ?)"
+            t_prefix = "g." if query else ""
+            sql += f" AND EXISTS (SELECT 1 FROM json_each({t_prefix}structured_data, '$.mechanics') WHERE value = ?)"
             params.append(mech)
 
-    sql += " ORDER BY updated_at DESC LIMIT ? OFFSET ?"
+    t_prefix = "g." if query else ""
+    sql += f" ORDER BY {t_prefix}updated_at DESC LIMIT ? OFFSET ?"
     params.extend([limit, offset])
 
     cursor.execute(sql, params)
@@ -372,41 +386,42 @@ def get_game_skeletons() -> list[dict[str, Any]]:
     return [dict(row) for row in rows]
 
 
-def get_user_review(game_slug: str) -> dict[str, Any] | None:
+def get_user_review(game_slug: str, user_id: str) -> dict[str, Any] | None:
     conn = get_connection()
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM user_reviews WHERE game_slug = ?", (game_slug,))
+    cursor.execute("SELECT * FROM user_reviews WHERE game_slug = ? AND user_id = ?", (game_slug, user_id))
     row = cursor.fetchone()
     conn.close()
     return dict(row) if row else None
 
 
-def upsert_user_review(game_slug: str, rating: float, comment: str | None) -> dict[str, Any]:
+def upsert_user_review(game_slug: str, user_id: str, rating: float, comment: str | None, verified_purchase: bool = False) -> dict[str, Any]:
     conn = get_connection()
     cursor = conn.cursor()
     now = datetime.now(timezone.utc).isoformat()
     cursor.execute(
         """
-        INSERT INTO user_reviews (game_slug, rating, comment, created_at, updated_at)
-        VALUES (?, ?, ?, ?, ?)
-        ON CONFLICT(game_slug) DO UPDATE SET
+        INSERT INTO user_reviews (game_slug, user_id, rating, comment, verified_purchase, created_at, updated_at)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+        ON CONFLICT(game_slug, user_id) DO UPDATE SET
             rating = excluded.rating,
             comment = excluded.comment,
+            verified_purchase = excluded.verified_purchase,
             updated_at = excluded.updated_at
         """,
-        (game_slug, rating, comment, now, now),
+        (game_slug, user_id, rating, comment, 1 if verified_purchase else 0, now, now),
     )
     conn.commit()
-    cursor.execute("SELECT * FROM user_reviews WHERE game_slug = ?", (game_slug,))
+    cursor.execute("SELECT * FROM user_reviews WHERE game_slug = ? AND user_id = ?", (game_slug, user_id))
     row = cursor.fetchone()
     conn.close()
     return dict(row)
 
 
-def delete_user_review(game_slug: str) -> None:
+def delete_user_review(game_slug: str, user_id: str) -> None:
     conn = get_connection()
     cursor = conn.cursor()
-    cursor.execute("DELETE FROM user_reviews WHERE game_slug = ?", (game_slug,))
+    cursor.execute("DELETE FROM user_reviews WHERE game_slug = ? AND user_id = ?", (game_slug, user_id))
     conn.commit()
     conn.close()
 

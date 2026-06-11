@@ -1,5 +1,5 @@
 import { apiClient } from './client';
-import { Game } from '../types/game';
+import type { Game } from '../types/game';
 
 export const fetchGames = async (query: string = '', limit: number = 20, offset: number = 0) => {
   const response = await apiClient.get<{ data: Game[] }>('/games/search', {
@@ -9,4 +9,8 @@ export const fetchGames = async (query: string = '', limit: number = 20, offset:
 };
 export const postReview = async (slug: string, rating: number, comment: string) => {
   return await apiClient.post(`/games/${slug}/review`, { rating, comment });
+};
+export const fetchReviews = async (slug: string) => {
+  const res = await apiClient.get('/games/' + slug + '/review');
+  return res.data;
 };
