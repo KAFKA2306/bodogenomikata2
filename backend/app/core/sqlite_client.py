@@ -20,7 +20,7 @@ def get_connection() -> sqlite3.Connection:
 
 def init_fts() -> None:
     conn = get_connection()
-    conn.execute("CREATE VIRTUAL TABLE IF NOT EXISTS games_fts USING fts5(title, description, content='games', content_rowid='id')")
+    conn.execute("CREATE VIRTUAL TABLE IF NOT EXISTS games_fts USING fts5(title, title_ja, title_en, description, content='games', content_rowid='id')")
     conn.commit()
     conn.close()
 
@@ -72,10 +72,10 @@ def upsert_game(game_data: dict[str, Any]) -> dict[str, Any]:
         )
 
     conn.commit()
-    cursor.execute("SELECT id, title, description FROM games WHERE slug = ?", (slug,))
+    cursor.execute("SELECT id, title, title_ja, title_en, description FROM games WHERE slug = ?", (slug,))
     row = cursor.fetchone()
-    game_id, title, desc = row[0], row[1], row[2]
-    cursor.execute("INSERT OR REPLACE INTO games_fts(rowid, title, description) VALUES (?, ?, ?)", (game_id, title, desc))
+    game_id, title, title_ja, title_en, desc = row[0], row[1], row[2], row[3], row[4]
+    cursor.execute("INSERT OR REPLACE INTO games_fts(rowid, title, title_ja, title_en, description) VALUES (?, ?, ?, ?, ?)", (game_id, title, title_ja, title_en, desc))
     conn.commit()
     cursor.execute("SELECT * FROM games WHERE slug = ?", (slug,))
     row = cursor.fetchone()
@@ -287,8 +287,10 @@ def search_games(
     cursor = conn.cursor()
 
     if query:
+        # FTS5 search across title_ja and title_en
+        fts_query = f'title_ja:"{query}" OR title_en:"{query}"'
         sql = "SELECT DISTINCT g.* FROM games g JOIN games_fts f ON g.id = f.rowid WHERE games_fts MATCH ?"
-        params = [query]
+        params = [fts_query]
     else:
         sql = "SELECT DISTINCT * FROM games WHERE 1=1"
         params = []
@@ -384,6 +386,15 @@ def get_game_skeletons() -> list[dict[str, Any]]:
     rows = cursor.fetchall()
     conn.close()
     return [dict(row) for row in rows]
+
+
+def get_average_rating(slug: str) -> float:
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT AVG(rating) FROM user_reviews WHERE game_slug = ?", (slug,))
+    result = cursor.fetchone()[0]
+    conn.close()
+    return float(result) if result else 0.0
 
 
 def get_user_review(game_slug: str, user_id: str) -> dict[str, Any] | None:

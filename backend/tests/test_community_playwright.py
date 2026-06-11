@@ -49,7 +49,7 @@ async def test_community_endpoints(fastapi_server):
         request_context = await p.request.new_context(base_url=fastapi_server)
 
         # 1. Get initial review (should be None/null)
-        resp = await request_context.get("/api/games/catan/review")
+        resp = await request_context.get("/api/games/catan/review?user_id=test_user")
         assert resp.status == 200
         data = await resp.json()
         assert data["success"] is True
@@ -57,7 +57,7 @@ async def test_community_endpoints(fastapi_server):
 
         # 2. Post review
         post_resp = await request_context.post(
-            "/api/games/catan/review", data={"rating": 8.5, "comment": "とても面白いゲームだもんっ！"}
+            "/api/games/catan/review", data={"user_id": "test_user", "rating": 8.5, "comment": "とても面白いゲームだもんっ！"}
         )
         assert post_resp.status == 200
         post_data = await post_resp.json()
@@ -67,7 +67,7 @@ async def test_community_endpoints(fastapi_server):
         assert post_data["data"]["comment"] == "とても面白いゲームだもんっ！"
 
         # 3. Get updated review
-        get_resp = await request_context.get("/api/games/catan/review")
+        get_resp = await request_context.get("/api/games/catan/review?user_id=test_user")
         assert get_resp.status == 200
         get_data = await get_resp.json()
         assert get_data["success"] is True
@@ -88,13 +88,13 @@ async def test_community_endpoints(fastapi_server):
         assert shelf_post_data["data"]["status"] == "owned"
 
         # 6. Delete review
-        del_rev_resp = await request_context.delete("/api/games/catan/review")
+        del_rev_resp = await request_context.delete("/api/games/catan/review?user_id=test_user")
         assert del_rev_resp.status == 200
         del_rev_data = await del_rev_resp.json()
         assert del_rev_data["success"] is True
 
         # 7. Get review again (should be None)
-        get_rev_again = await request_context.get("/api/games/catan/review")
+        get_rev_again = await request_context.get("/api/games/catan/review?user_id=test_user")
         assert get_rev_again.status == 200
         get_rev_again_data = await get_rev_again.json()
         assert get_rev_again_data["data"] is None

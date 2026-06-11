@@ -1,5 +1,6 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useVirtualizer } from '@tanstack/react-virtual';
 import { fetchGames } from '../api/gameService';
 import type { Game } from '../types/game';
 
@@ -7,6 +8,7 @@ export const ComparisonPage: React.FC = () => {
   const [games, setGames] = useState<Game[]>([]);
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState('');
+  const parentRef = useRef<HTMLDivElement>(null);
 
   const loadGames = useCallback(async (searchQuery: string) => {
     setLoading(true);
@@ -16,6 +18,13 @@ export const ComparisonPage: React.FC = () => {
   }, []);
 
   useEffect(() => { loadGames(query); }, [query, loadGames]);
+
+  const virtualizer = useVirtualizer({
+    count: games.length,
+    getScrollElement: () => parentRef.current,
+    estimateSize: () => 35,
+    overscan: 5,
+  });
 
   return (
     <div className='comparison-container'>
@@ -28,10 +37,28 @@ export const ComparisonPage: React.FC = () => {
         <input placeholder='Search by title...' value={query} onChange={e => setQuery(e.target.value)} />
       </div>
       {loading ? <div>Loading...</div> : (
-      <table className='comparison-table'>
-        <thead><tr><th>Title</th><th>Year</th><th>Players</th></tr></thead>
-        <tbody>{games.map(game => (<tr key={game.id}><td>{game.title}</td><td>{game.published_year}</td><td>{game.min_players}-{game.max_players}</td></tr>))}</tbody>
-      </table>
+        <div ref={parentRef} style={{ height: '600px', overflow: 'auto' }}>
+          <div style={{ height: `${virtualizer.getTotalSize()}px`, position: 'relative' }}>
+            {virtualizer.getVirtualItems().map(virtualRow => {
+              const game = games[virtualRow.index];
+              return (
+                <div
+                  key={virtualRow.key}
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: `${virtualRow.size}px`,
+                    transform: `translateY(${virtualRow.start}px)`,
+                  }}
+                >
+                  {game.title} ({game.published_year}) - {game.min_players}-{game.max_players}
+                </div>
+              );
+            })}
+          </div>
+        </div>
       )}
     </div>
   );

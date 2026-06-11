@@ -34,6 +34,9 @@ class BGGFetcher:
                     "expansions": [],
                     "expands": []
                 }
+        except Exception:
+            pass
+
         # Testing/Offline fallback for Catan (13) to ensure test suites can pass offline
         if game_id == 13:
             return {

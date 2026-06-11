@@ -11,6 +11,7 @@ from playwright.async_api import async_playwright
 from app.core import sqlite_client
 from app.models import SearchRequest, SyncPushRequest, UserReviewUpdate, UserCollectionUpdate
 from app.services.game_master_service import GameMasterService
+from app.services.ranking_service import get_top_rated_games
 from app.services.youtube_scraper import scrape_youtube_videos
 from app.utils import slugify
 
@@ -28,6 +29,12 @@ async def list_games(limit: int = Query(100, ge=1, le=1000), offset: int = Query
         "data": games,
         "pagination": {"total": total, "limit": limit, "offset": offset, "count": len(games)},
     }
+
+
+@router.get("/games/top-rated")
+async def top_rated_games_endpoint(limit: int = Query(20, ge=1, le=50)):
+    games = get_top_rated_games(limit=limit)
+    return {"success": True, "data": games}
 
 
 @router.get("/games/search")
