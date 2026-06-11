@@ -27,18 +27,6 @@ class CacheControlledStaticFiles(StaticFiles):
         return response
 
 
-# Serve /assets separately for Vite build assets
-app.mount("/assets", CacheControlledStaticFiles(directory=str(STATIC_DIR / "assets")), name="assets")
-
-# Serve fallback index.html and other static files at the root
-app.mount("/", StaticFiles(directory=str(STATIC_DIR), html=True), name="static")
-
-
-@app.on_event("startup")
-async def startup_event():
-    init_database()
-
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -50,7 +38,20 @@ app.add_middleware(
 app.include_router(games.router, prefix="/api", tags=["games"])
 
 
+@app.on_event("startup")
+async def startup_event():
+    init_database()
+
+
 @app.get("/health")
 @app.get("/api/health")
 async def health_check():
     return {"status": "ok"}
+
+
+# Serve /assets separately for Vite build assets
+app.mount("/assets", CacheControlledStaticFiles(directory=str(STATIC_DIR / "assets")), name="assets")
+
+# Serve fallback index.html and other static files at the root (placed LAST)
+app.mount("/", StaticFiles(directory=str(STATIC_DIR), html=True), name="static")
+
