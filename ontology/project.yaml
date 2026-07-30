@@ -1,0 +1,78 @@
+project:
+  id: kafka:bodogenomikata2
+  name: Bodoge no Mikata
+  repository: https://github.com/KAFKA2306/bodogenomikata2
+  pages: https://bodogenomikata2.pages.dev/
+  version: 0.1.0
+  updated: 2026-07-30
+  core_ontology: https://raw.githubusercontent.com/KAFKA2306/know/main/ontology/causal-evidence-core.yaml
+  schema: https://raw.githubusercontent.com/KAFKA2306/know/main/ontology/project.schema.json
+
+purpose:
+  problem: Convert board-game source material into concise play assistance without presenting AI-generated summaries as authoritative rules.
+  intended_decisions: [publish_assist, revise, require_source, mark_unofficial, reject]
+  success_conditions:
+    - Every game record distinguishes source rules, extracted facts, AI summaries, diagrams, and commentary.
+    - Setup, turn structure, legal actions, end conditions, and scoring retain source locators.
+    - User-facing answers expose uncertainty and direct users to authoritative rules for disputes.
+  falsification_conditions:
+    - Generated text is labeled or implied as official publisher text.
+    - A rule answer lacks game edition or source context.
+    - Conflicting source passages are collapsed into one unqualified answer.
+
+scope:
+  included: [games, editions, rule sources, extracted rule facts, AI summaries, diagrams, audio, BGG metadata, user queries]
+  excluded: [authoritative tournament rulings without official source, unauthorized rulebook redistribution, unsupported certainty]
+  temporal: Edition, source publication, acquisition, generation, and verification times are explicit.
+  abstraction_level: Evidence-backed board-game rule assistance and derivative-content pipeline.
+
+competency_questions:
+  - Which source and edition support a displayed rule answer?
+  - Which content is extracted, summarized, translated, diagrammed, or inferred by AI?
+  - What source passage supports setup, legal actions, scoring, and exceptions?
+  - Are conflicts and unresolved questions shown to the user?
+  - Can the generated artifact be reproduced from retained source references and model configuration?
+
+domain_mapping:
+  System: BoardGameRuleAssistanceSystem
+  State: [source state, extraction state, generation state, verification state, publication state]
+  Action: [ingest source, extract rule, summarize, translate, generate diagram, answer query, publish]
+  Process: [source registration, rule extraction, LLM generation, human review, API serving, site publication]
+  Observation: [source passage, BGG record, generated output, reviewer result, API response]
+  Model: [rule extraction policy, LLM summarizer, retrieval model, answer composer]
+  Requirement: [source traceability, edition identity, generated-content labeling, conflict visibility, rights compliance]
+  Claim: [rule fact, setup instruction, legal-action answer, scoring answer, generated explanation]
+  Evidence: [source URL, page or section locator, source hash, model configuration, review record]
+  Decision: [publish_assist, revise, require_source, mark_unofficial, reject]
+
+claims_and_evidence:
+  assertion_types: [OfficialRule, ExtractedFact, AIGeneratedSummary, Translation, DiagramInterpretation, DatabaseObservation, DecisionAssertion]
+  required_evidence:
+    OfficialRule: [source URL, edition, page or section]
+    ExtractedFact: [source passage identity, extraction record]
+    AIGeneratedSummary: [input source IDs, model, generation policy, output version]
+    DatabaseObservation: [provider, field, retrieval time]
+  unknown_policy: Missing edition, source locator, or conflict resolution produces require_source and prevents authoritative wording.
+
+decision_rules:
+  - id: publish-assistance
+    when: Source identity, edition, locators, generated-content labels, and review are present.
+    result: publish_assist
+  - id: unresolved-rule-conflict
+    when: Source passages conflict or applicable edition is unclear.
+    result: require_source
+  - id: generated-authority-guard
+    when: AI-generated content is presented as publisher-issued text.
+    result: reject
+
+provenance:
+  sources: [publisher rulebooks, official FAQs, BoardGameGeek records, explicitly registered secondary sources]
+  generated_artifacts: [SQLite records, API responses, summaries, diagrams, audio, web pages]
+  agents: [source ingester, extractor, LLM, API service, human reviewer]
+  lineage: Every answer links to game edition, source passage, generation method, model version, and review status.
+
+validation:
+  structural: Validate game, edition, source, passage, output, and review identifiers.
+  semantic: Separate official rules, extracted facts, translations, generated summaries, and commentary.
+  evidence: Verify locators, source hashes, model configuration, and conflict records.
+  publication: Public answers must display source context, generated-content status, and an uncertainty path.
