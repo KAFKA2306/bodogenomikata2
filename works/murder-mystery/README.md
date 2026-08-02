@@ -19,10 +19,8 @@ works/murder-mystery/
 ├── projects/
 │   └── {slug}/
 │       ├── project.yaml       # 状態、所有者、次の行動、制作来歴
-│       ├── README.md          # 公開可能な説明だけ
-│       └── private/           # Git追跡禁止
-│           ├── WORK.md        # 制作本文を一枚に集約
-│           └── PLAYTESTS.md   # プレイテスト記録を追記
+│       ├── README.md          # 入口と公開説明
+│       └── private/           # 犯人、真相、HO、結末、プレイテスト資料
 └── _template/                 # 新規作品用テンプレート
 ```
 
@@ -42,12 +40,6 @@ works/murder-mystery/
 
 ```bash
 task work:new -- my-work "仮タイトル"
-```
-
-生成先:
-
-```text
-works/murder-mystery/projects/my-work/
 ```
 
 生成後は`private/WORK.md`を人間が先に書きます。
@@ -73,18 +65,26 @@ AIを補助に限定できるもの:
 - 比較表やチェックリスト
 - プレイテスト記録の要約
 
-`canonicalPlotGeneratedByAI: false`を構造検証で強制します。AIが完成プロットを生成し、それを人間が微修正しただけの作品は正準作品として扱いません。
+`canonicalPlotGeneratedByAI: false`を構造検証で強制します。AI支援プロトタイプは、`prototypeGeneratedWithAI: true`として制作来歴を明記し、人間作の正準版と区別します。
 
-## 秘密情報
+## ネタバレ資料の追跡
 
-このリポジトリは公開されているため、犯人、真相、秘密、ハンドアウト、結末、プレイテストの詳細は`private/`へ置きます。各作品の`private/`は`.gitignore`で除外されます。
+`private/`は既定でGit追跡しません。ただし、所有者が公開管理を明示的に承認した作品だけ、作品単位で追跡できます。
 
-GitHub上には次だけを残します。
+必要条件:
 
-- `project.yaml`
-- ネタバレのない`README.md`
+```yaml
+privacy:
+  trackedSpoilers: true
+  spoilerMaterialTrackedInThisRepository: true
+  publicationApprovedByOwner: true
+```
 
-本格運用では、`private/`を暗号化ストレージまたは別のprivate repositoryへバックアップしてください。
+さらに`.gitignore`へ、その作品だけを対象にした例外を追加します。別作品の`private/`が誤って追跡された場合、`task work:validate`は失敗します。
+
+現在の公開ネタバレ作品:
+
+- `projects/unanimous-kindness/` — 『満場一致で、あなたをやめる』Prototype 0.4
 
 ## 検証
 
@@ -97,5 +97,5 @@ task work:validate
 - 全作品が`projects/{slug}`の固定パスにある
 - statusが統制語彙内である
 - 正準プロットのAI生成を許可していない
-- `private/`がGit追跡されていない
+- ネタバレ追跡は所有者承認済み作品だけである
 - 旧工程ディレクトリと分割テンプレートが復活していない
