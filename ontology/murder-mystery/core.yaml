@@ -1,0 +1,341 @@
+metadata:
+  id: kafka:murder-mystery-ontology
+  name: Murder Mystery Cross-Site Ontology
+  version: 0.1.0
+  updated: 2026-08-02
+  language: ja
+  namespace: https://kafka2306.github.io/bodogenomikata2/ontology/murder-mystery#
+  purpose: >
+    複数のマーダーミステリー情報源を、作品、版、遊び方、販売、
+    公演、評価、出典付き主張へ分離して統合する。
+  standards:
+    - name: SKOS
+      url: https://www.w3.org/TR/skos-reference/
+      role: 統制語彙とサイト固有ラベルの対応
+    - name: PROV-O
+      url: https://www.w3.org/TR/prov-o/
+      role: 取得・変換・検証の来歴
+    - name: JSON-LD 1.1
+      url: https://www.w3.org/TR/json-ld11/
+      role: 外部交換形式
+    - name: SHACL
+      url: https://www.w3.org/TR/shacl/
+      role: RDF化時の制約検証
+
+collection_policy:
+  principle: 権利と出典を優先し、取得方法を明示する。
+  allowed_methods:
+    - manual_entry
+    - official_api
+    - creator_submission
+    - seller_export
+  prohibited_methods:
+    - scraping
+    - crawling
+    - automated_html_extraction
+    - review_text_republication
+    - image_hotlinking_without_permission
+  automation_gate: >
+    公式API仕様または書面による許諾が確認できるまで、
+    HTMLページからの自動収集を実装・実行しない。
+  source_priority:
+    - creator_or_publisher_official
+    - edition_official
+    - platform_official
+    - venue_official
+    - secondary_information_site
+    - user_report
+  rights_rules:
+    - メタデータは必要最小限に限定する。
+    - レビュー本文、ハンドアウト、画像、真相は複製しない。
+    - 外部情報はURL、取得日時、入力者、利用許可状態を保持する。
+    - 公式情報と二次情報が競合する場合は統合せず、別Assertionとして保持する。
+
+classes:
+  ScenarioWork:
+    description: サイトや販売形態から独立した作品。
+    required: [id, canonicalTitle, sourceRecords]
+    properties:
+      canonicalTitle: string
+      alternativeTitles: string[]
+      creators: AgentRef[]
+      publisher: AgentRef?
+      originalLanguage: string?
+      publicSynopsis: string?
+      releaseDate: date?
+      workStatus: WorkStatus
+      concepts: ConceptRef[]
+      contentWarnings: ConceptRef[]
+      sourceRecords: SourceRecordRef[]
+
+  Edition:
+    description: ウズ版、パッケージ版、店舗公演版、改訂版など、作品の特定版。
+    required: [id, editionOf, editionType, playConfigurations, sourceRecords]
+    properties:
+      editionOf: ScenarioWorkRef
+      editionType: EditionType
+      editionName: string?
+      language: string?
+      revision: string?
+      releaseDate: date?
+      distributor: AgentRef?
+      platform: PlatformRef?
+      playConfigurations: PlayConfiguration[]
+      offers: OfferRef[]
+      sourceRecords: SourceRecordRef[]
+
+  PlayConfiguration:
+    description: 特定版を遊ぶ条件。
+    required:
+      - minimumPlayers
+      - maximumPlayers
+      - minimumDurationMinutes
+      - maximumDurationMinutes
+      - gmRequirement
+      - playModes
+    properties:
+      minimumPlayers: integer
+      maximumPlayers: integer
+      minimumDurationMinutes: integer
+      maximumDurationMinutes: integer
+      gmRequirement: GmRequirement
+      playModes: PlayMode[]
+      supportedTools: PlatformRef[]
+      privateTalkSupport: boolean?
+      spectatorSupport: boolean?
+      recommendedExperience: ExperienceLevel?
+      notes: string?
+
+  Offer:
+    description: 購入または利用条件。価格の単位を必ず区別する。
+    required: [id, edition, seller, availability, observedAt, sourceRecord]
+    properties:
+      edition: EditionRef
+      seller: AgentRef
+      price: number?
+      currency: string?
+      priceBasis: PriceBasis?
+      availability: Availability
+      purchaseUrl: uri?
+      observedAt: datetime
+      sourceRecord: SourceRecordRef
+
+  Performance:
+    description: 店舗またはオンラインで行われる個別公演枠。
+    required:
+      - id
+      - performedEdition
+      - startDateTime
+      - endDateTime
+      - organizer
+      - bookingStatus
+      - sourceRecord
+    properties:
+      performedEdition: EditionRef
+      startDateTime: datetime
+      endDateTime: datetime
+      organizer: AgentRef
+      venue: VenueRef?
+      onlinePlatform: PlatformRef?
+      gameMaster: AgentRef?
+      capacity: integer?
+      remainingSeats: integer?
+      bookingStatus: BookingStatus
+      bookingUrl: uri?
+      sourceRecord: SourceRecordRef
+
+  Agent:
+    description: 作者、制作団体、出版社、販売者、店舗、GM、運営者。
+    required: [id, name, agentType]
+    properties:
+      name: string
+      agentType: AgentType
+      officialUrl: uri?
+      aliases: string[]
+
+  Platform:
+    description: 販売、プレイ、予約、情報掲載の基盤。
+    required: [id, name, platformRoles]
+    properties:
+      name: string
+      officialUrl: uri?
+      platformRoles: PlatformRole[]
+
+  Venue:
+    description: 公演会場。
+    required: [id, name]
+    properties:
+      name: string
+      operator: AgentRef?
+      address: string?
+      regionCode: string?
+      officialUrl: uri?
+
+  Review:
+    description: 個別レビュー。本文は原則保持せず、参照とネタバレ状態を保持する。
+    required: [id, aboutEdition, sourceRecord, spoilerLevel]
+    properties:
+      aboutEdition: EditionRef
+      externalReviewUrl: uri?
+      summary: string?
+      spoilerLevel: SpoilerLevel
+      publishedAt: datetime?
+      sourceRecord: SourceRecordRef
+
+  RatingObservation:
+    description: サイト固有の集計評価。尺度と母数を保持し、サイト間で直接合算しない。
+    required:
+      - id
+      - aboutEdition
+      - metric
+      - value
+      - scaleMinimum
+      - scaleMaximum
+      - observedAt
+      - sourceRecord
+    properties:
+      aboutEdition: EditionRef
+      metric: string
+      value: number
+      scaleMinimum: number
+      scaleMaximum: number
+      sampleSize: integer?
+      aggregationMethod: string?
+      observedAt: datetime
+      sourceRecord: SourceRecordRef
+
+  SourceRecord:
+    description: 外部ページ、公式資料、手入力票など、観測元の不変記録。
+    required:
+      - id
+      - sourceName
+      - sourceType
+      - sourceUrl
+      - acquiredBy
+      - retrievedAt
+      - verificationStatus
+    properties:
+      sourceName: string
+      sourceType: SourceType
+      sourceUrl: uri
+      sourceEntityId: string?
+      acquiredBy: AcquisitionMethod
+      retrievedAt: datetime
+      lastModifiedAt: datetime?
+      contentHash: string?
+      inputAgent: AgentRef?
+      parserVersion: string?
+      rightsStatus: RightsStatus
+      verificationStatus: VerificationStatus
+
+  Assertion:
+    description: ある主体について情報源が述べた値。競合値を上書きしない。
+    required:
+      - id
+      - subject
+      - predicate
+      - value
+      - assertedBy
+      - observedAt
+      - confidence
+      - verificationStatus
+    properties:
+      subject: EntityRef
+      predicate: string
+      value: any
+      assertedBy: SourceRecordRef
+      observedAt: datetime
+      confidence: number
+      verificationStatus: VerificationStatus
+      canonicalValue: any?
+      normalizationRule: string?
+      supersedes: AssertionRef?
+
+  IdentityMatch:
+    description: 複数サイトのレコードが同一作品または同一版かを判定した記録。
+    required: [id, leftRecord, rightRecord, decision, evidence, decidedAt]
+    properties:
+      leftRecord: SourceRecordRef
+      rightRecord: SourceRecordRef
+      decision: IdentityDecision
+      confidence: number
+      evidence: MatchEvidence[]
+      decidedBy: AgentRef?
+      decidedAt: datetime
+
+relations:
+  editionOf:
+    domain: Edition
+    range: ScenarioWork
+  hasPlayConfiguration:
+    domain: Edition
+    range: PlayConfiguration
+  hasOffer:
+    domain: Edition
+    range: Offer
+  performedEdition:
+    domain: Performance
+    range: Edition
+  assertedBy:
+    domain: Assertion
+    range: SourceRecord
+  exactMatch:
+    domain: Concept
+    range: Concept
+    standard: SKOS
+  closeMatch:
+    domain: Concept
+    range: Concept
+    standard: SKOS
+  wasDerivedFrom:
+    domain: SourceRecord
+    range: SourceRecord
+    standard: PROV-O
+
+identity_resolution:
+  normalization:
+    - Unicode NFKC
+    - 前後空白と連続空白の正規化
+    - 全角半角記号の統一
+    - 副題区切り記号の正規化
+    - ローマ数字の比較用正規化
+    - 作品種別を示す一般的接頭辞の比較用除去
+  evidence_order:
+    - official_cross_link
+    - identical_official_product_url
+    - title_and_creator_exact
+    - title_creator_players_duration_composite
+    - series_publisher_release_date_support
+    - human_review
+  automatic_merge_policy: >
+    自動処理はpossibleSameWorkまたはprobableSameWorkまで。
+    confirmedSameWorkは公式相互リンク、同一公式商品URL、または人間レビューを必須とする。
+  never_use_alone:
+    - normalized_title
+    - image_similarity
+    - synopsis_similarity
+
+spoiler_policy:
+  levels: [none, premise, character_public, minor, major, solution]
+  public_index_allowed: [none, premise, character_public]
+  isolated_levels: [minor, major, solution]
+  forbidden_public_fields:
+    - culprit
+    - secrets
+    - privateObjectives
+    - handoutBody
+    - truth
+    - endingDetails
+    - spoilerReviewBody
+
+quality_gates:
+  - ScenarioWorkはcanonicalTitleと1件以上のSourceRecordを持つ。
+  - EditionはScenarioWorkへ接続し、PlayConfigurationを1件以上持つ。
+  - minimumPlayersはmaximumPlayers以下である。
+  - minimumDurationMinutesはmaximumDurationMinutes以下である。
+  - Offerにpriceがある場合、currencyとpriceBasisを必須とする。
+  - PerformanceはVenueまたはonlinePlatformのいずれかを持つ。
+  - RatingObservationは尺度、取得日時、情報源を持つ。
+  - Assertionは出典URLへ到達できるSourceRecordを参照する。
+  - 公式情報と二次情報の競合は、解消済みと断定せず両方を保持する。
+  - public indexにminor以上のネタバレを含めない。
