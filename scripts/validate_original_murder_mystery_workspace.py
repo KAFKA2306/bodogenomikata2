@@ -16,6 +16,13 @@ REQUIRED_TEMPLATE_FILES = {
     "private/PLAYTESTS.md",
 }
 REQUIRED_TRACKED_PROJECT_FILES = {"project.yaml", "README.md"}
+REQUIRED_TRACKED_SPOILER_FILES = {
+    "private/START_HERE.md",
+    "private/PLAY_PACKAGE.md",
+    "private/GM_GUIDE.md",
+    "private/CARDS.md",
+    "private/PLAYTESTS.md",
+}
 REQUIRED_HUMAN_DECISIONS = {
     "human_seed",
     "ethical_contradiction",
@@ -67,14 +74,15 @@ def tracked_private_paths(root: Path) -> list[str]:
     return [line for line in result.stdout.splitlines() if "/private/" in line]
 
 
-def validate_project(project_dir: Path, statuses: set[str]) -> None:
+def validate_project(project_dir: Path, statuses: set[str]) -> bool:
     for filename in REQUIRED_TRACKED_PROJECT_FILES:
         require((project_dir / filename).is_file(), f"{project_dir}: missing {filename}")
 
     visible_names = {path.name for path in project_dir.iterdir()}
     require(
         visible_names <= {"project.yaml", "README.md", "private"},
-        f"{project_dir}: keep the project root minimal; unexpected entries: {sorted(visible_names - {'project.yaml', 'README.md', 'private'})}",
+        f"{project_dir}: keep the project root minimal; unexpected entries: "
+        f"{sorted(visible_names - {'project.yaml', 'README.md', 'private'})}",
     )
 
     project = load_yaml(project_dir / "project.yaml")
@@ -85,20 +93,35 @@ def validate_project(project_dir: Path, statuses: set[str]) -> None:
     require(bool(project.get("title")), f"{project_dir}: title is required")
 
     authorship = project.get("authorship", {})
-    require(authorship.get("canonicalPlotGeneratedByAI") is False, f"{project_dir}: AI canonical plot is prohibited")
+    require(
+        authorship.get("canonicalPlotGeneratedByAI") is False,
+        f"{project_dir}: AI-generated canonical plots are prohibited",
+    )
 
     privacy = project.get("privacy", {})
-    require(
-        privacy.get("spoilerMaterialTrackedInThisRepository") is False,
-        f"{project_dir}: spoiler material must not be tracked in this repository",
-    )
     require(privacy.get("spoilerMaterialLocation") == "private/", f"{project_dir}: private location must be private/")
 
-    private_dir = project_dir / "private"
-    if private_dir.exists():
-        require(private_dir.is_dir(), f"{project_dir}: private must be a directory")
-        for filename in ("WORK.md", "PLAYTESTS.md"):
-            require((private_dir / filename).is_file(), f"{project_dir}: local private workspace is missing {filename}")
+    tracked_spoilers = privacy.get("spoilerMaterialTrackedInThisRepository") is True
+    if tracked_spoilers:
+        require(privacy.get("trackedSpoilers") is True, f"{project_dir}: trackedSpoilers opt-in is required")
+        require(
+            privacy.get("publicationApprovedByOwner") is True,
+            f"{project_dir}: owner approval is required before tracking spoilers",
+        )
+        for relative in REQUIRED_TRACKED_SPOILER_FILES:
+            require((project_dir / relative).is_file(), f"{project_dir}: tracked spoiler workspace is missing {relative}")
+    else:
+        require(
+            privacy.get("trackedSpoilers") is not True,
+            f"{project_dir}: trackedSpoilers cannot be true while repository tracking is false",
+        )
+        private_dir = project_dir / "private"
+        if private_dir.exists():
+            require(private_dir.is_dir(), f"{project_dir}: private must be a directory")
+            for filename in ("WORK.md", "PLAYTESTS.md"):
+                require((private_dir / filename).is_file(), f"{project_dir}: local private workspace is missing {filename}")
+
+    return tracked_spoilers
 
 
 def validate_workspace(root: Path = ROOT) -> None:
@@ -134,19 +157,39 @@ def validate_workspace(root: Path = ROOT) -> None:
     projects = workspace / "projects"
     require(projects.is_dir(), "projects directory is required")
     require((projects / "README.md").is_file(), "projects/README.md is required")
+
+    tracked_spoiler_slugs: set[str] = set()
     for child in projects.iterdir():
         if child.name == "README.md":
             continue
         require(child.is_dir(), f"unexpected file in projects root: {child}")
-        validate_project(child, statuses)
+        if validate_project(child, statuses):
+            tracked_spoiler_slugs.add(child.name)
 
     gitignore = (root / ".gitignore").read_text(encoding="utf-8")
-    require(
-        "works/murder-mystery/projects/*/private/" in gitignore,
-        "project private directories must be ignored",
-    )
+    default_ignore = "works/murder-mystery/projects/*/private/"
+    require(default_ignore in gitignore, "project private directories must be ignored by default")
+
+    for slug in tracked_spoiler_slugs:
+        require(
+            f"!works/murder-mystery/projects/{slug}/private/" in gitignore,
+            f"{slug}: private directory must be explicitly unignored",
+        )
+        require(
+            f"!works/murder-mystery/projects/{slug}/private/**" in gitignore,
+            f"{slug}: private contents must be explicitly unignored",
+        )
+
     tracked = tracked_private_paths(root)
-    require(not tracked, f"private spoiler files are tracked: {tracked}")
+    allowed_prefixes = {
+        f"works/murder-mystery/projects/{slug}/private/" for slug in tracked_spoiler_slugs
+    }
+    unexpected = [
+        path
+        for path in tracked
+        if not any(path.startswith(prefix) for prefix in allowed_prefixes)
+    ]
+    require(not unexpected, f"private spoiler files are tracked without owner-approved opt-in: {unexpected}")
 
     policy = index.get("humanAuthorshipPolicy", {})
     require(policy.get("canonicalPlotGenerationByAI") == "prohibited", "AI plot generation policy must be prohibited")
