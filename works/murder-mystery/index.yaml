@@ -21,9 +21,17 @@ requiredLocalPrivateFiles:
   - private/WORK.md
   - private/PLAYTESTS.md
 privacy:
-  ignoredPathPattern: works/murder-mystery/projects/*/private/
+  defaultIgnoredPathPattern: works/murder-mystery/projects/*/private/
   spoilerMaterialLocation: private/
-  forbiddenTrackedContent:
+  trackedSpoilerOptIn:
+    requiredProjectFields:
+      trackedSpoilers: true
+      spoilerMaterialTrackedInThisRepository: true
+      publicationApprovedByOwner: true
+    requiredGitignoreExceptions:
+      - "!works/murder-mystery/projects/{slug}/private/"
+      - "!works/murder-mystery/projects/{slug}/private/**"
+  forbiddenTrackedContentWithoutOptIn:
     - culprit
     - truth
     - handout body
