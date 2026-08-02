@@ -35,6 +35,14 @@ tasks:
     desc: 'Validate the murder-mystery ontology, mappings, vocabulary, and example record'
     cmd: 'uv run python scripts/validate_murder_mystery_ontology.py'
 
+  creativity:analyze:
+    desc: 'Generate title-surface creative signals for the 100-work murder-mystery corpus'
+    cmd: 'uv run python scripts/analyze_murder_mystery_creativity.py'
+
+  creativity:check:
+    desc: 'Validate the 100-work creative analysis without writing generated data'
+    cmd: 'uv run python scripts/analyze_murder_mystery_creativity.py --check'
+
   clean:
     ignore_error: true
     cmds:
