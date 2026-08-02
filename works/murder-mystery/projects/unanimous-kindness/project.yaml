@@ -4,9 +4,9 @@ slug: unanimous-kindness
 title: 満場一致で、あなたをやめる
 status: playtesting
 createdAt: '2026-08-02T23:55:00+09:00'
-updatedAt: '2026-08-03T00:27:15+09:00'
+updatedAt: '2026-08-03T00:39:13+09:00'
 creativeOwner: KAFKA
-nextAction: 6人＋GMでPrototype 0.3をブラインドプレイし、灯里役の安全性、六臓器返還メカニクス、合成死因の公平性を検証する。
+nextAction: Prototype 0.4を6人＋GMでブラインドプレイし、既読盤・本人ノート・予約感謝メッセージの反転を検証する。
 authorship:
   humanSeedRecorded: true
   prototypeGeneratedWithAI: true
@@ -14,42 +14,40 @@ authorship:
   finalTextApprovedByHuman: false
   aiAssistanceLog:
   - date: '2026-08-02'
-    scope: 初期構造案、事件設計、役割案、証拠配置
+    scope: 初期構造案
     canonical: false
   - date: '2026-08-03'
-    scope: 六臓器管理、満場一致棺、共同作家人格、役別HO、GM進行、証拠24件、エンディング7種を含むプレイテスト版0.3
+    scope: 生活代行版Prototype 0.4。本人ノート、今日の灯里当番、既読盤、予約感謝、役別HO、証拠20件、結末6種。
     canonical: false
 privacy:
-  publicSafe: true
+  publicSafe: false
+  trackedSpoilers: true
   spoilerMaterialLocation: private/
-  spoilerMaterialTrackedInThisRepository: false
-  externalPrivateStorageRef: conversation-artifact:unanimous-kindness-full-prototype.zip
+  spoilerMaterialTrackedInThisRepository: true
+  publicationApprovedByOwner: true
 creativeAnalysis:
   ontology: ontology/murder-mystery/creative-analysis.yaml
   targetOperations:
   - relationship_as_mechanic
   - diegetic_form_integration
-  - tonal_collision
   - social_specificity
   - residual_risk
   - production_integration
   humanTextureHypotheses:
-  - 善意と支配が同じ行為に宿る
+  - 善意が日常業務へ変わると終了条件を失う
   - 助けられた側が感謝できないことへの羞恥
-  - 相手を失う恐怖が相手の自由を奪う
-  - 本人の苦痛だけが代理できない
-  - 反省の方法まで相手に代わって決める
+  - 感謝の言葉が介護者側の必要物になる
+  - 一度の代理依頼が永続的な同意へ拡大解釈される
+  - 周囲が本人より整った代理人格を信用する
   surpriseMechanisms:
   - distributed_causality
-  - identity_reclassification
-  - moral_reversal
+  - authorship_reversal
+  - consent_reclassification
   - participatory_reveal
-  - mechanic_as_theme
   emotionalMechanisms:
-  - relational_dependency
   - gratitude_and_resentment
+  - relational_dependency
   - player_complicity
-  - irreversible_loss
   - ambiguous_release
 provenance:
   livedObservations:
@@ -59,8 +57,5 @@ provenance:
     recordedAt: '2026-08-02'
   decisions:
   - date: '2026-08-03'
-    decision: 作品の奇抜さを設定名詞ではなく、六臓器の代理権・善意の拒否権・共同作家人格というプレイヤー行為へ埋め込む。
-    reason: テーマとゲームメカニクスを不可分にするため。
-  - date: '2026-08-03'
-    decision: AI生成物はPrototype 0.3として明記し、人間作の正準版とは呼ばない。
-    reason: 作者性を偽装しないため。
+    decision: 臓器メタファーを廃止し、合鍵、立替帳、服薬カレンダー、既読代行、謝罪文、予約感謝メッセージへ置換。
+    reason: 整いすぎた象徴を避け、人間の生活と関係の具体へ戻すため。
