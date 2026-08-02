@@ -1,0 +1,60 @@
+schemaVersion: 2
+id: original-mm:unanimous-kindness
+slug: unanimous-kindness
+title: 満場一致で、あなたをやめる
+status: developing
+createdAt: '2026-08-02T23:55:00+09:00'
+updatedAt: '2026-08-02T23:55:00+09:00'
+creativeOwner: KAFKA
+nextAction: AI支援プロトタイプを素材として、作者本人が中心因果・人物の台詞・結末を全面的に書き直し、正準版を確定する。
+authorship:
+  humanSeedRecorded: true
+  canonicalPlotGeneratedByAI: false
+  finalTextApprovedByHuman: false
+  aiAssistanceLog:
+    - date: '2026-08-02'
+      scope: 構造案、事件設計、役割案、証拠配置、プレイテスト用プロトタイプ
+      canonical: false
+      note: 人間の原点は「友人や仲間の善意が自分を縛った」。AI支援物は正準本文として扱わない。
+privacy:
+  publicSafe: true
+  spoilerMaterialLocation: private/
+  spoilerMaterialTrackedInThisRepository: false
+  externalPrivateStorageRef: conversation-artifact:unanimous-kindness-prototype.zip
+creativeAnalysis:
+  ontology: ontology/murder-mystery/creative-analysis.yaml
+  targetOperations:
+    - relationship_as_mechanic
+    - diegetic_form_integration
+    - tonal_collision
+    - social_specificity
+    - residual_risk
+  humanTextureHypotheses:
+    - 善意と支配が同じ行為に宿る
+    - 救われた側が感謝できない罪悪感
+    - 仲間を失う恐怖が本人の自由を奪う
+    - 誰も自分を悪人だと思っていない
+  surpriseMechanisms:
+    - causal_reversal
+    - perspective_shift
+    - moral_reversal
+    - participatory_reveal
+  emotionalMechanisms:
+    - relational_dependency
+    - guilt
+    - player_responsibility
+    - irreversible_loss
+    - no_catharsis
+provenance:
+  inspirations: []
+  livedObservations:
+    - kind: human_seed
+      statement: 友人や仲間の善意が自分を縛った。
+      suppliedBy: KAFKA
+      recordedAt: '2026-08-02'
+  researchSources:
+    - research/murder-mystery/creative-patterns-100.md
+  decisions:
+    - date: '2026-08-02'
+      decision: AI支援プロトタイプと人間が確定する正準版を分離する。
+      reason: AIが完成させた作品を人間作と偽装しないため。
