@@ -2,59 +2,65 @@ schemaVersion: 2
 id: original-mm:unanimous-kindness
 slug: unanimous-kindness
 title: 満場一致で、あなたをやめる
-status: developing
+status: playtesting
 createdAt: '2026-08-02T23:55:00+09:00'
-updatedAt: '2026-08-02T23:55:00+09:00'
+updatedAt: '2026-08-03T00:27:15+09:00'
 creativeOwner: KAFKA
-nextAction: AI支援プロトタイプを素材として、作者本人が中心因果・人物の台詞・結末を全面的に書き直し、正準版を確定する。
+nextAction: 6人＋GMでPrototype 0.3をブラインドプレイし、灯里役の安全性、六臓器返還メカニクス、合成死因の公平性を検証する。
 authorship:
   humanSeedRecorded: true
+  prototypeGeneratedWithAI: true
   canonicalPlotGeneratedByAI: false
   finalTextApprovedByHuman: false
   aiAssistanceLog:
-    - date: '2026-08-02'
-      scope: 構造案、事件設計、役割案、証拠配置、プレイテスト用プロトタイプ
-      canonical: false
-      note: 人間の原点は「友人や仲間の善意が自分を縛った」。AI支援物は正準本文として扱わない。
+  - date: '2026-08-02'
+    scope: 初期構造案、事件設計、役割案、証拠配置
+    canonical: false
+  - date: '2026-08-03'
+    scope: 六臓器管理、満場一致棺、共同作家人格、役別HO、GM進行、証拠24件、エンディング7種を含むプレイテスト版0.3
+    canonical: false
 privacy:
   publicSafe: true
   spoilerMaterialLocation: private/
   spoilerMaterialTrackedInThisRepository: false
-  externalPrivateStorageRef: conversation-artifact:unanimous-kindness-prototype.zip
+  externalPrivateStorageRef: conversation-artifact:unanimous-kindness-full-prototype.zip
 creativeAnalysis:
   ontology: ontology/murder-mystery/creative-analysis.yaml
   targetOperations:
-    - relationship_as_mechanic
-    - diegetic_form_integration
-    - tonal_collision
-    - social_specificity
-    - residual_risk
+  - relationship_as_mechanic
+  - diegetic_form_integration
+  - tonal_collision
+  - social_specificity
+  - residual_risk
+  - production_integration
   humanTextureHypotheses:
-    - 善意と支配が同じ行為に宿る
-    - 救われた側が感謝できない罪悪感
-    - 仲間を失う恐怖が本人の自由を奪う
-    - 誰も自分を悪人だと思っていない
+  - 善意と支配が同じ行為に宿る
+  - 助けられた側が感謝できないことへの羞恥
+  - 相手を失う恐怖が相手の自由を奪う
+  - 本人の苦痛だけが代理できない
+  - 反省の方法まで相手に代わって決める
   surpriseMechanisms:
-    - causal_reversal
-    - perspective_shift
-    - moral_reversal
-    - participatory_reveal
+  - distributed_causality
+  - identity_reclassification
+  - moral_reversal
+  - participatory_reveal
+  - mechanic_as_theme
   emotionalMechanisms:
-    - relational_dependency
-    - guilt
-    - player_responsibility
-    - irreversible_loss
-    - no_catharsis
+  - relational_dependency
+  - gratitude_and_resentment
+  - player_complicity
+  - irreversible_loss
+  - ambiguous_release
 provenance:
-  inspirations: []
   livedObservations:
-    - kind: human_seed
-      statement: 友人や仲間の善意が自分を縛った。
-      suppliedBy: KAFKA
-      recordedAt: '2026-08-02'
-  researchSources:
-    - research/murder-mystery/creative-patterns-100.md
+  - kind: human_seed
+    statement: 友人や仲間の善意が自分を縛った。
+    suppliedBy: KAFKA
+    recordedAt: '2026-08-02'
   decisions:
-    - date: '2026-08-02'
-      decision: AI支援プロトタイプと人間が確定する正準版を分離する。
-      reason: AIが完成させた作品を人間作と偽装しないため。
+  - date: '2026-08-03'
+    decision: 作品の奇抜さを設定名詞ではなく、六臓器の代理権・善意の拒否権・共同作家人格というプレイヤー行為へ埋め込む。
+    reason: テーマとゲームメカニクスを不可分にするため。
+  - date: '2026-08-03'
+    decision: AI生成物はPrototype 0.3として明記し、人間作の正準版とは呼ばない。
+    reason: 作者性を偽装しないため。
