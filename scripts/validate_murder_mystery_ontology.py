@@ -1,13 +1,17 @@
 from __future__ import annotations
 
 import json
+import re
+import unicodedata
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 
 import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 ONTOLOGY_DIR = ROOT / "ontology" / "murder-mystery"
+CANDIDATE_CORPUS = ROOT / "data" / "murder-mystery" / "popular-100-candidates.yaml"
 
 
 class OntologyValidationError(ValueError):
@@ -33,6 +37,18 @@ def concept_ids(vocabulary: dict[str, Any], scheme: str) -> set[str]:
     concepts = schemes[scheme].get("concepts", {})
     require(isinstance(concepts, dict) and concepts, f"empty concept scheme: {scheme}")
     return set(concepts)
+
+
+def normalized_title(value: str) -> str:
+    normalized = unicodedata.normalize("NFKC", value)
+    return re.sub(r"\s+", " ", normalized).strip().casefold()
+
+
+def is_https_url(value: object) -> bool:
+    if not isinstance(value, str):
+        return False
+    parsed = urlparse(value)
+    return parsed.scheme == "https" and bool(parsed.netloc)
 
 
 def validate_collection_policy(core: dict[str, Any]) -> None:
@@ -128,12 +144,93 @@ def validate_example(example: dict[str, Any], vocabulary: dict[str, Any]) -> Non
     )
 
 
+def validate_candidate_corpus(corpus: dict[str, Any]) -> None:
+    metadata = corpus.get("metadata", {})
+    works = corpus.get("works", [])
+    require(metadata.get("status") == "candidate_corpus", "candidate corpus status must be explicit")
+    require(metadata.get("recordCount") == 100, "candidate corpus metadata.recordCount must be 100")
+    require(isinstance(works, list) and len(works) == 100, "candidate corpus must contain exactly 100 works")
+    require(
+        metadata.get("rankingPolicy") and "順位を付けない" in metadata["rankingPolicy"],
+        "candidate corpus must not imply an unsupported popularity ranking",
+    )
+    require(metadata.get("collectionMethod") == "manual_entry_from_public_source_manifests", "invalid collection method")
+    require(metadata.get("spoilerLevel") == "none", "candidate corpus must be spoiler-free")
+
+    manifests = metadata.get("sourceManifests", [])
+    require(isinstance(manifests, list) and len(manifests) >= 3, "at least three source manifests are required")
+    manifest_types = {manifest.get("sourceType") for manifest in manifests}
+    require("creator_official" in manifest_types, "creator official evidence is required")
+    require("secondary_information_site" in manifest_types, "secondary source evidence is required")
+    for manifest in manifests:
+        require(is_https_url(manifest.get("url")), f"invalid source manifest URL: {manifest.get('name')}")
+
+    expected_ids = {f"mmc-{number:03d}" for number in range(1, 101)}
+    actual_ids = {work.get("id") for work in works}
+    require(actual_ids == expected_ids, "candidate IDs must be the complete mmc-001..mmc-100 sequence")
+
+    normalized_titles: set[str] = set()
+    distribution_evidence_count = 0
+    manifest_only_count = 0
+    forbidden_fields = {
+        "rank",
+        "score",
+        "rating",
+        "reviewBody",
+        "culprit",
+        "secrets",
+        "privateObjectives",
+        "handoutBody",
+        "truth",
+        "endingDetails",
+    }
+
+    for work in works:
+        title = work.get("title")
+        require(isinstance(title, str) and title.strip(), f"{work.get('id')}: title is required")
+        normalized = normalized_title(title)
+        require(normalized not in normalized_titles, f"duplicate normalized title: {title}")
+        normalized_titles.add(normalized)
+
+        require(work.get("selectionStatus") == "candidate", f"{work.get('id')}: selectionStatus must be candidate")
+        require(
+            work.get("popularityStatus") == "unranked_candidate",
+            f"{work.get('id')}: popularityStatus must remain unranked_candidate",
+        )
+        require(not (forbidden_fields & set(work)), f"{work.get('id')}: forbidden unverified or spoiler fields present")
+
+        evidence = work.get("evidence", [])
+        require(isinstance(evidence, list) and evidence, f"{work.get('id')}: evidence is required")
+        evidence_types = set()
+        for item in evidence:
+            require(isinstance(item, dict), f"{work.get('id')}: evidence item must be a mapping")
+            require(is_https_url(item.get("url")), f"{work.get('id')}: evidence URL must be HTTPS")
+            evidence_types.add(item.get("type"))
+
+        require(
+            "source_manifest" in evidence_types or "creator_official_catalog" in evidence_types,
+            f"{work.get('id')}: source manifest evidence is required",
+        )
+        if {"distribution_or_official_page", "distribution_or_platform_page"} & evidence_types:
+            distribution_evidence_count += 1
+        else:
+            manifest_only_count += 1
+            require(
+                work.get("verificationStatus") == "source_manifest_only",
+                f"{work.get('id')}: manifest-only records must be labeled source_manifest_only",
+            )
+
+    require(distribution_evidence_count >= 90, "at least 90 works must include a distribution or platform URL")
+    require(manifest_only_count <= 10, "too many source-manifest-only works")
+
+
 def validate_repository(root: Path = ROOT) -> None:
     ontology_dir = root / "ontology" / "murder-mystery"
     core = load_yaml(ontology_dir / "core.yaml")
     vocabulary = load_yaml(ontology_dir / "vocabulary.yaml")
     mappings = load_yaml(ontology_dir / "source-mappings.yaml")
     example = load_yaml(ontology_dir / "example-record.yaml")
+    candidate_corpus = load_yaml(root / "data" / "murder-mystery" / "popular-100-candidates.yaml")
 
     with (ontology_dir / "record.schema.json").open(encoding="utf-8") as handle:
         schema = json.load(handle)
@@ -145,11 +242,12 @@ def validate_repository(root: Path = ROOT) -> None:
     validate_collection_policy(core)
     validate_source_mappings(mappings)
     validate_example(example, vocabulary)
+    validate_candidate_corpus(candidate_corpus)
 
 
 def main() -> int:
     validate_repository()
-    print("murder-mystery ontology: OK")
+    print("murder-mystery ontology and 100-work candidate corpus: OK")
     return 0
 
 
