@@ -27,7 +27,9 @@ tasks:
       - 'uv run ruff check --fix backend/app scripts'
 
   lint:backend:
-    cmd: 'uv run ruff check backend/app scripts backend/tests'
+    cmds:
+      - 'uv run ruff check --fix backend/app scripts'
+      - 'uv run ruff format backend/app scripts'
 
   ontology:validate:
     desc: 'Validate the murder-mystery ontology, mappings, vocabulary, and example record'
