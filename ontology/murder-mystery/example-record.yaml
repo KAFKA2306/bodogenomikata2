@@ -1,0 +1,75 @@
+id: work:example-mystery
+type: ScenarioWork
+canonicalTitle: 架空館のサンプル事件
+alternativeTitles: []
+creators:
+  - id: agent:example-creator
+concepts:
+  - genre.daily
+  - tone.serious
+  - playFocus.deduction_focused
+editions:
+  - id: edition:example-digital
+    editionType: digital
+    editionName: 検証用デジタル版
+    playConfigurations:
+      - minimumPlayers: 4
+        maximumPlayers: 5
+        minimumDurationMinutes: 120
+        maximumDurationMinutes: 150
+        gmRequirement: optional
+        playModes: [online]
+        recommendedExperience: all
+    offers:
+      - id: offer:example-digital
+        seller: agent:example-seller
+        price: 2000
+        currency: JPY
+        priceBasis: per_package
+        availability: available
+        purchaseUrl: https://example.invalid/items/example-mystery
+        observedAt: 2026-08-02T08:00:00Z
+        sourceRecord: source:example-official
+    sourceRecords:
+      - source:example-official
+sourceRecords:
+  - id: source:example-official
+    sourceName: 検証用作者公式ページ
+    sourceType: creator_official
+    sourceUrl: https://example.invalid/scenarios/example-mystery
+    acquiredBy: manual_entry
+    retrievedAt: 2026-08-02T08:00:00Z
+    rightsStatus: citation_only
+    verificationStatus: verified
+  - id: source:example-secondary
+    sourceName: 検証用二次情報ページ
+    sourceType: secondary_information_site
+    sourceUrl: https://example.invalid/catalog/example-mystery
+    acquiredBy: manual_entry
+    retrievedAt: 2026-08-02T08:05:00Z
+    rightsStatus: citation_only
+    verificationStatus: partially_verified
+assertions:
+  - id: assertion:example-player-count
+    subject: edition:example-digital
+    predicate: playConfiguration.playerRange
+    value:
+      minimumPlayers: 4
+      maximumPlayers: 5
+    assertedBy: source:example-official
+    observedAt: 2026-08-02T08:00:00Z
+    confidence: 1.0
+    verificationStatus: verified
+  - id: assertion:example-duration-secondary
+    subject: edition:example-digital
+    predicate: playConfiguration.durationRange
+    value:
+      minimumDurationMinutes: 120
+      maximumDurationMinutes: 120
+    assertedBy: source:example-secondary
+    observedAt: 2026-08-02T08:05:00Z
+    confidence: 0.7
+    verificationStatus: partially_verified
+identityMatches: []
+spoilerClassification: none
+isExample: true
