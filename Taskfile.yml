@@ -50,11 +50,11 @@ tasks:
     cmd: 'uv run python scripts/analyze_murder_mystery_creativity.py --check'
 
   work:new:
-    desc: 'Create a human-led original murder-mystery workspace: task work:new -- slug "title" [stage]'
+    desc: 'Create one stable original-work directory: task work:new -- slug "title"'
     cmd: 'uv run python scripts/create_original_murder_mystery.py {{.CLI_ARGS}}'
 
   work:validate:
-    desc: 'Validate the original murder-mystery workspace, lifecycle, authorship, and privacy boundaries'
+    desc: 'Validate the minimal project layout, human authorship policy, and spoiler boundary'
     cmd: 'uv run python scripts/validate_original_murder_mystery_workspace.py'
 
   clean:
