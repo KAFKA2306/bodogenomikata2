@@ -1,0 +1,30 @@
+schemaVersion: 2
+id: ""
+slug: ""
+title: ""
+status: seed
+createdAt: ""
+updatedAt: ""
+creativeOwner: ""
+nextAction: ""
+authorship:
+  humanSeedRecorded: false
+  canonicalPlotGeneratedByAI: false
+  finalTextApprovedByHuman: false
+  aiAssistanceLog: []
+privacy:
+  publicSafe: false
+  spoilerMaterialLocation: private/
+  spoilerMaterialTrackedInThisRepository: false
+  externalPrivateStorageRef: ""
+creativeAnalysis:
+  ontology: ontology/murder-mystery/creative-analysis.yaml
+  targetOperations: []
+  humanTextureHypotheses: []
+  surpriseMechanisms: []
+  emotionalMechanisms: []
+provenance:
+  inspirations: []
+  livedObservations: []
+  researchSources: []
+  decisions: []
