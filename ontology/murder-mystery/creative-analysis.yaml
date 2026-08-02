@@ -1,0 +1,245 @@
+metadata:
+  id: kafka:murder-mystery-creative-analysis
+  name: Murder Mystery Creative Analysis Ontology
+  version: 0.1.0
+  updated: 2026-08-02
+  purpose: >-
+    マーダーミステリー作品の制作技法、独自性、人間的手触り、驚き、
+    感情設計、表現幅を、根拠の強さと評価限界を明示して記録する。
+  nonGoals:
+    - 公開あらすじだけから作品品質を断定しない。
+    - 文章だけからAI制作か人間制作かを判定しない。
+    - ネタバレ、ハンドアウト、真相、レビュー本文を収集しない。
+    - 人気、売上、評価と創作性を同一視しない。
+
+evidenceLevels:
+  title_only:
+    permits:
+      - titleSurfaceSignal
+    prohibits:
+      - qualityScore
+      - surpriseFairness
+      - emotionalPayoff
+      - narrativeCoherence
+      - authorshipInference
+  public_synopsis:
+    permits:
+      - premiseOperation
+      - settingSpecificitySignal
+      - relationshipStructureSignal
+      - promisedEmotionalMode
+      - promisedSurpriseMode
+    prohibits:
+      - actualPayoff
+      - twistFairness
+      - clueEconomy
+      - dialogueQuality
+      - endingIntegration
+  public_system_description:
+    permits:
+      - interactionArchitecture
+      - informationDistributionMechanic
+      - roleDependency
+      - productionFeature
+      - playerAgencyPromise
+  non_spoiler_review:
+    permits:
+      - audienceReportedExperience
+      - sourceSpecificRatingObservation
+    requirements:
+      - sourceUrl
+      - observationDate
+      - scale
+      - sampleSizeWhenAvailable
+  full_play:
+    permits:
+      - narrativeCoherence
+      - clueEconomy
+      - pacingExecution
+      - endingIntegration
+      - emotionalPayoff
+      - surpriseFairness
+    requirements:
+      - reviewerIdentity
+      - playedEdition
+      - playedAt
+      - spoilerIsolation
+  authorized_text:
+    permits:
+      - dialogueTexture
+      - subtextDensity
+      - motifRecurrence
+      - foreshadowingMap
+    requirements:
+      - permissionRecord
+      - editionIdentity
+      - accessControl
+
+classes:
+  CreativeAnalysis:
+    required:
+      - work
+      - evidenceLevel
+      - observations
+      - confidence
+      - assessedAt
+    properties:
+      work: ScenarioWorkRef
+      edition: EditionRef?
+      evidenceLevel: EvidenceLevel
+      observations: CreativeObservation[]
+      confidence: number
+      assessedAt: datetime
+      assessor: AgentRef
+      limitations: string[]
+
+  CreativeObservation:
+    required:
+      - dimension
+      - signal
+      - evidence
+    properties:
+      dimension: CreativeDimension
+      signal: ConceptRef
+      evidence: EvidenceRef[]
+      polarity: [present, absent, mixed, unknown]
+      strength: [weak, moderate, strong, not_assessable]
+      note: string?
+      confidence: number
+
+dimensions:
+  craft:
+    description: アイデアをプレイ可能な体験へ変換する制作設計。
+    signals:
+      - information_distribution
+      - pacing_architecture
+      - role_balance
+      - player_agency
+      - ending_integration
+      - production_polish
+      - revision_history
+
+  originality:
+    description: 題材だけでなく、形式、関係、相互作用、媒体の新規性。
+    signals:
+      - premise_novelty
+      - setting_specificity
+      - relationship_novelty
+      - mystery_structure_novelty
+      - interaction_novelty
+      - formal_novelty
+      - cross_genre_combination
+      - low_replaceability
+
+  perceivedHumanTexture:
+    description: >-
+      AI利用の有無ではなく、受け手が感じる非テンプレート性、固有の執着、
+      社会的具体性、矛盾、割り切れなさを記録する。
+    signals:
+      - idiosyncratic_voice
+      - lived_social_specificity
+      - subtext_promise
+      - emotional_contradiction
+      - moral_ambiguity
+      - relational_dependency
+      - authorial_risk
+      - unresolved_residue
+      - obsession_signal
+    forbiddenClaims:
+      - human_authored
+      - ai_authored
+      - ai_generated_probability
+
+  breadth:
+    description: 作品内および100作集合内の体験・感情・形式の幅。
+    signals:
+      - emotional_range
+      - interaction_range
+      - interpretive_range
+      - ending_range
+      - setting_diversity
+      - tonal_diversity
+      - mystery_mode_diversity
+
+  surpriseDesign:
+    description: 公開情報で約束される認識転換の方式。
+    signals:
+      - fact_reveal
+      - identity_reveal
+      - causal_reversal
+      - perspective_shift
+      - rule_shift
+      - genre_shift
+      - relationship_reveal
+      - moral_reversal
+      - emotional_reveal
+      - participatory_reveal
+      - semantic_paradox
+    executionOnlySignals:
+      - foreshadowing_fairness
+      - reveal_timing
+      - reinterpretation_power
+      - gimmick_dependency
+
+  emotionalDesign:
+    description: 感情を生む対象、関係、選択、損失、余韻の設計。
+    signals:
+      - attachment_through_history
+      - pair_dependency
+      - guilt
+      - sacrifice
+      - aspiration
+      - creative_labor
+      - romance
+      - forgiveness
+      - irreversible_loss
+      - player_responsibility
+      - cute_death_dissonance
+      - deliberate_dread
+      - no_catharsis
+      - post_human_empathy
+    executionOnlySignals:
+      - earned_emotion
+      - restraint
+      - relationship_payoff
+      - aftertaste_duration
+
+  productionCraft:
+    description: 本文以外の媒体、運用、改稿、ツールを含む制作。
+    signals:
+      - custom_web_investigation
+      - original_music
+      - dedicated_platform
+      - transmedia_adaptation
+      - versioned_revision
+      - multi_role_team
+      - accessibility_edition
+      - automated_progression
+      - physical_prop_integration
+
+premiseOperations:
+  - historical_reframing
+  - genre_inversion
+  - tonal_collision
+  - semantic_paradox
+  - meta_diegetic_address
+  - transmedia_expansion
+  - environment_as_pressure
+  - social_system_simulation
+  - relationship_pair_architecture
+  - media_form_innovation
+  - familiar_genre_specificity
+
+assessmentRules:
+  - id: no-authorship-detection
+    rule: AI利用の有無を文体や印象から推定しない。
+  - id: evidence-before-evaluation
+    rule: 数値評価には根拠URL、評価対象版、評価者、日時を必須とする。
+  - id: public-surface-boundary
+    rule: 公開あらすじからは約束された体験を記述し、実際の達成度を断定しない。
+  - id: source-specific-ratings
+    rule: サイトごとの評価軸、尺度、母数を混合しない。
+  - id: spoiler-isolation
+    rule: 驚きの具体的真相を保存せず、公開可能な方式分類だけを保存する。
+  - id: no-popularity-equivalence
+    rule: 人気、レビュー数、販売量を創作性や完成度の代理変数にしない。
