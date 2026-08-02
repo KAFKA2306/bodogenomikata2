@@ -1,58 +1,28 @@
-schemaVersion: 1
+schemaVersion: 2
 id: kafka:original-murder-mystery-workspace
-purpose: 人間主体のオリジナル・マーダーミステリー制作を、段階・来歴・秘密情報の境界付きで管理する。
-stages:
-  00-inbox:
-    status: inbox
-    purpose: 人間が記録した原初の着想を失わずに受け付ける。
-    exitCriteria:
-      - 00-human-seed.mdに具体的な観察、執着、問いがある
-      - 既存作の表面的な設定置換ではない核が説明できる
-  10-incubating:
-    status: incubating
-    purpose: 主題、倫理的矛盾、人間関係、体験上の賭けを掘る。
-    exitCriteria:
-      - creative thesisが一文で説明できる
-      - 主人公ではなく全役の欲求衝突がある
-      - 奇抜さがテーマまたは相互作用へ接続している
-  20-developing:
-    status: developing
-    purpose: 起承転結、謎、驚き、感情、プレイヤー行為を統合する。
-    exitCriteria:
-      - 起承転結が因果で接続される
-      - 驚きが既出情報の意味を変える
-      - 感情的頂点がプレイヤーの選択責任を伴う
-      - 真相と手掛かりの検証表がある
-  30-playtesting:
-    status: playtesting
-    purpose: 作者の意図ではなく実際のプレイヤー体験を観測する。
-    exitCriteria:
-      - 重大な進行停止がない
-      - 推理可能性と感情的理解を別々に検証した
-      - 変更理由がrevisionsへ残っている
-  40-production:
-    status: production
-    purpose: 頒布版、運用、アクセシビリティ、クレジットを固定する。
-    exitCriteria:
-      - 版を特定できる
-      - 公開物と秘密物が分離される
-      - 人間による最終文章レビューが完了する
-  90-archived:
-    status: archived
-    purpose: 凍結、破棄、他作品への統合を理由付きで保存する。
-requiredProjectFiles:
+purpose: 人間主体のオリジナル・マーダーミステリーを、作品ごとの固定パスと最小限のファイルで管理する。
+projectRoot: works/murder-mystery/projects
+templateRoot: works/murder-mystery/_template
+statuses:
+  seed:
+    purpose: 人間が原初の観察、執着、問いを記録する。
+  developing:
+    purpose: 人物、因果、起承転結、謎、驚き、感情を統合する。
+  playtesting:
+    purpose: 実際のプレイヤー体験を観測して改稿する。
+  production:
+    purpose: 頒布版、素材、運用、クレジットを固定する。
+  archived:
+    purpose: 凍結、破棄、他作品への統合理由を残す。
+requiredTrackedProjectFiles:
   - project.yaml
-  - public/README.md
-  - design/00-human-seed.md
-  - design/10-creative-thesis.md
-  - design/20-characters.yaml
-  - design/30-plot-beats.yaml
-  - design/40-mystery-and-experience.yaml
-  - design/50-originality-audit.md
-  - revisions/CHANGELOG.md
-templateRoot: works/murder-mystery/_templates
+  - README.md
+requiredLocalPrivateFiles:
+  - private/WORK.md
+  - private/PLAYTESTS.md
 privacy:
-  ignoredDirectoryName: private
+  ignoredPathPattern: works/murder-mystery/projects/*/private/
+  spoilerMaterialLocation: private/
   forbiddenTrackedContent:
     - culprit
     - truth
@@ -77,3 +47,11 @@ humanAuthorshipPolicy:
     - provenance_management
     - playtest_summarization
     - comparison_and_checklists
+legacyPathsForbidden:
+  - works/murder-mystery/00-inbox
+  - works/murder-mystery/10-incubating
+  - works/murder-mystery/20-developing
+  - works/murder-mystery/30-playtesting
+  - works/murder-mystery/40-production
+  - works/murder-mystery/90-archived
+  - works/murder-mystery/_templates
