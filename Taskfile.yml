@@ -31,6 +31,10 @@ tasks:
       - 'uv run ruff check --fix backend/app scripts'
       - 'uv run ruff format backend/app scripts'
 
+  ontology:validate:
+    desc: 'Validate the murder-mystery ontology, mappings, vocabulary, and example record'
+    cmd: 'uv run python scripts/validate_murder_mystery_ontology.py'
+
   clean:
     ignore_error: true
     cmds:
