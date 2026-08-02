@@ -1,0 +1,1218 @@
+metadata:
+  id: kafka:madamis-popular-100-candidates
+  title: マダミス人気100作 候補台帳
+  version: 0.1.0
+  updated: '2026-08-02'
+  recordCount: 100
+  status: candidate_corpus
+  statement: 人気順位ではなく、公開プレイ履歴・検討リスト・作者公式カタログに現れる100作品の候補集合。
+  rankingPolicy: 予約数、投票数、評価、レビュー数などの一次指標を取得できるまで順位を付けない。
+  collectionMethod: manual_entry_from_public_source_manifests
+  spoilerLevel: none
+  sourceManifests:
+  - name: denkiuo604 マーダーミステリー履歴
+    url: https://github.com/denkiuo604/denkiuo604.github.io/blob/36a467d0fc55a6c8fb097bc3f4ca02e93ae8d206/mm.md
+    sourceType: secondary_information_site
+    modifiedAt: '2025-05-22T10:52:20Z'
+  - name: hanamada-log data.json
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+    sourceType: secondary_information_site
+    modifiedAt: '2026-07-31T11:54:31Z'
+  - name: elkurin 販売中シナリオ
+    url: https://github.com/elkurin/elkurin.github.io/blob/7a481f90e55d1fa80f783a6f6a697bddad86b12f/games/about.md
+    sourceType: creator_official
+    modifiedAt: '2024-11-18T08:34:53Z'
+  limitations:
+  - この台帳は人気順位を主張しない。
+  - 個別ページの現行販売状態、価格、人数、時間、GM要否は未収集。
+  - source_manifest_onlyの作品は公式プラットフォームURLの追加確認が必要。
+  - 外部ページ本文、レビュー本文、画像、ネタバレ情報は複製しない。
+works:
+- id: mmc-001
+  title: 蜃より出づるは夢か現か
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth_or_official
+  sourceSignal: public_play_or_view_history
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/denkiuo604/denkiuo604.github.io/blob/36a467d0fc55a6c8fb097bc3f4ca02e93ae8d206/mm.md
+  - type: distribution_or_official_page
+    url: https://manaitahodoki.booth.pm/items/1884680
+- id: mmc-002
+  title: 探偵が多すぎる
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth_or_official
+  sourceSignal: public_play_or_view_history
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/denkiuo604/denkiuo604.github.io/blob/36a467d0fc55a6c8fb097bc3f4ca02e93ae8d206/mm.md
+  - type: distribution_or_official_page
+    url: https://toga.booth.pm/items/2106739
+- id: mmc-003
+  title: 背徳の代紋
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth_or_official
+  sourceSignal: public_play_or_view_history
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/denkiuo604/denkiuo604.github.io/blob/36a467d0fc55a6c8fb097bc3f4ca02e93ae8d206/mm.md
+  - type: distribution_or_official_page
+    url: https://hikimiya.booth.pm/items/2695449
+- id: mmc-004
+  title: バロン・サムディと賑やかな死体の謎
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth_or_official
+  sourceSignal: public_play_or_view_history
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/denkiuo604/denkiuo604.github.io/blob/36a467d0fc55a6c8fb097bc3f4ca02e93ae8d206/mm.md
+  - type: distribution_or_official_page
+    url: https://ccfolia.booth.pm/items/2659031
+- id: mmc-005
+  title: 幽刻館の殺人
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth_or_official
+  sourceSignal: public_play_or_view_history
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/denkiuo604/denkiuo604.github.io/blob/36a467d0fc55a6c8fb097bc3f4ca02e93ae8d206/mm.md
+  - type: distribution_or_official_page
+    url: https://zareshima.booth.pm/items/2576819
+- id: mmc-006
+  title: Nの真意
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth_or_official
+  sourceSignal: public_play_or_view_history
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/denkiuo604/denkiuo604.github.io/blob/36a467d0fc55a6c8fb097bc3f4ca02e93ae8d206/mm.md
+  - type: distribution_or_official_page
+    url: https://yuuuri.booth.pm/items/3810870
+- id: mmc-007
+  title: 蒸気の街には薔薇が咲く
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth_or_official
+  sourceSignal: public_play_or_view_history
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/denkiuo604/denkiuo604.github.io/blob/36a467d0fc55a6c8fb097bc3f4ca02e93ae8d206/mm.md
+  - type: distribution_or_official_page
+    url: https://niseika.booth.pm/items/3618368
+- id: mmc-008
+  title: 夢ノ棺ノ時間ドロボウ
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth_or_official
+  sourceSignal: public_play_or_view_history
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/denkiuo604/denkiuo604.github.io/blob/36a467d0fc55a6c8fb097bc3f4ca02e93ae8d206/mm.md
+  - type: distribution_or_official_page
+    url: https://toriemostab.booth.pm/items/2608835
+- id: mmc-009
+  title: エイダ
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth_or_official
+  sourceSignal: public_play_or_view_history
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/denkiuo604/denkiuo604.github.io/blob/36a467d0fc55a6c8fb097bc3f4ca02e93ae8d206/mm.md
+  - type: distribution_or_official_page
+    url: https://itohaki.com/eidaspecial/
+- id: mmc-010
+  title: アンノウン
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth_or_official
+  sourceSignal: public_play_or_view_history
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/denkiuo604/denkiuo604.github.io/blob/36a467d0fc55a6c8fb097bc3f4ca02e93ae8d206/mm.md
+  - type: distribution_or_official_page
+    url: https://sakubey.booth.pm/items/2836406
+- id: mmc-011
+  title: 裂山荘殺人事件
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth_or_official
+  sourceSignal: public_play_or_view_history
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/denkiuo604/denkiuo604.github.io/blob/36a467d0fc55a6c8fb097bc3f4ca02e93ae8d206/mm.md
+  - type: distribution_or_official_page
+    url: https://colcolors.booth.pm/items/6343878
+- id: mmc-012
+  title: 狂気山脈　陰謀の分水嶺
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth_or_official
+  sourceSignal: public_play_or_view_history
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/denkiuo604/denkiuo604.github.io/blob/36a467d0fc55a6c8fb097bc3f4ca02e93ae8d206/mm.md
+  - type: distribution_or_official_page
+    url: https://dappleox.booth.pm/items/1980320
+- id: mmc-013
+  title: 星ふる天辺
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth_or_official
+  sourceSignal: public_play_or_view_history
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/denkiuo604/denkiuo604.github.io/blob/36a467d0fc55a6c8fb097bc3f4ca02e93ae8d206/mm.md
+  - type: distribution_or_official_page
+    url: https://dappleox.booth.pm/items/2276640
+- id: mmc-014
+  title: 薄明三角点
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth_or_official
+  sourceSignal: public_play_or_view_history
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/denkiuo604/denkiuo604.github.io/blob/36a467d0fc55a6c8fb097bc3f4ca02e93ae8d206/mm.md
+  - type: distribution_or_official_page
+    url: https://dappleox.booth.pm/items/2877835
+- id: mmc-015
+  title: 頂上戦争
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth_or_official
+  sourceSignal: public_play_or_view_history
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/denkiuo604/denkiuo604.github.io/blob/36a467d0fc55a6c8fb097bc3f4ca02e93ae8d206/mm.md
+  - type: distribution_or_official_page
+    url: https://dappleox.booth.pm/items/5072172
+- id: mmc-016
+  title: LYCAN
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth_or_official
+  sourceSignal: public_play_or_view_history
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/denkiuo604/denkiuo604.github.io/blob/36a467d0fc55a6c8fb097bc3f4ca02e93ae8d206/mm.md
+  - type: distribution_or_official_page
+    url: https://terazon.booth.pm/items/1815518
+- id: mmc-017
+  title: 少年少女Aの独白
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth_or_official
+  sourceSignal: public_play_or_view_history
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/denkiuo604/denkiuo604.github.io/blob/36a467d0fc55a6c8fb097bc3f4ca02e93ae8d206/mm.md
+  - type: distribution_or_official_page
+    url: https://violetsogabe.booth.pm/items/1895555
+- id: mmc-018
+  title: J・モリアーティの暗躍
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth_or_official
+  sourceSignal: public_play_or_view_history
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/denkiuo604/denkiuo604.github.io/blob/36a467d0fc55a6c8fb097bc3f4ca02e93ae8d206/mm.md
+  - type: distribution_or_official_page
+    url: https://secundusterra.booth.pm/items/1640133
+- id: mmc-019
+  title: ヒマワリの咲く季節　ドタバタわんわんミステリー
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth_or_official
+  sourceSignal: public_play_or_view_history
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/denkiuo604/denkiuo604.github.io/blob/36a467d0fc55a6c8fb097bc3f4ca02e93ae8d206/mm.md
+  - type: distribution_or_official_page
+    url: https://moepupu.booth.pm/items/2589769
+- id: mmc-020
+  title: 円蓋の向日葵
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth_or_official
+  sourceSignal: public_play_or_view_history
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/denkiuo604/denkiuo604.github.io/blob/36a467d0fc55a6c8fb097bc3f4ca02e93ae8d206/mm.md
+  - type: distribution_or_official_page
+    url: https://biscuitcocoa.booth.pm/items/2333533
+- id: mmc-021
+  title: 海の上で昼食を
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: creator_official_catalog
+  verificationStatus: verified_title_and_distribution
+  evidence:
+  - type: creator_official_catalog
+    url: https://github.com/elkurin/elkurin.github.io/blob/7a481f90e55d1fa80f783a6f6a697bddad86b12f/games/about.md
+  - type: distribution_or_platform_page
+    url: https://elkurin.booth.pm/items/6099499
+- id: mmc-022
+  title: ドラゴンリバース
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: uzu
+  sourceSignal: creator_official_catalog
+  verificationStatus: verified_title_and_distribution
+  evidence:
+  - type: creator_official_catalog
+    url: https://github.com/elkurin/elkurin.github.io/blob/7a481f90e55d1fa80f783a6f6a697bddad86b12f/games/about.md
+  - type: distribution_or_platform_page
+    url: https://www.uzu-app.com/ja/scenario/6168
+- id: mmc-023
+  title: 合コンマダミス
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: creator_official_catalog
+  verificationStatus: verified_title_and_distribution
+  evidence:
+  - type: creator_official_catalog
+    url: https://github.com/elkurin/elkurin.github.io/blob/7a481f90e55d1fa80f783a6f6a697bddad86b12f/games/about.md
+  - type: distribution_or_platform_page
+    url: https://elkurin.booth.pm/items/6099549
+- id: mmc-024
+  title: 最後のソナタ
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: creator_official_catalog
+  verificationStatus: verified_title_and_distribution
+  evidence:
+  - type: creator_official_catalog
+    url: https://github.com/elkurin/elkurin.github.io/blob/7a481f90e55d1fa80f783a6f6a697bddad86b12f/games/about.md
+  - type: distribution_or_platform_page
+    url: https://elkurin.booth.pm/items/6099565
+- id: mmc-025
+  title: 屍体に囁く
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_cleared
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/3189462
+- id: mmc-026
+  title: 怪盗エイプリルと七人の探偵たち
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_cleared
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/4058480
+- id: mmc-027
+  title: World End
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_cleared
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/7406889
+- id: mmc-028
+  title: この恋文は届かない。
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_cleared
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/4676495
+- id: mmc-029
+  title: 永遠という名の殺人
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_cleared
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/7196978
+- id: mmc-030
+  title: 騎士と四季の姫君と
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_cleared
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/4916451
+- id: mmc-031
+  title: アポロンの審判
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_cleared
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/6508051
+- id: mmc-032
+  title: 聖六花女学院殺人事件
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_cleared
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://sekiraraworkshop.booth.pm/items/3490298
+- id: mmc-033
+  title: 魔王討伐前夜の殺人
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/4058609
+- id: mmc-034
+  title: カサンドラの虚言
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://blue-bird-store.booth.pm/items/7515075
+- id: mmc-035
+  title: アルカディアの終焉
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://blue-bird-store.booth.pm/items/7873962
+- id: mmc-036
+  title: 憎似苦思惟恣意
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://trsknoha.booth.pm/items/6857408
+- id: mmc-037
+  title: ヴァンピ！
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/5538543
+- id: mmc-038
+  title: たしかにヒロインを虐めてましたがヒロインを殺したのはわたくしではなくってよ！
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/4908982
+- id: mmc-039
+  title: 夜の蛙は眠らない
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/3528073
+- id: mmc-040
+  title: NOBODY
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/5457771
+- id: mmc-041
+  title: アリスインロストワンダーランド
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/3324216
+- id: mmc-042
+  title: 世界の終わりとアイリの図書館
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/7032407
+- id: mmc-043
+  title: ゴーストライターの誕生、又はその末路
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/2628822
+- id: mmc-044
+  title: 廻煌館殺人事件
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/7633325
+- id: mmc-045
+  title: 幻想遺空飛行艇
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/5922074
+- id: mmc-046
+  title: シノギの国のアリス
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/3566285
+- id: mmc-047
+  title: サザンクロス20xx
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/3514126
+- id: mmc-048
+  title: あくまのつくりかた
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/4586333
+- id: mmc-049
+  title: ようこそ、深海遊園地へ
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://usonodagashiya.booth.pm/items/6639298
+- id: mmc-050
+  title: くっころ
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/8003483
+- id: mmc-051
+  title: ブルークロスの純愛
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_cleared
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/3253783
+- id: mmc-052
+  title: 狂騒の仮面舞踏会
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/5240926
+- id: mmc-053
+  title: かの遺志は極夜に揺れる
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/6544883
+- id: mmc-054
+  title: サイレンズ
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/8132541
+- id: mmc-055
+  title: ティアグリア魔法学校殺人事件
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/5682965
+- id: mmc-056
+  title: グリムギア
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/7573902
+- id: mmc-057
+  title: 流星のモビーディック
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/6770056
+- id: mmc-058
+  title: 憑母病棟監獄実験
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/6857083
+- id: mmc-059
+  title: 馬鹿だね、魔法少女みたいな顔して
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/3928608
+- id: mmc-060
+  title: 悪の組織は(ま)とまらない！
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_cleared
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/5936168
+- id: mmc-061
+  title: 勇者失格
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/7663259
+- id: mmc-062
+  title: 王子の婚約者として真面目に生きてきたはずなのに、殺人の濡れ衣を着せられています！？
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/2102454
+- id: mmc-063
+  title: あの日のあなたと祝杯を
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://kamihoshi.booth.pm/items/3534442
+- id: mmc-064
+  title: 愛暴
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://harudomannaka1.booth.pm/items/7309212
+- id: mmc-065
+  title: ゼロから巻き戻って
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/5704726
+- id: mmc-066
+  title: 亡霊島殺人事件
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://secundusterra.booth.pm/items/1624107
+- id: mmc-067
+  title: 404号室の黙示録
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://ynmdms.booth.pm/items/7201795
+- id: mmc-068
+  title: このマーダーミステリーを遊んでいただけませんか
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_cleared
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/7753099
+- id: mmc-069
+  title: 霧の迷い家
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/6041242
+- id: mmc-070
+  title: 近未来都市伝説カタリカタリ
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/3885277
+- id: mmc-071
+  title: 家哭‐YAKOKU‐
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://trsknoha.booth.pm/items/5009463
+- id: mmc-072
+  title: 悪役令嬢は愛に溺れて
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://racsradiuyu.booth.pm/items/6865257
+- id: mmc-073
+  title: HIDE and SEEK
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/7553641
+- id: mmc-074
+  title: 可愛いアリスの暗号解析
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://onigasima.booth.pm/items/8098624
+- id: mmc-075
+  title: この（クズの）中に一人、勇者がいる！
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_cleared
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/6840550
+- id: mmc-076
+  title: 純血種は語れない
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://decadent-theater.booth.pm/items/5466145
+- id: mmc-077
+  title: 狼に憧れた
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://etostudio.booth.pm/items/7871902
+- id: mmc-078
+  title: 黒蝶館殺人事件
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://group-mma.booth.pm/items/7376274
+- id: mmc-079
+  title: ホストクラブ殺人事件 -last proof of love-
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/2699373
+- id: mmc-080
+  title: 善良村の殺人
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/4720542
+- id: mmc-081
+  title: ALL GREEN
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/5573350
+- id: mmc-082
+  title: アタシの高級鯖缶たべたの誰にゃ!!?
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_cleared
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/8013265
+- id: mmc-083
+  title: ゆっくりと苦しみをもって
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_cleared
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/4204650
+- id: mmc-084
+  title: その鉄のガラクタいわく
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_cleared
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/8160351
+- id: mmc-085
+  title: 魔法少女は死んでいる
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://bluesonia.booth.pm/items/4481888
+- id: mmc-086
+  title: ほしのおと
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/5056376
+- id: mmc-087
+  title: 魔法仕掛けの少女たち -Deus ex Magia-
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/6983731
+- id: mmc-088
+  title: アクオトギ
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_planned
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://tsukimide1pai.booth.pm/items/4670357
+- id: mmc-089
+  title: レッドストランドの崩壊
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: ccfolia
+  sourceSignal: public_log_cleared
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://ccfolia.com/games/8S3BrKiZ7pfuUJ3UEfWx
+- id: mmc-090
+  title: 南極地点X
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_cleared
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/2283809
+- id: mmc-091
+  title: ヒーローの灯は消えない　～爆ぜろ仮面騎士グリム～
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_cleared
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://hitujiniku.booth.pm/items/6972128
+- id: mmc-092
+  title: 血濡れの紫陽花
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_cleared
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/2115623
+- id: mmc-093
+  title: 終点。
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_cleared
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/3572184
+- id: mmc-094
+  title: エンドロールは流れない
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: booth
+  sourceSignal: public_log_cleared
+  verificationStatus: partially_verified
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+  - type: distribution_or_platform_page
+    url: https://booth.pm/ja/items/4478359
+- id: mmc-095
+  title: 探偵たちの晩餐会
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: uzu
+  sourceSignal: public_log_cleared
+  verificationStatus: source_manifest_only
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+- id: mmc-096
+  title: LAST BRAVE
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: uzu
+  sourceSignal: public_log_cleared
+  verificationStatus: source_manifest_only
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+- id: mmc-097
+  title: 気の毒なアイドル
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: uzu
+  sourceSignal: public_log_cleared
+  verificationStatus: source_manifest_only
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+- id: mmc-098
+  title: ブレーメンのカルテット
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: uzu
+  sourceSignal: public_log_cleared
+  verificationStatus: source_manifest_only
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+- id: mmc-099
+  title: 誰が魔王を倒したか
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: uzu
+  sourceSignal: public_log_cleared
+  verificationStatus: source_manifest_only
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
+- id: mmc-100
+  title: 天使の不在証明
+  selectionStatus: candidate
+  popularityStatus: unranked_candidate
+  platformHint: uzu
+  sourceSignal: public_log_cleared
+  verificationStatus: source_manifest_only
+  evidence:
+  - type: source_manifest
+    url: https://github.com/hanahannna2525-ui/hanamada-log/blob/c9b8f518ae86fb1e25cdb95382cc9bdf5b375a6a/data.json
