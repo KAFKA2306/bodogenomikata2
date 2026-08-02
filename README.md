@@ -13,6 +13,7 @@ AIの説明を公式裁定として扱わず、公式ルール、抽出した事
 - プレイ中のルール検索
 - セットアップや得点処理の確認
 - 音声による説明補助
+- 複数サイトに分散したマーダーミステリー作品・版・販売・公演情報の出典付き統合
 
 ## 情報処理の流れ
 
@@ -40,6 +41,26 @@ AI生成文は出版社・デザイナーの公式文ではありません。版
 
 - [プロジェクト・オントロジー](ontology/project.yaml)
 - [共通因果・証拠オントロジー](https://github.com/KAFKA2306/know/blob/main/ontology/causal-evidence-core.yaml)
+
+## マダミス横断オントロジー
+
+マーダーミステリーでは、作品そのものと、ウズ版・パッケージ版・店舗公演版などの版、販売条件、個別公演、レビュー集計を分離します。情報サイトごとの値は上書きせず、`SourceRecord`と`Assertion`で出典付きの主張として保持します。
+
+- [中核モデル](ontology/murder-mystery/core.yaml)
+- [統制語彙](ontology/murder-mystery/vocabulary.yaml)
+- [マダミス.jp・マダナビ・ウズ・BOOTHの項目対応](ontology/murder-mystery/source-mappings.yaml)
+- [正準レコードJSON Schema](ontology/murder-mystery/record.schema.json)
+- [非ネタバレ検証用レコード](ontology/murder-mystery/example-record.yaml)
+
+データ取得は、`manual_entry`、`official_api`、`creator_submission`、`seller_export`だけを許可します。スクレイピング、クローリング、自動HTML抽出、レビュー本文の転載、無許諾画像ホットリンクは実装しません。公式API仕様または書面による許諾が確認できるまで、各サイトの自動取得は無効です。
+
+検証:
+
+```bash
+task ontology:validate
+```
+
+この検証は、取得方式、参照整合性、人数・時間範囲、価格単位、統制語彙、ネタバレ公開範囲を確認します。
 
 ## 技術構成
 
@@ -78,7 +99,9 @@ curl -X POST "http://localhost:8000/api/games/sync?game_name=Catan"
 3. ページまたは節が特定されている
 4. 公式文とAI生成文が区別されている
 5. 人間レビューの状態が確認できる
+6. マダミスの公開データに重大なネタバレまたは真相が含まれていない
+7. 外部サイト由来データの取得方法と権利状態が記録されている
 
 最終的な裁定、競技ルール、エラッタ、FAQは、出版社・デザイナー・大会運営の最新公式情報を優先してください。
 
-**README最終監査:** 2026-08-01
+**README最終監査:** 2026-08-02

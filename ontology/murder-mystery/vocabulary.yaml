@@ -1,0 +1,198 @@
+metadata:
+  id: kafka:murder-mystery-vocabulary
+  version: 0.1.0
+  updated: 2026-08-02
+  model: SKOS-compatible controlled vocabulary
+
+concept_schemes:
+  gmRequirement:
+    concepts:
+      required:
+        prefLabel: GM必須
+        altLabels: [要GM]
+      optional:
+        prefLabel: GM任意
+        altLabels: [GMレス可, なしでも可]
+        note: GMを置けるが、GMなしでも実施可能。
+      not_required:
+        prefLabel: GM不要
+        altLabels: [GMなし]
+      automated:
+        prefLabel: 自動進行
+        altLabels: [アプリ進行]
+      unknown:
+        prefLabel: 不明
+
+  editionType:
+    concepts:
+      digital: {prefLabel: デジタル版}
+      package: {prefLabel: パッケージ版}
+      app: {prefLabel: アプリ収録版}
+      store_performance: {prefLabel: 店舗公演版}
+      translated: {prefLabel: 翻訳版}
+      revised: {prefLabel: 改訂版}
+      other: {prefLabel: その他}
+
+  playMode:
+    concepts:
+      offline:
+        prefLabel: オフライン
+        altLabels: [対面]
+      online: {prefLabel: オンライン}
+      hybrid: {prefLabel: ハイブリッド}
+
+  experienceLevel:
+    concepts:
+      beginner: {prefLabel: 初心者向け}
+      all: {prefLabel: オールユーザー向け}
+      experienced: {prefLabel: 経験者向け}
+      unknown: {prefLabel: 不明}
+
+  priceBasis:
+    concepts:
+      per_person: {prefLabel: 1人あたり}
+      per_group: {prefLabel: 1グループあたり}
+      per_package: {prefLabel: 1パッケージあたり}
+      per_performance: {prefLabel: 1公演あたり}
+      free: {prefLabel: 無料}
+      unknown: {prefLabel: 不明}
+
+  availability:
+    concepts:
+      available: {prefLabel: 利用可能}
+      sold_out: {prefLabel: 売り切れ}
+      unavailable: {prefLabel: 利用不可}
+      discontinued: {prefLabel: 終売}
+      unknown: {prefLabel: 不明}
+
+  bookingStatus:
+    concepts:
+      open: {prefLabel: 予約受付中}
+      full: {prefLabel: 満席}
+      closed: {prefLabel: 受付終了}
+      cancelled: {prefLabel: 中止}
+      completed: {prefLabel: 終了}
+      unknown: {prefLabel: 不明}
+
+  workStatus:
+    concepts:
+      announced: {prefLabel: 発表済み}
+      available: {prefLabel: 公開中}
+      unavailable: {prefLabel: 公開停止}
+      discontinued: {prefLabel: 終売}
+      unknown: {prefLabel: 不明}
+
+  identityDecision:
+    concepts:
+      confirmed_same_work: {prefLabel: 同一作品確認済み}
+      probable_same_work: {prefLabel: 同一作品の可能性が高い}
+      possible_same_work: {prefLabel: 同一作品の可能性あり}
+      different_work: {prefLabel: 別作品}
+      needs_review: {prefLabel: 要確認}
+
+  spoilerLevel:
+    concepts:
+      none: {prefLabel: ネタバレなし}
+      premise: {prefLabel: 導入のみ}
+      character_public: {prefLabel: 公開キャラクター情報}
+      minor: {prefLabel: 軽微なネタバレ}
+      major: {prefLabel: 重大なネタバレ}
+      solution: {prefLabel: 真相}
+
+  sourceType:
+    concepts:
+      creator_official: {prefLabel: 作者公式}
+      publisher_official: {prefLabel: 出版社公式}
+      platform_official: {prefLabel: プラットフォーム公式}
+      venue_official: {prefLabel: 店舗・会場公式}
+      secondary_information_site: {prefLabel: 二次情報サイト}
+      user_submission: {prefLabel: ユーザー提供}
+      internal_form: {prefLabel: 内部入力票}
+
+  verificationStatus:
+    concepts:
+      verified: {prefLabel: 確認済み}
+      partially_verified: {prefLabel: 一部確認済み}
+      unverified: {prefLabel: 未確認}
+      conflicting: {prefLabel: 競合あり}
+      rejected: {prefLabel: 棄却}
+
+  acquisitionMethod:
+    concepts:
+      manual_entry: {prefLabel: 手入力}
+      official_api: {prefLabel: 公式API}
+      creator_submission: {prefLabel: 作者・権利者提供}
+      seller_export: {prefLabel: 販売者エクスポート}
+
+  rightsStatus:
+    concepts:
+      official_public_metadata: {prefLabel: 公式公開メタデータ}
+      permission_granted: {prefLabel: 利用許諾あり}
+      citation_only: {prefLabel: URL参照のみ}
+      unknown: {prefLabel: 未確認}
+      restricted: {prefLabel: 利用制限あり}
+
+  agentType:
+    concepts:
+      person: {prefLabel: 個人}
+      creator_group: {prefLabel: 制作団体}
+      publisher: {prefLabel: 出版社}
+      seller: {prefLabel: 販売者}
+      store_operator: {prefLabel: 店舗運営者}
+      game_master: {prefLabel: GM}
+      platform_operator: {prefLabel: プラットフォーム運営者}
+      system: {prefLabel: システム}
+
+  platformRole:
+    concepts:
+      information: {prefLabel: 情報掲載}
+      sales: {prefLabel: 販売}
+      play: {prefLabel: プレイ}
+      booking: {prefLabel: 予約}
+      review: {prefLabel: レビュー}
+
+  genre:
+    concepts:
+      daily:
+        prefLabel: 日常
+        altLabels: [日常系]
+      fantasy: {prefLabel: ファンタジー}
+      science_fiction: {prefLabel: SF}
+      horror: {prefLabel: ホラー}
+      historical: {prefLabel: 歴史}
+      death_game: {prefLabel: デスゲーム}
+      other: {prefLabel: その他}
+
+  tone:
+    concepts:
+      serious: {prefLabel: シリアス}
+      emotional: {prefLabel: エモーショナル}
+      comical: {prefLabel: コミカル}
+      healing: {prefLabel: 癒し}
+      dark: {prefLabel: ダーク}
+      bright: {prefLabel: 明るい}
+      conflict: {prefLabel: 対立}
+      shocking: {prefLabel: 衝撃}
+
+  playFocus:
+    concepts:
+      deduction_focused: {prefLabel: 推理重視}
+      roleplay_focused: {prefLabel: ロールプレイ重視}
+      story_focused: {prefLabel: ストーリー重視}
+      experience_focused: {prefLabel: 体験重視}
+      discussion_focused: {prefLabel: 議論重視}
+
+mapping_rules:
+  - id: gm-less-is-optional
+    sourceLabels: [GMレス可, なしでも可]
+    canonicalConcept: gmRequirement.optional
+    matchType: closeMatch
+  - id: gm-not-required-is-not-required
+    sourceLabels: [GM不要, 不要]
+    canonicalConcept: gmRequirement.not_required
+    matchType: exactMatch
+  - id: deduction-tags-are-not-ratings
+    sourceLabels: [推理重視, 推理を楽しむ]
+    canonicalConcept: playFocus.deduction_focused
+    matchType: closeMatch
+    note: 推理性の数値評価とは別概念として扱う。

@@ -1,0 +1,218 @@
+metadata:
+  id: kafka:murder-mystery-source-mappings
+  version: 0.1.0
+  updated: 2026-08-02
+  policy: >
+    各サイトの項目を正準概念へ対応付けるが、サイトからの自動HTML取得は行わない。
+    登録は手入力、公式API、作者提供、販売者エクスポートに限定する。
+
+sources:
+  mdms_jp:
+    name: マダミス.jp
+    baseUrl: https://mdms.jp/
+    sourceType: secondary_information_site
+    defaultAcquisitionMethod: manual_entry
+    officialApiDocumentation: null
+    apiVerificationStatus: not_confirmed
+    automationStatus: disabled
+    observedSearchAxes:
+      - keyword
+      - playMode
+      - playerCount
+      - duration
+      - gmProgression
+      - genre
+      - tone
+      - target
+      - tendency
+      - pricingModel
+    fieldMappings:
+      title: ScenarioWork.canonicalTitle
+      creator: ScenarioWork.creators
+      publishedDate: ScenarioWork.releaseDate
+      playerCount: Edition.playConfigurations.playerRange
+      duration: Edition.playConfigurations.durationRange
+      gmRequirement: Edition.playConfigurations.gmRequirement
+      playMode: Edition.playConfigurations.playModes
+      genre: ScenarioWork.concepts.genre
+      tone: ScenarioWork.concepts.tone
+      target: Edition.playConfigurations.recommendedExperience
+      tendency: ScenarioWork.concepts.playFocus
+      rating: RatingObservation
+      performanceAvailability: Performance
+    notes:
+      - 評価値とレビュー件数はサイト固有のRatingObservationとして保存する。
+      - 公演中表示は公演実体そのものではなく、公演可用性の主張として保存する。
+
+  madanavi:
+    name: マダナビ
+    baseUrl: https://www.joymada.com/madanabi/
+    sourceType: secondary_information_site
+    defaultAcquisitionMethod: manual_entry
+    officialApiDocumentation: null
+    apiVerificationStatus: not_confirmed
+    automationStatus: disabled
+    observedFields:
+      - playEnvironment
+      - playerCount
+      - playTime
+      - gm
+      - paidOrFree
+      - price
+      - onlineTools
+      - creator
+      - difficulty
+      - era
+      - region
+      - situation
+      - playFocus
+      - tone
+      - rating
+      - deduction
+      - emotionality
+      - surprise
+      - story
+      - originality
+    fieldMappings:
+      title: ScenarioWork.canonicalTitle
+      playEnvironment: Edition.playConfigurations.playModes
+      playerCount: Edition.playConfigurations.playerRange
+      playTime: Edition.playConfigurations.durationRange
+      gm: Edition.playConfigurations.gmRequirement
+      paidOrFree: Offer.priceBasis
+      price: Offer.price
+      onlineTools: Edition.playConfigurations.supportedTools
+      creator: ScenarioWork.creators
+      difficulty: Edition.playConfigurations.recommendedExperience
+      era: ScenarioWork.concepts.era
+      region: ScenarioWork.concepts.region
+      situation: ScenarioWork.concepts.genre
+      playFocus: ScenarioWork.concepts.playFocus
+      tone: ScenarioWork.concepts.tone
+      rating: RatingObservation
+      deduction: RatingObservation
+      emotionality: RatingObservation
+      surprise: RatingObservation
+      story: RatingObservation
+      originality: RatingObservation
+    notes:
+      - 満足度と5軸レーダー値は別metricとして保存する。
+      - GMレス可はgmRequirement.optionalへcloseMatchする。
+      - 口コミ本文は保存せず、外部URL、集計値、ネタバレ状態のみ登録する。
+
+  uzu:
+    name: ウズ
+    baseUrl: https://www.uzu-app.com/
+    sourceType: platform_official
+    defaultAcquisitionMethod: manual_entry
+    officialApiDocumentation: null
+    apiVerificationStatus: not_confirmed
+    automationStatus: disabled
+    observedFields:
+      - title
+      - playerCount
+      - playTime
+      - perPersonPrice
+      - creator
+      - genre
+      - publishedDate
+      - tags
+      - scenarioTendency
+      - characters
+    fieldMappings:
+      title: ScenarioWork.canonicalTitle
+      playerCount: Edition.playConfigurations.playerRange
+      playTime: Edition.playConfigurations.durationRange
+      perPersonPrice: Offer
+      creator: ScenarioWork.creators
+      genre: ScenarioWork.concepts.genre
+      publishedDate: Edition.releaseDate
+      tags: ScenarioWork.concepts
+      scenarioTendency: Assertion
+      characters: PublicCharacter[]
+    notes:
+      - ウズ収録物は原則としてapp editionとして表現する。
+      - キャラクターは公開ページに明示された非ネタバレ情報だけを扱う。
+      - シナリオ傾向の自由記述は全文複製せず、短い正規化タグまたはURL参照に留める。
+
+  booth:
+    name: BOOTH
+    baseUrl: https://booth.pm/
+    sourceType: platform_official
+    defaultAcquisitionMethod: manual_entry
+    officialApiDocumentation: null
+    apiVerificationStatus: not_confirmed_for_public_catalog
+    automationStatus: disabled
+    fieldMappings:
+      itemTitle: Edition.editionName
+      shopName: Offer.seller
+      price: Offer.price
+      currency: Offer.currency
+      availability: Offer.availability
+      itemUrl: Offer.purchaseUrl
+      itemType: Edition.editionType
+    notes:
+      - BOOTH検索結果にはシナリオ以外の商品が混在するため、作品件数へ直接加算しない。
+      - 商品説明、画像、購入者限定ファイル、レビューは複製しない。
+      - 作者または販売者によるエクスポートが得られる場合はseller_exportを使用する。
+
+  creator_or_publisher_official:
+    name: 作者・出版社公式
+    baseUrl: null
+    sourceType: creator_official
+    defaultAcquisitionMethod: manual_entry
+    officialApiDocumentation: null
+    apiVerificationStatus: source_specific
+    automationStatus: source_specific
+    priority: highest
+    fieldMappings:
+      officialTitle: ScenarioWork.canonicalTitle
+      creator: ScenarioWork.creators
+      publisher: ScenarioWork.publisher
+      releaseDate: ScenarioWork.releaseDate
+      edition: Edition
+      playerCount: Edition.playConfigurations.playerRange
+      duration: Edition.playConfigurations.durationRange
+      gmRequirement: Edition.playConfigurations.gmRequirement
+      price: Offer
+      correction: Assertion.supersedes
+
+normalization:
+  playerCount:
+    examples:
+      "4人":
+        minimumPlayers: 4
+        maximumPlayers: 4
+      "6～7人":
+        minimumPlayers: 6
+        maximumPlayers: 7
+  duration:
+    examples:
+      "約2時間30分":
+        minimumDurationMinutes: 150
+        maximumDurationMinutes: 150
+        approximation: true
+      "120分":
+        minimumDurationMinutes: 120
+        maximumDurationMinutes: 120
+        approximation: false
+  gm:
+    mappings:
+      GM必須: required
+      GM不要: not_required
+      GMレス可: optional
+      なしでも可: optional
+      自動進行: automated
+      "-": unknown
+  price:
+    rules:
+      - 1人あたり料金はpriceBasis.per_person。
+      - 商品価格はpriceBasis.per_packageを既定候補とし、販売ページで確認する。
+      - 無料表示はprice=0、currency=JPY、priceBasis=free。
+      - 価格不明と無料を混同しない。
+
+conflict_policy:
+  - 公式作者・出版社情報を正準候補の第一順位とする。
+  - 版が異なる可能性がある場合、値を競合扱いにせずEditionを分ける。
+  - 同じ版で人数・時間・GM条件が異なる場合、各値をAssertionとして保持する。
+  - 代表値を生成する場合は、採用ルール、採用日時、採用元Assertionを保存する。

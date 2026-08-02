@@ -3,10 +3,16 @@ project:
   name: Bodoge no Mikata
   repository: https://github.com/KAFKA2306/bodogenomikata2
   pages: https://bodogenomikata2.pages.dev/
-  version: 0.1.0
-  updated: 2026-07-30
+  version: 0.2.0
+  updated: 2026-08-02
   core_ontology: https://raw.githubusercontent.com/KAFKA2306/know/main/ontology/causal-evidence-core.yaml
   schema: https://raw.githubusercontent.com/KAFKA2306/know/main/ontology/project.schema.json
+  domain_ontologies:
+    murder_mystery:
+      core: ontology/murder-mystery/core.yaml
+      vocabulary: ontology/murder-mystery/vocabulary.yaml
+      source_mappings: ontology/murder-mystery/source-mappings.yaml
+      record_schema: ontology/murder-mystery/record.schema.json
 
 purpose:
   problem: Convert board-game source material into concise play assistance without presenting AI-generated summaries as authoritative rules.
@@ -15,16 +21,47 @@ purpose:
     - Every game record distinguishes source rules, extracted facts, AI summaries, diagrams, and commentary.
     - Setup, turn structure, legal actions, end conditions, and scoring retain source locators.
     - User-facing answers expose uncertainty and direct users to authoritative rules for disputes.
+    - Murder-mystery works, editions, offers, performances, ratings, and source assertions remain separate.
+    - Murder-mystery metadata records acquisition method, source URL, retrieval time, rights status, and verification status.
   falsification_conditions:
     - Generated text is labeled or implied as official publisher text.
     - A rule answer lacks game edition or source context.
     - Conflicting source passages are collapsed into one unqualified answer.
+    - A murder-mystery work is merged only because its normalized title matches.
+    - Scraping, crawling, or automated HTML extraction is used without a verified official API or written permission.
+    - Major spoilers or solutions enter the public search index.
 
 scope:
-  included: [games, editions, rule sources, extracted rule facts, AI summaries, diagrams, audio, BGG metadata, user queries]
-  excluded: [authoritative tournament rulings without official source, unauthorized rulebook redistribution, unsupported certainty]
-  temporal: Edition, source publication, acquisition, generation, and verification times are explicit.
-  abstraction_level: Evidence-backed board-game rule assistance and derivative-content pipeline.
+  included:
+    - games
+    - editions
+    - rule sources
+    - extracted rule facts
+    - AI summaries
+    - diagrams
+    - audio
+    - BGG metadata
+    - user queries
+    - murder-mystery works
+    - murder-mystery editions
+    - play configurations
+    - offers
+    - performances
+    - source records
+    - assertions
+    - identity matches
+    - reviews
+    - rating observations
+  excluded:
+    - authoritative tournament rulings without official source
+    - unauthorized rulebook redistribution
+    - unsupported certainty
+    - automated scraping or crawling of murder-mystery information sites
+    - automated HTML extraction without official API or written permission
+    - third-party review text or image redistribution
+    - public indexing of culprit, secrets, handouts, truth, or ending details
+  temporal: Edition, source publication, acquisition, generation, verification, offer observation, and performance times are explicit.
+  abstraction_level: Evidence-backed board-game rule assistance and cross-source murder-mystery metadata integration.
 
 competency_questions:
   - Which source and edition support a displayed rule answer?
@@ -32,27 +69,49 @@ competency_questions:
   - What source passage supports setup, legal actions, scoring, and exceptions?
   - Are conflicts and unresolved questions shown to the user?
   - Can the generated artifact be reproduced from retained source references and model configuration?
+  - Are two external records the same work, the same edition, or different editions?
+  - Does a displayed player count, duration, GM requirement, price, or rating identify its source and observation time?
+  - Is a price per person, per group, per package, or per performance?
+  - Is a public field free of minor, major, and solution-level spoilers?
+  - Was every murder-mystery record acquired by manual entry, official API, creator submission, or seller export?
 
 domain_mapping:
-  System: BoardGameRuleAssistanceSystem
-  State: [source state, extraction state, generation state, verification state, publication state]
-  Action: [ingest source, extract rule, summarize, translate, generate diagram, answer query, publish]
-  Process: [source registration, rule extraction, LLM generation, human review, API serving, site publication]
-  Observation: [source passage, BGG record, generated output, reviewer result, API response]
-  Model: [rule extraction policy, LLM summarizer, retrieval model, answer composer]
-  Requirement: [source traceability, edition identity, generated-content labeling, conflict visibility, rights compliance]
-  Claim: [rule fact, setup instruction, legal-action answer, scoring answer, generated explanation]
-  Evidence: [source URL, page or section locator, source hash, model configuration, review record]
-  Decision: [publish_assist, revise, require_source, mark_unofficial, reject]
+  System: [BoardGameRuleAssistanceSystem, MurderMysteryMetadataIntegrationSystem]
+  State: [source state, extraction state, generation state, verification state, publication state, identity state, availability state, booking state]
+  Action: [ingest source, extract rule, summarize, translate, generate diagram, answer query, register metadata, normalize assertion, resolve identity, publish]
+  Process: [source registration, rule extraction, LLM generation, human review, manual metadata entry, official API import, identity review, API serving, site publication]
+  Observation: [source passage, BGG record, source record, assertion, rating observation, offer observation, performance observation, generated output, reviewer result, API response]
+  Model: [rule extraction policy, LLM summarizer, retrieval model, answer composer, controlled vocabulary, source mapping, identity resolution policy]
+  Requirement: [source traceability, edition identity, generated-content labeling, conflict visibility, rights compliance, acquisition-policy compliance, spoiler isolation]
+  Claim: [rule fact, setup instruction, legal-action answer, scoring answer, generated explanation, metadata assertion, identity decision]
+  Evidence: [source URL, page or section locator, source hash, retrieval time, acquisition method, rights status, model configuration, review record]
+  Decision: [publish_assist, revise, require_source, mark_unofficial, reject, confirmed_same_work, probable_same_work, possible_same_work, different_work, needs_review]
 
 claims_and_evidence:
-  assertion_types: [OfficialRule, ExtractedFact, AIGeneratedSummary, Translation, DiagramInterpretation, DatabaseObservation, DecisionAssertion]
+  assertion_types:
+    - OfficialRule
+    - ExtractedFact
+    - AIGeneratedSummary
+    - Translation
+    - DiagramInterpretation
+    - DatabaseObservation
+    - SourceAssertion
+    - IdentityMatchDecision
+    - RatingObservation
+    - OfferObservation
+    - PerformanceObservation
+    - DecisionAssertion
   required_evidence:
     OfficialRule: [source URL, edition, page or section]
     ExtractedFact: [source passage identity, extraction record]
     AIGeneratedSummary: [input source IDs, model, generation policy, output version]
     DatabaseObservation: [provider, field, retrieval time]
-  unknown_policy: Missing edition, source locator, or conflict resolution produces require_source and prevents authoritative wording.
+    SourceAssertion: [source URL, acquisition method, retrieval time, rights status, verification status]
+    IdentityMatchDecision: [left source record, right source record, match evidence, decision time]
+    RatingObservation: [source URL, metric, scale, observation time]
+    OfferObservation: [seller, price basis, availability, source URL, observation time]
+    PerformanceObservation: [edition, start and end time, organizer, booking source]
+  unknown_policy: Missing edition, source locator, acquisition method, rights status, or conflict resolution produces require_source and prevents authoritative wording.
 
 decision_rules:
   - id: publish-assistance
@@ -64,15 +123,53 @@ decision_rules:
   - id: generated-authority-guard
     when: AI-generated content is presented as publisher-issued text.
     result: reject
+  - id: murder-mystery-acquisition-guard
+    when: A murder-mystery record was acquired by scraping, crawling, or automated HTML extraction without an official API or written permission.
+    result: reject
+  - id: murder-mystery-identity-guard
+    when: Two records match only by normalized title.
+    result: needs_review
+  - id: murder-mystery-spoiler-guard
+    when: Public output includes minor, major, or solution-level spoiler data.
+    result: reject
 
 provenance:
-  sources: [publisher rulebooks, official FAQs, BoardGameGeek records, explicitly registered secondary sources]
-  generated_artifacts: [SQLite records, API responses, summaries, diagrams, audio, web pages]
-  agents: [source ingester, extractor, LLM, API service, human reviewer]
-  lineage: Every answer links to game edition, source passage, generation method, model version, and review status.
+  sources:
+    - publisher rulebooks
+    - official FAQs
+    - BoardGameGeek records
+    - creator and publisher official pages
+    - platform and venue official pages
+    - explicitly registered secondary sources
+    - creator submissions
+    - seller exports
+  generated_artifacts:
+    - SQLite records
+    - API responses
+    - summaries
+    - diagrams
+    - audio
+    - web pages
+    - canonical murder-mystery records
+    - conflict records
+    - identity review queues
+  agents:
+    - source ingester
+    - manual metadata editor
+    - official API client
+    - extractor
+    - normalizer
+    - identity resolver
+    - LLM
+    - API service
+    - human reviewer
+  lineage: Every answer or canonical metadata value links to edition, source record, acquisition method, observation time, transformation, and review status.
 
 validation:
-  structural: Validate game, edition, source, passage, output, and review identifiers.
-  semantic: Separate official rules, extracted facts, translations, generated summaries, and commentary.
-  evidence: Verify locators, source hashes, model configuration, and conflict records.
+  structural: Validate game, work, edition, play configuration, offer, performance, source, assertion, output, and review identifiers.
+  semantic: Separate official rules, extracted facts, translations, generated summaries, source assertions, ratings, and commentary.
+  evidence: Verify locators, source URLs, acquisition methods, rights status, source hashes when available, model configuration, and conflict records.
+  identity: Reject title-only merges and require official links, composite evidence, or human review for confirmed identity.
+  acquisition: Permit only manual_entry, official_api, creator_submission, and seller_export for murder-mystery metadata.
+  spoiler: Prevent minor, major, and solution-level content from entering public indexes.
   publication: Public answers must display source context, generated-content status, and an uncertainty path.

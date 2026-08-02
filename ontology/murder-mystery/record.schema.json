@@ -1,0 +1,221 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kafka2306.github.io/bodogenomikata2/ontology/murder-mystery/record.schema.json",
+  "title": "Murder Mystery Canonical Record",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "canonicalTitle",
+    "editions",
+    "sourceRecords",
+    "assertions",
+    "spoilerClassification"
+  ],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "type": {"const": "ScenarioWork"},
+    "canonicalTitle": {"type": "string", "minLength": 1},
+    "alternativeTitles": {
+      "type": "array",
+      "items": {"type": "string"},
+      "uniqueItems": true
+    },
+    "creators": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/reference"}
+    },
+    "concepts": {"type": "array", "items": {"type": "string"}},
+    "editions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/edition"}
+    },
+    "sourceRecords": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/sourceRecord"}
+    },
+    "assertions": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/assertion"}
+    },
+    "identityMatches": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/identityMatch"}
+    },
+    "spoilerClassification": {
+      "enum": ["none", "premise", "character_public", "minor", "major", "solution"]
+    },
+    "isExample": {"type": "boolean"}
+  },
+  "$defs": {
+    "reference": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {"id": {"type": "string"}},
+      "additionalProperties": false
+    },
+    "playConfiguration": {
+      "type": "object",
+      "required": [
+        "minimumPlayers",
+        "maximumPlayers",
+        "minimumDurationMinutes",
+        "maximumDurationMinutes",
+        "gmRequirement",
+        "playModes"
+      ],
+      "properties": {
+        "minimumPlayers": {"type": "integer", "minimum": 1},
+        "maximumPlayers": {"type": "integer", "minimum": 1},
+        "minimumDurationMinutes": {"type": "integer", "minimum": 1},
+        "maximumDurationMinutes": {"type": "integer", "minimum": 1},
+        "gmRequirement": {
+          "enum": ["required", "optional", "not_required", "automated", "unknown"]
+        },
+        "playModes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"enum": ["offline", "online", "hybrid"]}
+        },
+        "recommendedExperience": {
+          "enum": ["beginner", "all", "experienced", "unknown"]
+        }
+      },
+      "additionalProperties": true
+    },
+    "offer": {
+      "type": "object",
+      "required": ["id", "seller", "availability", "observedAt", "sourceRecord"],
+      "properties": {
+        "id": {"type": "string"},
+        "seller": {"type": "string"},
+        "price": {"type": "number", "minimum": 0},
+        "currency": {"type": "string"},
+        "priceBasis": {
+          "enum": ["per_person", "per_group", "per_package", "per_performance", "free", "unknown"]
+        },
+        "availability": {
+          "enum": ["available", "sold_out", "unavailable", "discontinued", "unknown"]
+        },
+        "purchaseUrl": {"type": "string", "format": "uri"},
+        "observedAt": {"type": "string", "format": "date-time"},
+        "sourceRecord": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "edition": {
+      "type": "object",
+      "required": ["id", "editionType", "playConfigurations", "sourceRecords"],
+      "properties": {
+        "id": {"type": "string"},
+        "editionType": {
+          "enum": ["digital", "package", "app", "store_performance", "translated", "revised", "other"]
+        },
+        "editionName": {"type": "string"},
+        "playConfigurations": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/playConfiguration"}
+        },
+        "offers": {"type": "array", "items": {"$ref": "#/$defs/offer"}},
+        "sourceRecords": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string"}
+        }
+      },
+      "additionalProperties": true
+    },
+    "sourceRecord": {
+      "type": "object",
+      "required": [
+        "id",
+        "sourceName",
+        "sourceType",
+        "sourceUrl",
+        "acquiredBy",
+        "retrievedAt",
+        "rightsStatus",
+        "verificationStatus"
+      ],
+      "properties": {
+        "id": {"type": "string"},
+        "sourceName": {"type": "string"},
+        "sourceType": {
+          "enum": [
+            "creator_official",
+            "publisher_official",
+            "platform_official",
+            "venue_official",
+            "secondary_information_site",
+            "user_submission",
+            "internal_form"
+          ]
+        },
+        "sourceUrl": {"type": "string", "format": "uri"},
+        "acquiredBy": {
+          "enum": ["manual_entry", "official_api", "creator_submission", "seller_export"]
+        },
+        "retrievedAt": {"type": "string", "format": "date-time"},
+        "rightsStatus": {
+          "enum": ["official_public_metadata", "permission_granted", "citation_only", "unknown", "restricted"]
+        },
+        "verificationStatus": {
+          "enum": ["verified", "partially_verified", "unverified", "conflicting", "rejected"]
+        }
+      },
+      "additionalProperties": true
+    },
+    "assertion": {
+      "type": "object",
+      "required": [
+        "id",
+        "subject",
+        "predicate",
+        "value",
+        "assertedBy",
+        "observedAt",
+        "confidence",
+        "verificationStatus"
+      ],
+      "properties": {
+        "id": {"type": "string"},
+        "subject": {"type": "string"},
+        "predicate": {"type": "string"},
+        "value": {},
+        "assertedBy": {"type": "string"},
+        "observedAt": {"type": "string", "format": "date-time"},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "verificationStatus": {
+          "enum": ["verified", "partially_verified", "unverified", "conflicting", "rejected"]
+        }
+      },
+      "additionalProperties": true
+    },
+    "identityMatch": {
+      "type": "object",
+      "required": ["id", "leftRecord", "rightRecord", "decision", "evidence", "decidedAt"],
+      "properties": {
+        "id": {"type": "string"},
+        "leftRecord": {"type": "string"},
+        "rightRecord": {"type": "string"},
+        "decision": {
+          "enum": [
+            "confirmed_same_work",
+            "probable_same_work",
+            "possible_same_work",
+            "different_work",
+            "needs_review"
+          ]
+        },
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "evidence": {"type": "array", "items": {"type": "string"}},
+        "decidedAt": {"type": "string", "format": "date-time"}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
