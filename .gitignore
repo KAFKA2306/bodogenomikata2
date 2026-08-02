@@ -9,4 +9,4 @@ node_modules/
 dist/
 
 # Original murder-mystery spoiler material must stay outside this public repository.
-works/murder-mystery/[0-9][0-9]-*/*/private/
+works/murder-mystery/projects/*/private/
