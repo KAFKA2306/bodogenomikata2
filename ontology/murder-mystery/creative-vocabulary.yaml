@@ -1,0 +1,202 @@
+metadata:
+  id: kafka:murder-mystery-creative-vocabulary
+  version: 0.2.0
+  updated: '2026-08-02'
+  model: SKOS-compatible controlled vocabulary
+  researchBasis:
+    corpus: data/murder-mystery/popular-100-candidates.yaml
+    workCount: 100
+    publicDeepDiveCount: 38
+concept_schemes:
+  evidenceLevel:
+    concepts:
+      title_only:
+        prefLabel: タイトル表層
+        note: 題名から観測できる語彙・レジスター・形式シグナルのみ。
+      public_synopsis:
+        prefLabel: 公開あらすじ
+        note: 作者・販売者が公開した導入、設定、体験上の約束。
+      public_system_description:
+        prefLabel: 公開システム説明
+        note: 公開された進行、情報配布、密談、媒体、役割依存などの説明。
+      non_spoiler_review:
+        prefLabel: 非ネタバレ体験報告
+        note: 版と出典を特定した非ネタバレの観客・プレイヤー報告。
+      full_play:
+        prefLabel: 実プレイ監査
+        note: 評価者、版、実施日時、ネタバレ隔離を伴う実プレイ。
+      authorized_text:
+        prefLabel: 許諾済み本文監査
+        note: 本文、ハンドアウト等を権限管理下で分析する。
+  claimMode:
+    concepts:
+      observed_signal: {prefLabel: 観測シグナル}
+      creator_promise: {prefLabel: 作者・販売者の体験上の約束}
+      audience_report: {prefLabel: 受け手の体験報告}
+      executed_assessment: {prefLabel: 実プレイによる達成度評価}
+      authorized_text_observation: {prefLabel: 許諾済み本文観測}
+      unknown: {prefLabel: 判定不能}
+  creativeOperation:
+    concepts:
+      diegetic_form_integration:
+        prefLabel: 形式の物語内化
+        altLabels: [媒体内化, ダイジェティックUI]
+        note: Web検索、依頼文、配信、実演、ゲーム自体などを物語世界の行為・証拠へ変換する。
+      relationship_as_mechanic:
+        prefLabel: 関係性のゲーム構造化
+        note: 相棒、家族、同僚、恋人などの依存を密談、選択、情報差、個別結末へ変換する。
+      tonal_collision:
+        prefLabel: 感情・ジャンルの衝突
+        note: 喜劇と死、可愛さと喪失、恋愛と殺人などを単一トーンへ整理しない。
+      social_specificity:
+        prefLabel: 生活・職業・共同体の具体化
+        note: 人物を容疑者機能だけにせず、職業、制度、共同体、生活史へ埋め込む。
+      residual_risk:
+        prefLabel: 不快さ・未解決感を残すリスク
+        note: 正解後も罪、依存、損失、割り切れなさが残る設計。
+      production_integration:
+        prefLabel: 本文外制作の統合
+        note: Web、音楽、物理物、改稿、別媒体展開等を体験へ接続する。
+      genre_inversion: {prefLabel: ジャンル反転}
+      historical_reframing: {prefLabel: 歴史・神話の再文脈化}
+      environment_as_pressure: {prefLabel: 環境そのものの圧力化}
+      social_system_simulation: {prefLabel: 社会制度のシミュレーション}
+      semantic_paradox: {prefLabel: 意味的逆説}
+      familiar_genre_specificity: {prefLabel: 既知ジャンルの固有化}
+  humanTextureSignal:
+    concepts:
+      idiosyncratic_voice: {prefLabel: 固有の語り口・語彙}
+      lived_social_specificity: {prefLabel: 生活・社会の実感的具体性}
+      emotional_contradiction: {prefLabel: 矛盾した感情の共存}
+      relational_dependency: {prefLabel: 関係依存}
+      moral_ambiguity: {prefLabel: 倫理的曖昧さ}
+      authorial_risk: {prefLabel: 表現上のリスク}
+      unresolved_residue: {prefLabel: 未解決の余韻}
+      obsession_signal: {prefLabel: 作者固有の執着シグナル}
+      low_replaceability:
+        prefLabel: 低い置換可能性
+        note: 舞台・人物・媒体を一般的なものへ置き換えると作品の核が失われる。
+      subtext_density: {prefLabel: 言外の感情・関係密度}
+      unevenness: {prefLabel: 意図的または自然な偏り}
+  surpriseMechanism:
+    concepts:
+      fact_reveal: {prefLabel: 事実開示}
+      identity_reveal: {prefLabel: 正体開示}
+      causal_reversal: {prefLabel: 因果反転}
+      perspective_shift: {prefLabel: 視点転換}
+      rule_shift: {prefLabel: 目的・ルール転換}
+      genre_shift: {prefLabel: ジャンル転換}
+      relationship_reveal: {prefLabel: 関係性の再解釈}
+      moral_reversal: {prefLabel: 善悪評価の反転}
+      emotional_reveal: {prefLabel: 感情の真相開示}
+      participatory_reveal: {prefLabel: プレイヤー行為の真相組込み}
+      semantic_paradox: {prefLabel: 語義・題名の反転}
+  surpriseQuality:
+    concepts:
+      foreshadowing_fairness: {prefLabel: 伏線公平性}
+      reveal_timing: {prefLabel: 開示タイミング}
+      reinterpretation_power: {prefLabel: 既出情報の再解釈力}
+      emotional_consequence: {prefLabel: 開示後の感情的帰結}
+      gimmick_dependency: {prefLabel: 単発ギミック依存度}
+      predictability_control: {prefLabel: 予測可能性の制御}
+  emotionalMechanism:
+    concepts:
+      attachment_through_history: {prefLabel: 共有史による愛着形成}
+      pair_dependency: {prefLabel: 二者・ペア依存}
+      guilt: {prefLabel: 罪悪感}
+      sacrifice: {prefLabel: 犠牲}
+      aspiration: {prefLabel: 憧れ・希求}
+      creative_labor: {prefLabel: 創作労働への感情投資}
+      romance: {prefLabel: 恋愛}
+      forgiveness: {prefLabel: 赦し}
+      irreversible_loss: {prefLabel: 不可逆な喪失}
+      player_responsibility: {prefLabel: プレイヤーの選択責任}
+      cute_death_dissonance: {prefLabel: 可愛さと死の不協和}
+      deliberate_dread: {prefLabel: 意図的な不穏・恐怖}
+      no_catharsis: {prefLabel: カタルシスを保証しない}
+      post_human_empathy: {prefLabel: 非人間存在への共感}
+      recognition_after_action: {prefLabel: 行動後の理解・再認識}
+      relationship_repair: {prefLabel: 関係修復}
+      inheritance: {prefLabel: 継承}
+  emotionalQuality:
+    concepts:
+      attachment_formation: {prefLabel: 愛着形成}
+      earned_emotion: {prefLabel: 積み上げられた感情}
+      choice_responsibility: {prefLabel: 選択責任}
+      relationship_payoff: {prefLabel: 関係性の回収}
+      loss_irreversibility: {prefLabel: 喪失の不可逆性}
+      restraint: {prefLabel: 説明・演出の抑制}
+      catharsis: {prefLabel: カタルシス}
+      aftertaste_duration: {prefLabel: 余韻の持続}
+  productionIntegration:
+    concepts:
+      custom_web_investigation: {prefLabel: 専用Web捜査}
+      original_music: {prefLabel: オリジナル音楽}
+      dedicated_platform: {prefLabel: 専用プラットフォーム}
+      transmedia_adaptation: {prefLabel: 他媒体展開}
+      versioned_revision: {prefLabel: 版管理された改稿}
+      multi_role_team: {prefLabel: 複数職能チーム制作}
+      accessibility_edition: {prefLabel: アクセシビリティ版}
+      automated_progression: {prefLabel: 自動進行}
+      physical_prop_integration: {prefLabel: 物理アイテム統合}
+      performance_integration: {prefLabel: 実演・舞台統合}
+      difficulty_variant: {prefLabel: 難易度別版}
+  assessmentStrength:
+    concepts:
+      not_assessable: {prefLabel: 評価不能}
+      weak: {prefLabel: 弱いシグナル}
+      moderate: {prefLabel: 中程度のシグナル}
+      strong: {prefLabel: 強いシグナル}
+  polarity:
+    concepts:
+      present: {prefLabel: 存在}
+      absent: {prefLabel: 不在}
+      mixed: {prefLabel: 混在}
+      unknown: {prefLabel: 不明}
+  replaceability:
+    concepts:
+      low: {prefLabel: 低い}
+      medium: {prefLabel: 中程度}
+      high: {prefLabel: 高い}
+      unknown: {prefLabel: 不明}
+  craftSignal:
+    concepts:
+      information_distribution: {prefLabel: 情報配布設計}
+      pacing_architecture: {prefLabel: 進行・緩急設計}
+      role_balance: {prefLabel: 役割バランス}
+      player_agency: {prefLabel: プレイヤー主体性}
+      ending_integration: {prefLabel: 結末統合}
+      production_polish: {prefLabel: 制作仕上げ}
+      revision_history: {prefLabel: 改稿履歴}
+  originalitySignal:
+    concepts:
+      premise_novelty: {prefLabel: 前提の新規性}
+      setting_specificity: {prefLabel: 舞台の固有性}
+      relationship_novelty: {prefLabel: 関係構造の新規性}
+      mystery_structure_novelty: {prefLabel: 謎構造の新規性}
+      interaction_novelty: {prefLabel: 相互作用の新規性}
+      formal_novelty: {prefLabel: 形式の新規性}
+      cross_genre_combination: {prefLabel: 異ジャンル結合}
+      low_replaceability: {prefLabel: 低い置換可能性}
+  breadthSignal:
+    concepts:
+      emotional_range: {prefLabel: 感情幅}
+      interaction_range: {prefLabel: 相互作用幅}
+      interpretive_range: {prefLabel: 解釈幅}
+      ending_range: {prefLabel: 結末幅}
+      setting_diversity: {prefLabel: 舞台多様性}
+      tonal_diversity: {prefLabel: トーン多様性}
+      mystery_mode_diversity: {prefLabel: 謎形式多様性}
+      production_mode_diversity: {prefLabel: 制作媒体多様性}
+  emotionTone:
+    concepts:
+      trust: {prefLabel: 信頼}
+      regret: {prefLabel: 後悔}
+      grief: {prefLabel: 悲嘆}
+      dread: {prefLabel: 不穏・恐怖}
+      love: {prefLabel: 愛情}
+      guilt: {prefLabel: 罪悪感}
+      hope: {prefLabel: 希望}
+      absurdity: {prefLabel: 不条理}
+      relief: {prefLabel: 安堵}
+      ambivalence: {prefLabel: 両価感情}
