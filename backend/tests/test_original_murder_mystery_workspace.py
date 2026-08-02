@@ -26,6 +26,19 @@ def test_repository_workspace_is_valid() -> None:
     validator.validate_workspace(ROOT)
 
 
+def test_unanimous_kindness_explicitly_opts_in_to_public_spoilers() -> None:
+    project_dir = ROOT / "works/murder-mystery/projects/unanimous-kindness"
+    project = yaml.safe_load((project_dir / "project.yaml").read_text(encoding="utf-8"))
+    privacy = project["privacy"]
+
+    assert privacy["trackedSpoilers"] is True
+    assert privacy["spoilerMaterialTrackedInThisRepository"] is True
+    assert privacy["publicationApprovedByOwner"] is True
+    assert (project_dir / "private/START_HERE.md").is_file()
+    assert (project_dir / "private/PLAY_PACKAGE.md").is_file()
+    assert len(list((project_dir / "private/handouts").glob("PC*.md"))) == 6
+
+
 def test_scaffolder_creates_one_stable_human_workspace(tmp_path: Path) -> None:
     creator = load_module(
         "create_original_murder_mystery",
@@ -37,7 +50,9 @@ def test_scaffolder_creates_one_stable_human_workspace(tmp_path: Path) -> None:
     )
     shutil.copytree(ROOT / "works", tmp_path / "works")
     (tmp_path / ".gitignore").write_text(
-        "works/murder-mystery/projects/*/private/\n",
+        "works/murder-mystery/projects/*/private/\n"
+        "!works/murder-mystery/projects/unanimous-kindness/private/\n"
+        "!works/murder-mystery/projects/unanimous-kindness/private/**\n",
         encoding="utf-8",
     )
 
