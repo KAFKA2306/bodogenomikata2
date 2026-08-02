@@ -1,0 +1,220 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kafka2306.github.io/bodogenomikata2/ontology/murder-mystery/creative-analysis.schema.json",
+  "title": "Murder Mystery Creative Profile",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "aboutWork",
+    "observations",
+    "assessedAt",
+    "assessor",
+    "publicSpoilerLevel"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "type": {"const": "CreativeProfile"},
+    "aboutWork": {"type": "string", "minLength": 1},
+    "aboutEdition": {"type": "string", "minLength": 1},
+    "assessedAt": {"type": "string", "format": "date-time"},
+    "assessor": {"type": "string", "minLength": 1},
+    "publicSpoilerLevel": {"enum": ["none", "premise", "character_public"]},
+    "limitations": {"type": "array", "items": {"type": "string"}},
+    "observations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/creativeObservation"}
+    },
+    "creativeSignature": {"$ref": "#/$defs/creativeSignature"},
+    "surpriseDesign": {"$ref": "#/$defs/surpriseDesign"},
+    "emotionalDesign": {"$ref": "#/$defs/emotionalDesign"},
+    "productionIntegrations": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/productionIntegration"}
+    }
+  },
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "required": [
+        "id",
+        "sourceRecord",
+        "evidenceLevel",
+        "accessClass",
+        "rightsStatus",
+        "spoilerLevel"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "sourceRecord": {"type": "string", "minLength": 1},
+        "evidenceLevel": {
+          "enum": [
+            "title_only",
+            "public_synopsis",
+            "public_system_description",
+            "non_spoiler_review",
+            "full_play",
+            "authorized_text"
+          ]
+        },
+        "accessClass": {"enum": ["public", "restricted", "private"]},
+        "locator": {"type": "string"},
+        "quotedText": {"type": "string", "maxLength": 240},
+        "paraphrase": {"type": "string"},
+        "rightsStatus": {"type": "string", "minLength": 1},
+        "spoilerLevel": {
+          "enum": ["none", "premise", "character_public", "minor", "major", "solution"]
+        }
+      }
+    },
+    "creativeObservation": {
+      "type": "object",
+      "required": [
+        "id",
+        "dimension",
+        "concept",
+        "claimMode",
+        "evidenceLevel",
+        "evidence",
+        "polarity",
+        "strength",
+        "confidence"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "dimension": {
+          "enum": [
+            "craft",
+            "creativeOperation",
+            "originality",
+            "perceivedHumanTexture",
+            "breadth",
+            "surpriseDesign",
+            "emotionalDesign",
+            "productionCraft"
+          ]
+        },
+        "concept": {"type": "string", "minLength": 1},
+        "claimMode": {
+          "enum": [
+            "observed_signal",
+            "creator_promise",
+            "audience_report",
+            "executed_assessment",
+            "authorized_text_observation",
+            "unknown"
+          ]
+        },
+        "evidenceLevel": {
+          "enum": [
+            "title_only",
+            "public_synopsis",
+            "public_system_description",
+            "non_spoiler_review",
+            "full_play",
+            "authorized_text"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/evidence"}
+        },
+        "polarity": {"enum": ["present", "absent", "mixed", "unknown"]},
+        "strength": {"enum": ["not_assessable", "weak", "moderate", "strong"]},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "note": {"type": "string"},
+        "observedAt": {"type": "string", "format": "date-time"}
+      }
+    },
+    "creativeSignature": {
+      "type": "object",
+      "required": ["motifs", "signatureOperations", "replaceability", "evidence"],
+      "additionalProperties": false,
+      "properties": {
+        "motifs": {"type": "array", "items": {"type": "string"}},
+        "authorialObsession": {"type": "string"},
+        "signatureOperations": {"type": "array", "items": {"type": "string"}},
+        "signatureEmotion": {"type": "array", "items": {"type": "string"}},
+        "signatureMedia": {"type": "array", "items": {"type": "string"}},
+        "replaceability": {"enum": ["low", "medium", "high", "unknown"]},
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/evidence"}
+        }
+      }
+    },
+    "surpriseDesign": {
+      "type": "object",
+      "required": ["mechanisms", "claimMode", "evidenceLevel", "evidence"],
+      "additionalProperties": false,
+      "properties": {
+        "mechanisms": {"type": "array", "items": {"type": "string"}},
+        "claimMode": {"type": "string"},
+        "evidenceLevel": {"type": "string"},
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/evidence"}
+        },
+        "spoilerSafeSummary": {"type": "string"},
+        "qualityObservations": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/creativeObservation"}
+        }
+      }
+    },
+    "emotionalDesign": {
+      "type": "object",
+      "required": ["mechanisms", "claimMode", "evidenceLevel", "evidence"],
+      "additionalProperties": false,
+      "properties": {
+        "mechanisms": {"type": "array", "items": {"type": "string"}},
+        "dominantEmotions": {"type": "array", "items": {"type": "string"}},
+        "claimMode": {"type": "string"},
+        "evidenceLevel": {"type": "string"},
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/evidence"}
+        },
+        "spoilerSafeSummary": {"type": "string"},
+        "qualityObservations": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/creativeObservation"}
+        }
+      }
+    },
+    "productionIntegration": {
+      "type": "object",
+      "required": ["features", "integrationRole", "evidence"],
+      "additionalProperties": false,
+      "properties": {
+        "features": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "integrationRole": {
+          "enum": [
+            "decorative",
+            "navigation",
+            "information_delivery",
+            "mechanic",
+            "narrative",
+            "emotional_payoff",
+            "accessibility"
+          ]
+        },
+        "requiredForPlay": {"type": "boolean"},
+        "fallbackAvailable": {"type": "boolean"},
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/evidence"}
+        }
+      }
+    }
+  }
+}

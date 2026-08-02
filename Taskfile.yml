@@ -33,7 +33,13 @@ tasks:
 
   ontology:validate:
     desc: 'Validate the murder-mystery ontology, mappings, vocabulary, and example record'
-    cmd: 'uv run python scripts/validate_murder_mystery_ontology.py'
+    cmds:
+      - 'uv run python scripts/validate_murder_mystery_ontology.py'
+      - 'uv run python scripts/validate_murder_mystery_creative_ontology.py'
+
+  creativity:ontology-check:
+    desc: 'Validate the evidence-bounded creative-analysis ontology and example profile'
+    cmd: 'uv run python scripts/validate_murder_mystery_creative_ontology.py'
 
   creativity:analyze:
     desc: 'Generate title-surface creative signals for the 100-work murder-mystery corpus'

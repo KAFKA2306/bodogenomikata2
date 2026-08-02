@@ -1,0 +1,47 @@
+metadata:
+  id: kafka:murder-mystery-module-index
+  version: 0.2.0
+  updated: '2026-08-02'
+  description: マーダーミステリーの作品情報統合と創作分析を構成する機械可読モジュール索引。
+modules:
+  metadataCore:
+    ontology: ontology/murder-mystery/core.yaml
+    vocabulary: ontology/murder-mystery/vocabulary.yaml
+    schema: ontology/murder-mystery/record.schema.json
+    example: ontology/murder-mystery/example-record.yaml
+    sourceMappings: ontology/murder-mystery/source-mappings.yaml
+  creativeAnalysis:
+    ontology: ontology/murder-mystery/creative-analysis.yaml
+    vocabulary: ontology/murder-mystery/creative-vocabulary.yaml
+    schema: ontology/murder-mystery/creative-analysis.schema.json
+    example: ontology/murder-mystery/creative-analysis.example.yaml
+    researchBasis:
+      corpus: data/murder-mystery/popular-100-candidates.yaml
+      report: research/murder-mystery/creative-patterns-100.md
+      workCount: 100
+      publicDeepDiveCount: 38
+validation:
+  metadata: scripts/validate_murder_mystery_ontology.py
+  creativeAnalysis: scripts/validate_murder_mystery_creative_ontology.py
+  corpusAnalysis: scripts/analyze_murder_mystery_creativity.py
+commands:
+  fullOntology: task ontology:validate
+  creativeOntology: task creativity:ontology-check
+  corpusBoundary: task creativity:check
+  corpusAnalysis: task creativity:analyze
+policy:
+  allowedAcquisitionMethods:
+  - manual_entry
+  - official_api
+  - creator_submission
+  - seller_export
+  prohibitedAcquisitionMethods:
+  - scraping
+  - crawling
+  - automated_html_extraction
+  publicSpoilerLevels:
+  - none
+  - premise
+  - character_public
+  authorshipInference: prohibited
+  popularityAsCreativityProxy: prohibited

@@ -1,245 +1,452 @@
 metadata:
   id: kafka:murder-mystery-creative-analysis
   name: Murder Mystery Creative Analysis Ontology
-  version: 0.1.0
-  updated: 2026-08-02
-  purpose: >-
-    マーダーミステリー作品の制作技法、独自性、人間的手触り、驚き、
-    感情設計、表現幅を、根拠の強さと評価限界を明示して記録する。
+  version: 0.2.0
+  updated: '2026-08-02'
+  namespace: https://kafka2306.github.io/bodogenomikata2/ontology/murder-mystery/creative#
+  purpose: 100作の具体調査から抽出した制作技法、独自性、人間的手触り、驚き、感情設計、媒体統合を、根拠の種類と評価限界を保ったまま記録する。
+  researchBasis:
+    corpus: data/murder-mystery/popular-100-candidates.yaml
+    report: research/murder-mystery/creative-patterns-100.md
+    workCount: 100
+    publicDeepDiveCount: 38
+    observedPatternFamilies:
+    - diegetic_form_integration
+    - relationship_as_mechanic
+    - tonal_collision
+    - social_specificity
+    - residual_risk
+    - production_integration
   nonGoals:
-    - 公開あらすじだけから作品品質を断定しない。
-    - 文章だけからAI制作か人間制作かを判定しない。
-    - ネタバレ、ハンドアウト、真相、レビュー本文を収集しない。
-    - 人気、売上、評価と創作性を同一視しない。
-
+  - 公開あらすじだけから作品品質を断定しない。
+  - 文章や印象だけからAI制作か人間制作かを判定しない。
+  - 人気、売上、レビュー数を創作性や完成度の代理変数にしない。
+  - ネタバレ、ハンドアウト、真相、レビュー本文を公開オントロジーへ格納しない。
+  - 異なる版や公演形態の体験を一つの評価へ無条件に統合しない。
+imports:
+- path: ontology/murder-mystery/core.yaml
+  role: 作品・版・出典・主体の参照
+- path: ontology/murder-mystery/creative-vocabulary.yaml
+  role: 創作分析の統制語彙
+epistemic_model:
+  principle: 観測事実、作者が約束する体験、受け手の報告、実プレイ評価を分離する。
+  claimModes:
+    observed_signal: タイトル、公開説明、制作クレジット等に実際に存在するシグナル。
+    creator_promise: 作者・販売者が公開情報で提示する体験上の約束。
+    audience_report: 特定の受け手が非ネタバレで報告した経験。
+    executed_assessment: 版を特定した実プレイに基づく達成度評価。
+    authorized_text_observation: 許諾済み本文から得た構造・文体観測。
+    unknown: 根拠不足で判定しない。
+  neverCollapse:
+  - - creator_promise
+    - executed_assessment
+  - - audience_report
+    - executed_assessment
+  - - AI利用クレジット
+    - perceivedHumanTexture
+  - - 人気観測
+    - creativeQuality
+  - - ScenarioWork
+    - Edition
 evidenceLevels:
   title_only:
     permits:
-      - titleSurfaceSignal
+    - titleSurfaceSignal
     prohibits:
-      - qualityScore
-      - surpriseFairness
-      - emotionalPayoff
-      - narrativeCoherence
-      - authorshipInference
+    - qualityScore
+    - surpriseFairness
+    - emotionalPayoff
+    - narrativeCoherence
+    - authorshipInference
+    - replaceabilityJudgement
   public_synopsis:
     permits:
-      - premiseOperation
-      - settingSpecificitySignal
-      - relationshipStructureSignal
-      - promisedEmotionalMode
-      - promisedSurpriseMode
+    - premiseOperation
+    - settingSpecificitySignal
+    - relationshipStructureSignal
+    - promisedEmotionalMode
+    - promisedSurpriseMode
+    - humanTexturePromise
     prohibits:
-      - actualPayoff
-      - twistFairness
-      - clueEconomy
-      - dialogueQuality
-      - endingIntegration
+    - actualPayoff
+    - twistFairness
+    - clueEconomy
+    - dialogueQuality
+    - endingIntegration
+    - authorshipInference
   public_system_description:
     permits:
-      - interactionArchitecture
-      - informationDistributionMechanic
-      - roleDependency
-      - productionFeature
-      - playerAgencyPromise
+    - interactionArchitecture
+    - informationDistributionMechanic
+    - roleDependency
+    - productionFeature
+    - playerAgencyPromise
+    - diegeticFormIntegration
+    prohibits:
+    - executionQuality
+    - actualPlayerAgency
+    - authorshipInference
   non_spoiler_review:
     permits:
-      - audienceReportedExperience
-      - sourceSpecificRatingObservation
+    - audienceReportedExperience
+    - sourceSpecificRatingObservation
     requirements:
-      - sourceUrl
-      - observationDate
-      - scale
-      - sampleSizeWhenAvailable
+    - sourceUrl
+    - observationDate
+    - reviewedEdition
+    - spoilerLevel
+    prohibits:
+    - crossSourceRatingAverageWithoutNormalization
+    - reviewTextRepublication
   full_play:
     permits:
-      - narrativeCoherence
-      - clueEconomy
-      - pacingExecution
-      - endingIntegration
-      - emotionalPayoff
-      - surpriseFairness
+    - narrativeCoherence
+    - clueEconomy
+    - pacingExecution
+    - endingIntegration
+    - emotionalPayoff
+    - surpriseFairness
+    - playerAgencyExecution
+    - replaceabilityJudgement
     requirements:
-      - reviewerIdentity
-      - playedEdition
-      - playedAt
-      - spoilerIsolation
+    - reviewerIdentity
+    - playedEdition
+    - playedAt
+    - spoilerIsolation
   authorized_text:
     permits:
-      - dialogueTexture
-      - subtextDensity
-      - motifRecurrence
-      - foreshadowingMap
+    - dialogueTexture
+    - subtextDensity
+    - motifRecurrence
+    - foreshadowingMap
     requirements:
-      - permissionRecord
-      - editionIdentity
-      - accessControl
-
+    - permissionRecord
+    - editionIdentity
+    - accessControl
+    - spoilerIsolation
 classes:
-  CreativeAnalysis:
+  CreativeProfile:
+    description: 作品または特定版に対する創作分析の集合。異なる根拠レベルを一つの断定へ潰さない。
     required:
-      - work
-      - evidenceLevel
-      - observations
-      - confidence
-      - assessedAt
+    - id
+    - aboutWork
+    - observations
+    - assessedAt
+    - assessor
+    - publicSpoilerLevel
     properties:
-      work: ScenarioWorkRef
-      edition: EditionRef?
-      evidenceLevel: EvidenceLevel
+      aboutWork: ScenarioWorkRef
+      aboutEdition: EditionRef?
       observations: CreativeObservation[]
-      confidence: number
+      creativeSignature: CreativeSignature?
+      corpusContext: CorpusDiversityObservationRef?
       assessedAt: datetime
       assessor: AgentRef
+      publicSpoilerLevel: SpoilerLevel
       limitations: string[]
-
+      supersedes: CreativeProfileRef?
   CreativeObservation:
+    description: 単一の創作シグナルまたは評価。根拠、主張モード、評価可能範囲を必須とする。
     required:
-      - dimension
-      - signal
-      - evidence
+    - id
+    - dimension
+    - concept
+    - claimMode
+    - evidenceLevel
+    - evidence
+    - polarity
+    - strength
+    - confidence
     properties:
       dimension: CreativeDimension
-      signal: ConceptRef
-      evidence: EvidenceRef[]
-      polarity: [present, absent, mixed, unknown]
-      strength: [weak, moderate, strong, not_assessable]
-      note: string?
+      concept: ConceptRef
+      claimMode: ClaimMode
+      evidenceLevel: EvidenceLevel
+      evidence: CreativeEvidenceRef[]
+      polarity: Polarity
+      strength: AssessmentStrength
       confidence: number
-
+      note: string?
+      observedAt: datetime?
+      aboutSceneLocator: RestrictedLocator?
+  CreativeEvidence:
+    description: 創作観測を支える出典。公開情報と制限付き情報を区別する。
+    required:
+    - id
+    - sourceRecord
+    - evidenceLevel
+    - accessClass
+    properties:
+      sourceRecord: SourceRecordRef
+      evidenceLevel: EvidenceLevel
+      accessClass:
+      - public
+      - restricted
+      - private
+      locator: string?
+      quotedText: string?
+      paraphrase: string?
+      rightsStatus: RightsStatus
+      spoilerLevel: SpoilerLevel
+  CreativeSignature:
+    description: 作品を他の題材へ置換しにくくする固有の創作署名。
+    required:
+    - motifs
+    - signatureOperations
+    - replaceability
+    - evidence
+    properties:
+      motifs: ConceptRef[]
+      authorialObsession: string?
+      signatureOperations: ConceptRef[]
+      signatureEmotion: ConceptRef[]
+      signatureMedia: ConceptRef[]
+      replaceability: Replaceability
+      evidence: CreativeEvidenceRef[]
+  SurpriseDesign:
+    description: 驚きの方式と実行品質を分離した構造。
+    required:
+    - mechanisms
+    - claimMode
+    - evidenceLevel
+    - evidence
+    properties:
+      mechanisms: ConceptRef[]
+      qualityObservations: CreativeObservation[]
+      claimMode: ClaimMode
+      evidenceLevel: EvidenceLevel
+      evidence: CreativeEvidenceRef[]
+      spoilerSafeSummary: string?
+    qualityBoundary: foreshadowing_fairness等はfull_playまたはauthorized_textのみ。
+  EmotionalDesign:
+    description: 感情の源泉・関係・選択・損失と、その達成度を分離した構造。
+    required:
+    - mechanisms
+    - claimMode
+    - evidenceLevel
+    - evidence
+    properties:
+      mechanisms: ConceptRef[]
+      qualityObservations: CreativeObservation[]
+      dominantEmotions: ConceptRef[]
+      claimMode: ClaimMode
+      evidenceLevel: EvidenceLevel
+      evidence: CreativeEvidenceRef[]
+      spoilerSafeSummary: string?
+    qualityBoundary: earned_emotion等はfull_playまたはauthorized_textのみ。
+  ProductionIntegration:
+    description: Web、音楽、物理物、実演、改稿、他媒体展開など本文外制作の接続。
+    required:
+    - features
+    - integrationRole
+    - evidence
+    properties:
+      features: ConceptRef[]
+      integrationRole:
+      - decorative
+      - navigation
+      - information_delivery
+      - mechanic
+      - narrative
+      - emotional_payoff
+      - accessibility
+      requiredForPlay: boolean?
+      fallbackAvailable: boolean?
+      evidence: CreativeEvidenceRef[]
+  CorpusDiversityObservation:
+    description: 単一作品ではなく、明示された作品集合の表現幅を測る観測。
+    required:
+    - id
+    - corpus
+    - dimension
+    - method
+    - value
+    - observedAt
+    properties:
+      corpus: CollectionRef
+      dimension: CreativeDimension
+      method: string
+      value: number|object
+      sourceWorks: ScenarioWorkRef[]
+      observedAt: datetime
+      limitations: string[]
+  CreativeAssessmentProtocol:
+    description: 複数評価者による再現性を確保する評価手順。
+    required:
+    - id
+    - name
+    - allowedEvidenceLevels
+    - dimensions
+    - aggregationPolicy
+    properties:
+      name: string
+      allowedEvidenceLevels: EvidenceLevel[]
+      dimensions: CreativeDimension[]
+      rubricVersion: string
+      blindReview: boolean?
+      minimumAssessors: integer
+      disagreementPolicy: string
+      aggregationPolicy: string
+      calibrationSet: ScenarioWorkRef[]
+  ProductionCredit:
+    description: 制作工程での人間・ツール・生成AI等の利用来歴。作品の人間的手触りとは分離する。
+    required:
+    - id
+    - aboutEdition
+    - agentOrTool
+    - role
+    - sourceRecord
+    properties:
+      aboutEdition: EditionRef
+      agentOrTool: AgentRef|SoftwareAgentRef
+      role: string
+      declaredUse: string?
+      sourceRecord: SourceRecordRef
+      verificationStatus: VerificationStatus
 dimensions:
   craft:
-    description: アイデアをプレイ可能な体験へ変換する制作設計。
+    description: 発想をプレイ可能な体験へ変換する制作設計。
     signals:
-      - information_distribution
-      - pacing_architecture
-      - role_balance
-      - player_agency
-      - ending_integration
-      - production_polish
-      - revision_history
-
+    - information_distribution
+    - pacing_architecture
+    - role_balance
+    - player_agency
+    - ending_integration
+    - production_polish
+    - revision_history
+  creativeOperation:
+    description: 100作の具体調査から抽出した、作品を固有化する制作操作。
+    signals:
+    - diegetic_form_integration
+    - relationship_as_mechanic
+    - tonal_collision
+    - social_specificity
+    - residual_risk
+    - production_integration
+    - genre_inversion
+    - historical_reframing
+    - environment_as_pressure
+    - social_system_simulation
+    - semantic_paradox
+    - familiar_genre_specificity
   originality:
-    description: 題材だけでなく、形式、関係、相互作用、媒体の新規性。
+    description: 題材だけでなく、形式、関係、相互作用、媒体、置換可能性の新規性。
     signals:
-      - premise_novelty
-      - setting_specificity
-      - relationship_novelty
-      - mystery_structure_novelty
-      - interaction_novelty
-      - formal_novelty
-      - cross_genre_combination
-      - low_replaceability
-
+    - premise_novelty
+    - setting_specificity
+    - relationship_novelty
+    - mystery_structure_novelty
+    - interaction_novelty
+    - formal_novelty
+    - cross_genre_combination
+    - low_replaceability
   perceivedHumanTexture:
-    description: >-
-      AI利用の有無ではなく、受け手が感じる非テンプレート性、固有の執着、
-      社会的具体性、矛盾、割り切れなさを記録する。
+    description: AI利用の有無ではなく、固有性、社会的具体性、矛盾、関係依存、リスク、余韻を記録する。
     signals:
-      - idiosyncratic_voice
-      - lived_social_specificity
-      - subtext_promise
-      - emotional_contradiction
-      - moral_ambiguity
-      - relational_dependency
-      - authorial_risk
-      - unresolved_residue
-      - obsession_signal
+    - idiosyncratic_voice
+    - lived_social_specificity
+    - emotional_contradiction
+    - relational_dependency
+    - moral_ambiguity
+    - authorial_risk
+    - unresolved_residue
+    - obsession_signal
+    - low_replaceability
+    - subtext_density
+    - unevenness
     forbiddenClaims:
-      - human_authored
-      - ai_authored
-      - ai_generated_probability
-
+    - aiAuthoredProbability
+    - ai_authored
+    - ai_generated_probability
+    - humanAuthoredProbability
+    - human_authored
   breadth:
-    description: 作品内および100作集合内の体験・感情・形式の幅。
+    description: 作品内または明示された作品集合内の感情・形式・設定・解釈の幅。
     signals:
-      - emotional_range
-      - interaction_range
-      - interpretive_range
-      - ending_range
-      - setting_diversity
-      - tonal_diversity
-      - mystery_mode_diversity
-
+    - emotional_range
+    - interaction_range
+    - interpretive_range
+    - ending_range
+    - setting_diversity
+    - tonal_diversity
+    - mystery_mode_diversity
+    - production_mode_diversity
   surpriseDesign:
-    description: 公開情報で約束される認識転換の方式。
-    signals:
-      - fact_reveal
-      - identity_reveal
-      - causal_reversal
-      - perspective_shift
-      - rule_shift
-      - genre_shift
-      - relationship_reveal
-      - moral_reversal
-      - emotional_reveal
-      - participatory_reveal
-      - semantic_paradox
-    executionOnlySignals:
-      - foreshadowing_fairness
-      - reveal_timing
-      - reinterpretation_power
-      - gimmick_dependency
-
+    description: 認識転換の方式と実行品質。
+    mechanismScheme: surpriseMechanism
+    qualityScheme: surpriseQuality
   emotionalDesign:
-    description: 感情を生む対象、関係、選択、損失、余韻の設計。
-    signals:
-      - attachment_through_history
-      - pair_dependency
-      - guilt
-      - sacrifice
-      - aspiration
-      - creative_labor
-      - romance
-      - forgiveness
-      - irreversible_loss
-      - player_responsibility
-      - cute_death_dissonance
-      - deliberate_dread
-      - no_catharsis
-      - post_human_empathy
-    executionOnlySignals:
-      - earned_emotion
-      - restraint
-      - relationship_payoff
-      - aftertaste_duration
-
+    description: 感情の源泉・関係・選択・損失と実行品質。
+    mechanismScheme: emotionalMechanism
+    qualityScheme: emotionalQuality
   productionCraft:
-    description: 本文以外の媒体、運用、改稿、ツールを含む制作。
-    signals:
-      - custom_web_investigation
-      - original_music
-      - dedicated_platform
-      - transmedia_adaptation
-      - versioned_revision
-      - multi_role_team
-      - accessibility_edition
-      - automated_progression
-      - physical_prop_integration
-
-premiseOperations:
-  - historical_reframing
-  - genre_inversion
-  - tonal_collision
-  - semantic_paradox
-  - meta_diegetic_address
-  - transmedia_expansion
-  - environment_as_pressure
-  - social_system_simulation
-  - relationship_pair_architecture
-  - media_form_innovation
-  - familiar_genre_specificity
-
+    description: 本文以外の媒体、運用、改稿、ツール、アクセシビリティを含む制作。
+    signalScheme: productionIntegration
+relations:
+  hasCreativeProfile:
+    domain: ScenarioWork|Edition
+    range: CreativeProfile
+  hasCreativeObservation:
+    domain: CreativeProfile
+    range: CreativeObservation
+  supportedByCreativeEvidence:
+    domain: CreativeObservation
+    range: CreativeEvidence
+  hasCreativeSignature:
+    domain: CreativeProfile
+    range: CreativeSignature
+  hasSurpriseDesign:
+    domain: CreativeProfile
+    range: SurpriseDesign
+  hasEmotionalDesign:
+    domain: CreativeProfile
+    range: EmotionalDesign
+  hasProductionIntegration:
+    domain: Edition
+    range: ProductionIntegration
+  hasProductionCredit:
+    domain: Edition
+    range: ProductionCredit
+  evaluatedUnder:
+    domain: CreativeProfile
+    range: CreativeAssessmentProtocol
+  wasDerivedFrom:
+    domain: CreativeEvidence|CreativeProfile
+    range: SourceRecord|CreativeProfile
+    standard: PROV-O
 assessmentRules:
-  - id: no-authorship-detection
-    rule: AI利用の有無を文体や印象から推定しない。
-  - id: evidence-before-evaluation
-    rule: 数値評価には根拠URL、評価対象版、評価者、日時を必須とする。
-  - id: public-surface-boundary
-    rule: 公開あらすじからは約束された体験を記述し、実際の達成度を断定しない。
-  - id: source-specific-ratings
-    rule: サイトごとの評価軸、尺度、母数を混合しない。
-  - id: spoiler-isolation
-    rule: 驚きの具体的真相を保存せず、公開可能な方式分類だけを保存する。
-  - id: no-popularity-equivalence
-    rule: 人気、レビュー数、販売量を創作性や完成度の代理変数にしない。
+- id: no-authorship-detection
+  rule: AI利用の有無を文体、タイトル、印象から推定しない。
+- id: credits-are-provenance
+  rule: AI・ツール利用はProductionCreditとして記録し、perceivedHumanTextureと分離する。
+- id: evidence-before-evaluation
+  rule: 数値評価には根拠、対象版、評価者、日時、評価手順を必須とする。
+- id: promise-is-not-execution
+  rule: 公開あらすじのcreator_promiseを実際の達成度へ変換しない。
+- id: execution-evidence-floor
+  rule: 完成度、感動達成度、伏線公平性、結末統合はfull_play以上を必須とする。
+- id: source-specific-ratings
+  rule: サイトごとの尺度、母数、集計方法を混合しない。
+- id: spoiler-isolation
+  rule: 驚きの具体的真相を公開せず、方式分類と公開可能な要約だけを保存する。
+- id: no-popularity-equivalence
+  rule: 人気、予約数、販売量、レビュー数を創作性や完成度の代理変数にしない。
+- id: edition-specific-assessment
+  rule: 版・公演形態が異なる評価は別CreativeProfileとして保持する。
+- id: disagreement-preservation
+  rule: 評価者間の不一致を平均値だけに潰さず、個別観測と集約方法を保持する。
+- id: negative-evidence-caution
+  rule: 公開情報に記載がないことを作品内に存在しない証拠として扱わない。
+- id: corpus-scope-explicit
+  rule: 幅の広さを論じるときは対象集合、抽出規則、欠測を明示する。
+qualityGates:
+- CreativeProfileはScenarioWorkを必須とし、版固有評価ではEditionも必須とする。
+- CreativeObservationはclaimMode、evidenceLevel、根拠、確信度を持つ。
+- confidenceは0以上1以下である。
+- title_onlyの観測はtitleSurfaceSignal以外の達成度評価を含まない。
+- public_synopsisの観測はcreator_promiseと実行評価を混同しない。
+- surpriseQualityとemotionalQualityの実行評価はfull_playまたはauthorized_textを必須とする。
+- public出力はminor以上のネタバレを含まない。
+- ProductionCreditは公式クレジット、作者申告、制作記録のいずれかを参照する。
+- AI利用の有無とperceivedHumanTextureを相互推定しない。
+- CorpusDiversityObservationは対象100作等の集合と計算法を特定する。

@@ -1,0 +1,101 @@
+id: creative-profile-example
+type: CreativeProfile
+aboutWork: work-example-glass-archive
+aboutEdition: edition-example-web
+assessedAt: '2026-08-02T17:58:00+09:00'
+assessor: agent-human-reviewer
+publicSpoilerLevel: premise
+limitations:
+- 公開あらすじと公開システム説明のみを使用。
+- 感動の達成度、伏線公平性、結末統合は未評価。
+- AI・人間作者の推定は行わない。
+observations:
+- id: obs-form-001
+  dimension: creativeOperation
+  concept: diegetic_form_integration
+  claimMode: creator_promise
+  evidenceLevel: public_system_description
+  evidence:
+  - id: ev-public-system-001
+    sourceRecord: src-example-official-system
+    evidenceLevel: public_system_description
+    accessClass: public
+    locator: 公開システム説明
+    paraphrase: プレイヤーが架空のアーカイブサイトを調査する設計が公開されている。
+    rightsStatus: metadata_only
+    spoilerLevel: premise
+  polarity: present
+  strength: moderate
+  confidence: 0.85
+  note: Webは装飾ではなく情報取得メカニクスとして約束されている。
+- id: obs-human-001
+  dimension: perceivedHumanTexture
+  concept: lived_social_specificity
+  claimMode: creator_promise
+  evidenceLevel: public_synopsis
+  evidence:
+  - id: ev-public-synopsis-001
+    sourceRecord: src-example-official-synopsis
+    evidenceLevel: public_synopsis
+    accessClass: public
+    locator: 公開あらすじ
+    paraphrase: 地域資料館で働く職員同士の職務と関係が事件導入に組み込まれている。
+    rightsStatus: metadata_only
+    spoilerLevel: premise
+  polarity: present
+  strength: weak
+  confidence: 0.65
+  note: 公開あらすじ上の具体性であり、本文での実行品質は未評価。
+- id: obs-emotion-001
+  dimension: emotionalDesign
+  concept: pair_dependency
+  claimMode: creator_promise
+  evidenceLevel: public_synopsis
+  evidence:
+  - id: ev-public-synopsis-002
+    sourceRecord: src-example-official-synopsis
+    evidenceLevel: public_synopsis
+    accessClass: public
+    locator: 公開あらすじ
+    paraphrase: 二人の共同作業と過去の関係が中心であることが示されている。
+    rightsStatus: metadata_only
+    spoilerLevel: premise
+  polarity: present
+  strength: weak
+  confidence: 0.6
+  note: 感情的達成度ではなく、関係依存を約束する構造の観測。
+emotionalDesign:
+  mechanisms:
+  - pair_dependency
+  - attachment_through_history
+  dominantEmotions:
+  - trust
+  - regret
+  claimMode: creator_promise
+  evidenceLevel: public_synopsis
+  evidence:
+  - id: ev-emotion-001
+    sourceRecord: src-example-official-synopsis
+    evidenceLevel: public_synopsis
+    accessClass: public
+    locator: 公開あらすじ
+    paraphrase: 共有史と関係修復を扱うことが公開情報で示されている。
+    rightsStatus: metadata_only
+    spoilerLevel: premise
+  spoilerSafeSummary: 共有史を持つ二者の信頼と後悔を扱うと約束されている。
+  qualityObservations: []
+productionIntegrations:
+- features:
+  - custom_web_investigation
+  integrationRole: mechanic
+  requiredForPlay: true
+  fallbackAvailable: false
+  evidence:
+  - id: ev-production-001
+    sourceRecord: src-example-official-system
+    evidenceLevel: public_system_description
+    accessClass: public
+    locator: 公開システム説明
+    paraphrase: 専用Web調査が進行に必須であると説明されている。
+    rightsStatus: metadata_only
+    spoilerLevel: premise
