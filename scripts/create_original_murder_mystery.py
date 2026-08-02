@@ -10,15 +10,8 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKSPACE = Path("works/murder-mystery")
-TEMPLATE_ROOT = WORKSPACE / "_templates"
-ALLOWED_STAGES = {
-    "00-inbox": "inbox",
-    "10-incubating": "incubating",
-    "20-developing": "developing",
-    "30-playtesting": "playtesting",
-    "40-production": "production",
-    "90-archived": "archived",
-}
+PROJECT_ROOT = WORKSPACE / "projects"
+TEMPLATE_ROOT = WORKSPACE / "_template"
 SLUG_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 
 
@@ -41,68 +34,67 @@ def _write_yaml(path: Path, value: dict) -> None:
     )
 
 
-def create_project(root: Path, slug: str, title: str, stage: str = "00-inbox") -> Path:
+def _render_template(path: Path, title: str, slug: str) -> None:
+    rendered = path.read_text(encoding="utf-8").replace("{{ title }}", title).replace("{{ slug }}", slug)
+    path.write_text(rendered, encoding="utf-8")
+
+
+def create_project(root: Path, slug: str, title: str) -> Path:
     if not SLUG_PATTERN.fullmatch(slug):
         raise WorkspaceCreationError("slug must use lowercase ASCII letters, numbers, and single hyphens")
-    if stage not in ALLOWED_STAGES:
-        raise WorkspaceCreationError(f"unknown stage: {stage}")
-    if not title.strip():
+    title = title.strip()
+    if not title:
         raise WorkspaceCreationError("title must not be empty")
 
-    workspace = root / WORKSPACE
     templates = root / TEMPLATE_ROOT
-    target = workspace / stage / slug
+    target = root / PROJECT_ROOT / slug
     if target.exists():
         raise WorkspaceCreationError(f"project already exists: {target}")
 
-    for required in (templates / "design", templates / "playtest", templates / "private"):
-        if not required.is_dir():
-            raise WorkspaceCreationError(f"missing template directory: {required}")
+    required_templates = (
+        templates / "project.yaml",
+        templates / "README.md",
+        templates / "private" / "WORK.md",
+        templates / "private" / "PLAYTESTS.md",
+    )
+    for required in required_templates:
+        if not required.is_file():
+            raise WorkspaceCreationError(f"missing template file: {required}")
 
-    target.mkdir(parents=True)
-    shutil.copytree(templates / "design", target / "design")
-    shutil.copytree(templates / "playtest", target / "playtest")
-    shutil.copytree(templates / "private", target / "private")
-    (target / "public").mkdir()
-    (target / "revisions").mkdir()
+    shutil.copytree(templates, target)
 
     now = datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
-    project = _load_yaml(templates / "project.yaml")
+    project = _load_yaml(target / "project.yaml")
     project.update(
         {
             "id": f"original-mm:{slug}",
             "slug": slug,
-            "title": title.strip(),
-            "status": ALLOWED_STAGES[stage],
+            "title": title,
+            "status": "seed",
             "createdAt": now,
             "updatedAt": now,
         }
     )
     _write_yaml(target / "project.yaml", project)
 
-    (target / "public" / "README.md").write_text(
-        f"# {title.strip()}\n\n公開可能なログライン、人数、時間、注意事項だけを記録する。真相や秘密は書かない。\n",
-        encoding="utf-8",
-    )
-    (target / "revisions" / "CHANGELOG.md").write_text(
-        f"# {title.strip()} 変更履歴\n\n## Unreleased\n\n- 人間の原初メモから起票。\n",
-        encoding="utf-8",
-    )
+    for path in (target / "README.md", target / "private" / "WORK.md", target / "private" / "PLAYTESTS.md"):
+        _render_template(path, title, slug)
+
     return target
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Create a human-led original murder-mystery workspace")
+    parser = argparse.ArgumentParser(description="Create a minimal human-led original murder-mystery project")
     parser.add_argument("slug")
     parser.add_argument("title")
-    parser.add_argument("stage", nargs="?", default="00-inbox", choices=sorted(ALLOWED_STAGES))
     return parser
 
 
 def main() -> int:
     args = build_parser().parse_args()
-    target = create_project(ROOT, args.slug, args.title, args.stage)
+    target = create_project(ROOT, args.slug, args.title)
     print(target.relative_to(ROOT))
+    print(f"next: edit {target.relative_to(ROOT) / 'private' / 'WORK.md'}")
     return 0
 
 

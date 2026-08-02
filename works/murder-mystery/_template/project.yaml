@@ -1,29 +1,17 @@
-schemaVersion: 1
+schemaVersion: 2
 id: ""
 slug: ""
 title: ""
-status: inbox
+status: seed
 createdAt: ""
 updatedAt: ""
 creativeOwner: ""
-summary:
-  oneLinePremise: ""
-  centralHumanQuestion: ""
-  intendedPlayerExperience: ""
+nextAction: ""
 authorship:
   humanSeedRecorded: false
   canonicalPlotGeneratedByAI: false
-  finalProseReviewedByHuman: false
+  finalTextApprovedByHuman: false
   aiAssistanceLog: []
-  requiredHumanDecisions:
-    humanSeed: pending
-    ethicalContradiction: pending
-    characterLivesAndWants: pending
-    truthAndCausality: pending
-    centralSurprise: pending
-    climaxChoice: pending
-    ending: pending
-    finalProseAndDialogue: pending
 privacy:
   publicSafe: false
   spoilerMaterialLocation: private/
@@ -31,7 +19,6 @@ privacy:
   externalPrivateStorageRef: ""
 creativeAnalysis:
   ontology: ontology/murder-mystery/creative-analysis.yaml
-  profileId: ""
   targetOperations: []
   humanTextureHypotheses: []
   surpriseMechanisms: []
