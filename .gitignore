@@ -8,5 +8,9 @@ __pycache__/
 node_modules/
 dist/
 
-# Original murder-mystery spoiler material must stay outside this public repository.
+# Original murder-mystery spoiler material is ignored by default.
 works/murder-mystery/projects/*/private/
+
+# Owner-approved public spoiler workspace.
+!works/murder-mystery/projects/unanimous-kindness/private/
+!works/murder-mystery/projects/unanimous-kindness/private/**
