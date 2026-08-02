@@ -1,0 +1,37 @@
+schemaVersion: 1
+structure:
+  opening:
+    ordinaryWorldSpecificity: ""
+    immediateHumanTension: ""
+    incitingIncident: ""
+    playerQuestion: ""
+  development:
+    relationshipEscalations: []
+    evidenceReframes: []
+    choicesWithCost: []
+    falseUnderstanding: ""
+  turn:
+    revealedFact: ""
+    priorMeaningChanged: []
+    humanCostOfTruth: ""
+    playerComplicity: ""
+  conclusion:
+    culpritOrCauseResolution: ""
+    climaxChoice: ""
+    irreversibleConsequences: []
+    unresolvedResidue: ""
+    finalImageOrAction: ""
+
+causalChecks:
+  everyMajorRevealHasPriorCause: false
+  turnChangesMeaningNotOnlyAddsFact: false
+  climaxDependsOnPlayerAction: false
+  endingReturnsToOpeningMotifWithChangedMeaning: false
+  emotionalConclusionIsNotOnlyExposition: false
+
+privateTruthRef: private/truth.yaml
+humanDecisionStatus:
+  opening: pending
+  development: pending
+  turn: pending
+  conclusion: pending

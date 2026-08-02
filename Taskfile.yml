@@ -49,6 +49,14 @@ tasks:
     desc: 'Validate the 100-work creative analysis without writing generated data'
     cmd: 'uv run python scripts/analyze_murder_mystery_creativity.py --check'
 
+  work:new:
+    desc: 'Create a human-led original murder-mystery workspace: task work:new -- slug "title" [stage]'
+    cmd: 'uv run python scripts/create_original_murder_mystery.py {{.CLI_ARGS}}'
+
+  work:validate:
+    desc: 'Validate the original murder-mystery workspace, lifecycle, authorship, and privacy boundaries'
+    cmd: 'uv run python scripts/validate_original_murder_mystery_workspace.py'
+
   clean:
     ignore_error: true
     cmds:
@@ -64,5 +72,8 @@ tasks:
     cmd: 'PYTHONPATH=backend uv run python -m pytest backend/tests/ -v'
 
   verify:
-    desc: 'Verify the entire BGG to NotebookLM pipeline'
-    cmd: 'cd backend && uv run python verify_total_pipeline.py'
+    desc: 'Verify ontologies, original-work structure, and the existing pipeline'
+    cmds:
+      - task: ontology:validate
+      - task: work:validate
+      - 'cd backend && uv run python verify_total_pipeline.py'

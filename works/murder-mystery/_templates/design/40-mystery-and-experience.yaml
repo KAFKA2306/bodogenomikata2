@@ -1,0 +1,43 @@
+schemaVersion: 1
+mystery:
+  publicQuestion: ""
+  actualQuestion: ""
+  truthRef: private/truth.yaml
+  evidenceMapRef: private/evidence-map.yaml
+  surpriseLayers:
+    surfaceReveal: ""
+    structuralReinterpretation: ""
+    humanMeaningReversal: ""
+  fairnessHypotheses:
+    discoverableWithoutGuessing: false
+    cluesHaveAlternativeMeaningBeforeReveal: false
+    revealExplainsMoreThanItInvalidates: false
+    noSingleMandatoryClueBottleneck: false
+
+experience:
+  playerActionsThatExpressTheme: []
+  relationshipMechanics: []
+  informationArchitecture: []
+  privateTalkPurpose: ""
+  votingOrDecisionPurpose: ""
+  nonVerbalOrMediaIntegration: []
+
+emotion:
+  attachmentFormation: []
+  emotionalContradictions: []
+  lossOrRisk: []
+  playerResponsibility: ""
+  climaxMechanism: ""
+  intendedAftertaste: ""
+
+production:
+  requiredMedia: []
+  optionalMedia: []
+  accessibilityRisks: []
+  operationalRisks: []
+
+validationBoundary:
+  authorIntentRecorded: true
+  actualSurpriseNotYetConfirmed: true
+  actualEmotionNotYetConfirmed: true
+  playtestRequiredForAchievementClaims: true
