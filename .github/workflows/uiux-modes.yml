@@ -8,14 +8,16 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout PR branch
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
 
       - name: Set up Node
         uses: actions/setup-node@v4
@@ -24,7 +26,23 @@ jobs:
           cache: npm
           cache-dependency-path: frontend/package-lock.json
 
-      - name: Install dependencies
+      - name: Repair stale lock file once
+        working-directory: frontend
+        run: npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+
+      - name: Commit repaired lock file
+        run: |
+          if git diff --quiet -- frontend/package-lock.json; then
+            echo "package-lock is already synchronized"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add frontend/package-lock.json
+            git commit -m "chore: synchronize frontend package lock"
+            git push origin HEAD:${{ github.head_ref }}
+          fi
+
+      - name: Install dependencies from repaired lock
         working-directory: frontend
         run: npm ci
 
@@ -45,4 +63,4 @@ jobs:
           grep -q 'min-height: 44px' frontend/src/workflow.css
           grep -q 'kafka-signal-v1.0.0' frontend/public/kafka-signal.lock.json
           grep -q 'answer-sequence' frontend/src/kafka-signal.css
-          grep -q 'official rulings' frontend/src/components/KafkaSignalRuntime.tsx || grep -q '公式ルール' frontend/src/components/KafkaSignalRuntime.tsx
+          grep -q '公式ルール' frontend/src/components/KafkaSignalRuntime.tsx
