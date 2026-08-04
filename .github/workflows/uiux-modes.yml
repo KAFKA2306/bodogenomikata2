@@ -20,7 +20,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: "22.18.0"
+          node-version: "24"
           cache: npm
           cache-dependency-path: frontend/package-lock.json
 
@@ -43,3 +43,6 @@ jobs:
           grep -q 'review_status' frontend/src/types/game.ts
           grep -q 'spoiler_level' frontend/src/types/game.ts
           grep -q 'min-height: 44px' frontend/src/workflow.css
+          grep -q 'kafka-signal-v1.0.0' frontend/public/kafka-signal.lock.json
+          grep -q 'answer-sequence' frontend/src/kafka-signal.css
+          grep -q 'official rulings' frontend/src/components/KafkaSignalRuntime.tsx || grep -q '公式ルール' frontend/src/components/KafkaSignalRuntime.tsx
