@@ -5,13 +5,16 @@ import { PlayModePage } from './pages/PlayModePage';
 import { ComparisonPage } from './pages/ComparisonPage';
 import { GameDetailPage } from './pages/GameDetailPage';
 import { ProductShell } from './components/ProductShell';
+import { KafkaSignalRuntime } from './components/KafkaSignalRuntime';
 import './index.css';
 import './workflow.css';
+import './kafka-signal.css';
 
 function App() {
   return (
     <HelmetProvider>
       <BrowserRouter>
+        <KafkaSignalRuntime />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/play" element={<PlayModePage intent="play" />} />
