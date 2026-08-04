@@ -1,0 +1,48 @@
+name: Validate play and research modes
+
+on:
+  pull_request:
+    paths:
+      - "frontend/**"
+      - ".github/workflows/uiux-modes.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        working-directory: frontend
+        run: npm ci
+
+      - name: Typecheck and build
+        working-directory: frontend
+        run: npm run build
+
+      - name: Validate mode and evidence contracts
+        run: |
+          grep -q 'path="/play"' frontend/src/App.tsx
+          grep -q 'path="/install"' frontend/src/App.tsx
+          grep -q 'path="/research"' frontend/src/App.tsx
+          grep -q '確認済みの回答が登録されていません' frontend/src/pages/PlayModePage.tsx
+          grep -q '指定版' frontend/src/pages/PlayModePage.tsx
+          grep -q 'source_documents' frontend/src/types/game.ts
+          grep -q 'review_status' frontend/src/types/game.ts
+          grep -q 'spoiler_level' frontend/src/types/game.ts
+          grep -q 'min-height: 44px' frontend/src/workflow.css
+          grep -q 'kafka-signal-v1.0.0' frontend/public/kafka-signal.lock.json
+          grep -q 'answer-sequence' frontend/src/kafka-signal.css
+          grep -q '公式ルール' frontend/src/components/KafkaSignalRuntime.tsx
