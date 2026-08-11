@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from starlette.responses import Response
 
+from app import palworld_router
 from app import routers as games
 from app.core.logger import setup_logging
 from app.core.sqlite_client import init_database
@@ -36,6 +37,7 @@ app.add_middleware(
 )
 
 app.include_router(games.router, prefix="/api", tags=["games"])
+app.include_router(palworld_router.router, prefix="/api", tags=["palworld"])
 
 
 @app.on_event("startup")
@@ -54,4 +56,3 @@ app.mount("/assets", CacheControlledStaticFiles(directory=str(STATIC_DIR / "asse
 
 # Serve fallback index.html and other static files at the root (placed LAST)
 app.mount("/", StaticFiles(directory=str(STATIC_DIR), html=True), name="static")
-
