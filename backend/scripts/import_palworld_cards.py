@@ -194,24 +194,13 @@ def parse_japanese_block(block: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-async def extract_blocks(page: Page, url: str, expected_printings: int) -> list[dict[str, Any]]:
-    await page.goto(url, wait_until="domcontentloaded")
-    await page.wait_for_function(
-        r"""expected => {
-            const matches = document.body.innerText.match(/EBP01-\d{3}(?:SSP|OSR|SP|SR)?/g) || [];
-            return new Set(matches).size >= expected;
-        }""",
-        arg=expected_printings,
-        timeout=90000,
-    )
-    raw_blocks = await page.evaluate(
+async def _extract_dom_blocks(page: Page) -> list[dict[str, Any]]:
+    return await page.evaluate(
         r"""() => {
-            const links = Array.from(document.querySelectorAll('a')).filter(link =>
-                link.textContent.trim().toUpperCase() === 'MORE' && link.href.includes('/cardlist/detail')
-            );
+            const links = Array.from(document.querySelectorAll('a[href*="/cardlist/detail"]'));
             return links.map(link => {
                 let node = link;
-                let best = link.parentElement;
+                let best = link.parentElement || link;
                 while (node.parentElement) {
                     const candidate = node.parentElement;
                     const matches = candidate.innerText.match(/EBP01-\d{3}(?:SSP|OSR|SP|SR)?/g) || [];
@@ -233,10 +222,50 @@ async def extract_blocks(page: Page, url: str, expected_printings: int) -> list[
             });
         }"""
     )
-    deduplicated: dict[str, dict[str, Any]] = {}
-    for block in raw_blocks:
-        deduplicated[_printing_id(block["text"])] = block
-    blocks = [deduplicated[key] for key in sorted(deduplicated)]
+
+
+async def extract_blocks(page: Page, url: str, expected_printings: int) -> list[dict[str, Any]]:
+    await page.goto(url, wait_until="domcontentloaded")
+    await page.wait_for_function(
+        r"""() => /EBP01-\d{3}/.test(document.body.innerText)""",
+        timeout=30000,
+    )
+
+    collected: dict[str, dict[str, Any]] = {}
+    stagnant_rounds = 0
+    previous_count = -1
+    for _ in range(100):
+        for block in await _extract_dom_blocks(page):
+            try:
+                collected[_printing_id(block["text"])] = block
+            except ValueError:
+                continue
+        if len(collected) >= expected_printings:
+            break
+
+        if len(collected) == previous_count:
+            stagnant_rounds += 1
+        else:
+            stagnant_rounds = 0
+            previous_count = len(collected)
+        if stagnant_rounds >= 12:
+            break
+
+        await page.evaluate(
+            r"""() => {
+                const controls = Array.from(document.querySelectorAll('button, a')).filter(element => {
+                    const text = (element.textContent || '').trim().toUpperCase();
+                    const href = element.getAttribute('href') || '';
+                    return !href.includes('/cardlist/detail') && /LOAD MORE|MORE CARDS|NEXT/.test(text);
+                });
+                const visible = controls.find(element => element.getClientRects().length > 0);
+                if (visible) visible.click();
+                window.scrollTo(0, document.body.scrollHeight);
+            }"""
+        )
+        await page.wait_for_timeout(750)
+
+    blocks = [collected[key] for key in sorted(collected)]
     if len(blocks) != expected_printings:
         raise ValueError(f"Expected {expected_printings} official printings at {url}, got {len(blocks)}")
     return blocks
