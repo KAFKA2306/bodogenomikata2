@@ -54,7 +54,7 @@ def write_snapshot(path: Path) -> None:
         printing("EBP01-039", "U"),
         printing("EBP01-039SR", "SR"),
     ]
-    path.mkdir(parents=True)
+    path.mkdir(parents=True, exist_ok=True)
     (path / "cards.json").write_text(json.dumps(cards), encoding="utf-8")
     (path / "printings.json").write_text(json.dumps(printings), encoding="utf-8")
     (path / "provenance.json").write_text("[]", encoding="utf-8")
