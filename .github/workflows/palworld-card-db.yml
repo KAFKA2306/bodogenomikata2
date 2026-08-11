@@ -6,7 +6,6 @@ on:
       - "backend/app/palworld_router.py"
       - "backend/app/services/palworld_card_service.py"
       - "backend/scripts/import_palworld_cards.py"
-      - "backend/scripts/diagnose_palworld_page.py"
       - "backend/tests/test_palworld_card_db.py"
       - "data/palworld/**"
       - "frontend/src/pages/PalworldCardSearchPage.tsx"
@@ -37,14 +36,8 @@ jobs:
       - name: Install Python dependencies
         run: uv sync --group dev
 
-      - name: Install Chromium
-        run: uv run playwright install --with-deps chromium
-
       - name: Unit tests
         run: PYTHONPATH=.:backend uv run pytest backend/tests/test_palworld_card_db.py -q
-
-      - name: Diagnose official card feed
-        run: PYTHONPATH=.:backend uv run python backend/scripts/diagnose_palworld_page.py
 
       - name: Import official BP01 snapshot
         run: |
@@ -57,12 +50,20 @@ jobs:
           PYTHONPATH=.:backend uv run python - <<'PY'
           from app.services.palworld_card_service import load_snapshot
           snapshot = load_snapshot()
+          manifest = snapshot["manifest"]
+          audit = snapshot["audit"]
           assert len(snapshot["cards"]) == 100
           assert len(snapshot["printings"]) == 161
-          assert not snapshot["audit"]["duplicate_card_ids"]
-          assert not snapshot["audit"]["duplicate_printing_ids"]
-          assert not snapshot["audit"]["orphan_printings"]
-          print(snapshot["manifest"])
+          assert manifest["logical_card_count"] == 100
+          assert manifest["printing_count"] == 161
+          assert manifest["product_spec_printing_count"] == 161
+          assert manifest["english_api_unique_bp01_printings"] == 161
+          assert audit["product_spec_vs_unique_api_delta"] == 0
+          assert not audit["duplicate_card_ids"]
+          assert not audit["duplicate_printing_ids"]
+          assert not audit["orphan_printings"]
+          assert audit["official_api_duplicate_bp01_record_count"] == 0
+          print(manifest)
           PY
 
       - name: Upload canonical snapshot
