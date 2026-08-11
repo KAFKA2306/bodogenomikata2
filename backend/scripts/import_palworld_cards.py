@@ -91,6 +91,29 @@ async def _fetch_all(request: APIRequestContext, api_url: str) -> tuple[list[dic
     return rows, total
 
 
+def _partition_bp01_rows(
+    rows: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    included: list[dict[str, Any]] = []
+    excluded: list[dict[str, Any]] = []
+    for row in rows:
+        card_number = row.get("card_number")
+        if isinstance(card_number, str) and card_number.startswith("EBP01-"):
+            included.append(row)
+            continue
+        excluded.append(
+            {
+                "api_record_id": row.get("id"),
+                "card_number": card_number,
+                "card_name": row.get("card_name"),
+                "card_kind": row.get("card_kind"),
+                "rarity": row.get("rare"),
+                "expansion": row.get("expansion"),
+            }
+        )
+    return included, excluded
+
+
 def _canonical_projection(row: dict[str, Any]) -> dict[str, Any]:
     return {field: row.get(field) for field in CANONICAL_API_FIELDS}
 
@@ -100,7 +123,7 @@ def _deduplicate_official_rows(rows: list[dict[str, Any]]) -> tuple[dict[str, di
     for row in rows:
         card_number = row.get("card_number")
         if not isinstance(card_number, str) or not card_number.startswith("EBP01-"):
-            raise ValueError(f"Unexpected official BP01 card number: {card_number!r}")
+            raise ValueError(f"Unexpected canonical BP01 card number: {card_number!r}")
         grouped[card_number].append(row)
 
     unique: dict[str, dict[str, Any]] = {}
@@ -326,8 +349,10 @@ async def import_bp01(output_dir: Path, expected_cards: int, expected_printings:
         community = await community_response.json()
         await request.dispose()
 
-    en_rows, official_duplicates = _deduplicate_official_rows(en_api_rows)
-    ja_rows, japanese_duplicates = _deduplicate_official_rows(ja_api_rows) if ja_api_rows else ({}, [])
+    en_bp01_rows, en_excluded_rows = _partition_bp01_rows(en_api_rows)
+    ja_bp01_rows, ja_excluded_rows = _partition_bp01_rows(ja_api_rows)
+    en_rows, official_duplicates = _deduplicate_official_rows(en_bp01_rows)
+    ja_rows, japanese_duplicates = _deduplicate_official_rows(ja_bp01_rows) if ja_bp01_rows else ({}, [])
 
     cards, card_provenance = _build_cards(en_rows, ja_rows, retrieved_at)
     printings, printing_provenance = _build_printings(en_rows, retrieved_at)
@@ -352,7 +377,9 @@ async def import_bp01(output_dir: Path, expected_cards: int, expected_printings:
         "printing_count": len(printings),
         "product_spec_printing_count": PRODUCT_SPEC_PRINTING_COUNT,
         "english_api_reported_total": en_reported_total,
-        "english_api_unique_printings": len(en_rows),
+        "english_api_bp01_row_count": len(en_bp01_rows),
+        "english_api_unique_bp01_printings": len(en_rows),
+        "english_api_excluded_non_bp01_count": len(en_excluded_rows),
         "japanese_api_reported_total": ja_reported_total,
         "japanese_source_status": japanese_status,
         "source_checked_at": retrieved_at,
@@ -371,13 +398,15 @@ async def import_bp01(output_dir: Path, expected_cards: int, expected_printings:
         "duplicate_card_ids": [],
         "duplicate_printing_ids": [],
         "orphan_printings": [],
-        "official_api_duplicate_record_count": en_reported_total - len(en_rows),
-        "official_api_duplicate_records": official_duplicates,
-        "japanese_api_duplicate_records": japanese_duplicates,
+        "official_api_duplicate_bp01_record_count": len(en_bp01_rows) - len(en_rows),
+        "official_api_duplicate_bp01_records": official_duplicates,
+        "official_api_excluded_non_bp01_records": en_excluded_rows,
+        "japanese_api_excluded_non_bp01_records": ja_excluded_rows,
+        "japanese_api_duplicate_bp01_records": japanese_duplicates,
         "product_spec_vs_unique_api_delta": len(printings) - PRODUCT_SPEC_PRINTING_COUNT,
         "community_mismatch_count": len(community_mismatches),
         "community_mismatches": community_mismatches,
-        "policy": "Official Palworld OCG API wins over community seed on every canonical field; duplicate API rows are deduplicated only when canonical fields are identical.",
+        "policy": "Canonical BP01 printings are official rows whose card_number starts with EBP01-. Official non-BP01 expansion records are audited but excluded. Official fields win over the community seed.",
     }
     _write_json(output_dir / "cards.json", [card.model_dump() for card in cards])
     _write_json(output_dir / "printings.json", [printing.model_dump() for printing in printings])
