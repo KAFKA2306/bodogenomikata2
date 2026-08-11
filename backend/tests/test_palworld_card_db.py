@@ -4,7 +4,8 @@ from pathlib import Path
 import pytest
 from pydantic import ValidationError
 
-from app.services.palworld_card_service import base_card_id, search_cards, validate_snapshot
+from app.services.palworld_card_service import PalworldCard, base_card_id, search_cards, validate_snapshot
+from scripts.import_palworld_cards import _community_type, _entity_diff
 
 
 def card(card_base_id: str, name_en: str, color: str = "Red", card_type: str = "Pal") -> dict:
@@ -114,3 +115,23 @@ def test_search_supports_number_name_color_type_and_rarity(tmp_path: Path) -> No
     assert by_name["data"][0]["card"]["card_base_id"] == "EBP01-002"
     assert by_color_type["data"][0]["card"]["card_base_id"] == "EBP01-039"
     assert [item["printing_id"] for item in by_rarity["data"][0]["printings"]] == ["EBP01-002OSR"]
+
+
+def test_community_type_uses_pal_subtype() -> None:
+    pal = PalworldCard.model_validate(card("EBP01-002", "Suzaku – Hellfire Wings"))
+    structure = PalworldCard.model_validate(
+        card("EBP01-039", "Antique Curtain", color="Blue", card_type="Structure")
+    )
+    assert _community_type(pal) == "Lucky Pal"
+    assert _community_type(structure) == "Structure"
+
+
+def test_entity_diff_ignores_retrieval_timestamp_but_reports_real_change() -> None:
+    previous = [printing("EBP01-002", "RR")]
+    current = [printing("EBP01-002", "RR")]
+    current[0]["source_checked_at"] = "2026-08-12T00:00:00+00:00"
+    assert _entity_diff(previous, current, "printing_id")["changed"] == []
+
+    current[0]["rarity"] = "OSR"
+    changed = _entity_diff(previous, current, "printing_id")["changed"]
+    assert changed == [{"id": "EBP01-002", "fields": ["rarity"]}]
