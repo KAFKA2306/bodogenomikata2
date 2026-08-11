@@ -1,0 +1,1451 @@
+[
+  {
+    "printing_id": "EBP01-001",
+    "card_base_id": "EBP01-001",
+    "rarity": "RR",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=79",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-001OSR",
+    "card_base_id": "EBP01-001",
+    "rarity": "OSR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=80",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-001SSP",
+    "card_base_id": "EBP01-001",
+    "rarity": "SSP",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=81",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-002",
+    "card_base_id": "EBP01-002",
+    "rarity": "RR",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=82",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-002OSR",
+    "card_base_id": "EBP01-002",
+    "rarity": "OSR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=83",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-002SP",
+    "card_base_id": "EBP01-002",
+    "rarity": "SP",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=84",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-003",
+    "card_base_id": "EBP01-003",
+    "rarity": "R",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=85",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-003SR",
+    "card_base_id": "EBP01-003",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=86",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-004",
+    "card_base_id": "EBP01-004",
+    "rarity": "R",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=87",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-004SR",
+    "card_base_id": "EBP01-004",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=88",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-005",
+    "card_base_id": "EBP01-005",
+    "rarity": "R",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=89",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-005SR",
+    "card_base_id": "EBP01-005",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=90",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-006",
+    "card_base_id": "EBP01-006",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=91",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-006SR",
+    "card_base_id": "EBP01-006",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=92",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-007",
+    "card_base_id": "EBP01-007",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=93",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-007SR",
+    "card_base_id": "EBP01-007",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=94",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-008",
+    "card_base_id": "EBP01-008",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=95",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-009",
+    "card_base_id": "EBP01-009",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=96",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-010",
+    "card_base_id": "EBP01-010",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=97",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-011",
+    "card_base_id": "EBP01-011",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=98",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-012",
+    "card_base_id": "EBP01-012",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=99",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-013",
+    "card_base_id": "EBP01-013",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=100",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-014",
+    "card_base_id": "EBP01-014",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=101",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-015",
+    "card_base_id": "EBP01-015",
+    "rarity": "R",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=102",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-015SP",
+    "card_base_id": "EBP01-015",
+    "rarity": "SP",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=103",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-016",
+    "card_base_id": "EBP01-016",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=104",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-017",
+    "card_base_id": "EBP01-017",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=105",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-018",
+    "card_base_id": "EBP01-018",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=106",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-019",
+    "card_base_id": "EBP01-019",
+    "rarity": "R",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=107",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-019SR",
+    "card_base_id": "EBP01-019",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=108",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-020",
+    "card_base_id": "EBP01-020",
+    "rarity": "R",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=109",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-020SR",
+    "card_base_id": "EBP01-020",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=110",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-021",
+    "card_base_id": "EBP01-021",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=111",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-022",
+    "card_base_id": "EBP01-022",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=112",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-023",
+    "card_base_id": "EBP01-023",
+    "rarity": "RR",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=113",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-023OSR",
+    "card_base_id": "EBP01-023",
+    "rarity": "OSR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=114",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-023SP",
+    "card_base_id": "EBP01-023",
+    "rarity": "SP",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=115",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-024",
+    "card_base_id": "EBP01-024",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=116",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-025",
+    "card_base_id": "EBP01-025",
+    "rarity": "RR",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=117",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-025OSR",
+    "card_base_id": "EBP01-025",
+    "rarity": "OSR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=118",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-025SSP",
+    "card_base_id": "EBP01-025",
+    "rarity": "SSP",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=119",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-026",
+    "card_base_id": "EBP01-026",
+    "rarity": "RR",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=120",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-026OSR",
+    "card_base_id": "EBP01-026",
+    "rarity": "OSR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=121",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-026SP",
+    "card_base_id": "EBP01-026",
+    "rarity": "SP",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=122",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-027",
+    "card_base_id": "EBP01-027",
+    "rarity": "R",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=123",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-027OSR",
+    "card_base_id": "EBP01-027",
+    "rarity": "OSR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=124",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-027SP",
+    "card_base_id": "EBP01-027",
+    "rarity": "SP",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=125",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-028",
+    "card_base_id": "EBP01-028",
+    "rarity": "R",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=126",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-028SR",
+    "card_base_id": "EBP01-028",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=127",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-029",
+    "card_base_id": "EBP01-029",
+    "rarity": "R",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=128",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-029SR",
+    "card_base_id": "EBP01-029",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=129",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-030",
+    "card_base_id": "EBP01-030",
+    "rarity": "R",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=130",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-030SR",
+    "card_base_id": "EBP01-030",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=131",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-031",
+    "card_base_id": "EBP01-031",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=132",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-031SR",
+    "card_base_id": "EBP01-031",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=133",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-032",
+    "card_base_id": "EBP01-032",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=134",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-033",
+    "card_base_id": "EBP01-033",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=135",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-034",
+    "card_base_id": "EBP01-034",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=136",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-035",
+    "card_base_id": "EBP01-035",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=137",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-036",
+    "card_base_id": "EBP01-036",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=138",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-037",
+    "card_base_id": "EBP01-037",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=139",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-038",
+    "card_base_id": "EBP01-038",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=140",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-039",
+    "card_base_id": "EBP01-039",
+    "rarity": "R",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=141",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-039SR",
+    "card_base_id": "EBP01-039",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=142",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-040",
+    "card_base_id": "EBP01-040",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=143",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-041",
+    "card_base_id": "EBP01-041",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=144",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-042",
+    "card_base_id": "EBP01-042",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=145",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-043",
+    "card_base_id": "EBP01-043",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=146",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-044",
+    "card_base_id": "EBP01-044",
+    "rarity": "R",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=147",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-044SR",
+    "card_base_id": "EBP01-044",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=148",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-045",
+    "card_base_id": "EBP01-045",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=149",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-046",
+    "card_base_id": "EBP01-046",
+    "rarity": "RR",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=150",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-046OSR",
+    "card_base_id": "EBP01-046",
+    "rarity": "OSR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=151",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-046SP",
+    "card_base_id": "EBP01-046",
+    "rarity": "SP",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=152",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-047",
+    "card_base_id": "EBP01-047",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=153",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-047SR",
+    "card_base_id": "EBP01-047",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=154",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-048",
+    "card_base_id": "EBP01-048",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=155",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-049",
+    "card_base_id": "EBP01-049",
+    "rarity": "RR",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=156",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-049OSR",
+    "card_base_id": "EBP01-049",
+    "rarity": "OSR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=157",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-049SSP",
+    "card_base_id": "EBP01-049",
+    "rarity": "SSP",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=158",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-050",
+    "card_base_id": "EBP01-050",
+    "rarity": "RR",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=159",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-050OSR",
+    "card_base_id": "EBP01-050",
+    "rarity": "OSR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=160",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-050SP",
+    "card_base_id": "EBP01-050",
+    "rarity": "SP",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=161",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-051",
+    "card_base_id": "EBP01-051",
+    "rarity": "R",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=162",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-051OSR",
+    "card_base_id": "EBP01-051",
+    "rarity": "OSR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=163",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-051SP",
+    "card_base_id": "EBP01-051",
+    "rarity": "SP",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=164",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-052",
+    "card_base_id": "EBP01-052",
+    "rarity": "R",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=165",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-052SR",
+    "card_base_id": "EBP01-052",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=166",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-053",
+    "card_base_id": "EBP01-053",
+    "rarity": "R",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=167",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-053SR",
+    "card_base_id": "EBP01-053",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=168",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-054",
+    "card_base_id": "EBP01-054",
+    "rarity": "R",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=169",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-054SR",
+    "card_base_id": "EBP01-054",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=170",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-055",
+    "card_base_id": "EBP01-055",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=171",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-055SR",
+    "card_base_id": "EBP01-055",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=172",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-056",
+    "card_base_id": "EBP01-056",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=173",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-056SR",
+    "card_base_id": "EBP01-056",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=174",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-057",
+    "card_base_id": "EBP01-057",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=175",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-058",
+    "card_base_id": "EBP01-058",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=176",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-059",
+    "card_base_id": "EBP01-059",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=177",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-060",
+    "card_base_id": "EBP01-060",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=178",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-061",
+    "card_base_id": "EBP01-061",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=179",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-062",
+    "card_base_id": "EBP01-062",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=180",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-063",
+    "card_base_id": "EBP01-063",
+    "rarity": "R",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=181",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-063SR",
+    "card_base_id": "EBP01-063",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=182",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-064",
+    "card_base_id": "EBP01-064",
+    "rarity": "R",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=183",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-064SR",
+    "card_base_id": "EBP01-064",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=184",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-065",
+    "card_base_id": "EBP01-065",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=185",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-066",
+    "card_base_id": "EBP01-066",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=186",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-067",
+    "card_base_id": "EBP01-067",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=187",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-068",
+    "card_base_id": "EBP01-068",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=188",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-069",
+    "card_base_id": "EBP01-069",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=189",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-070",
+    "card_base_id": "EBP01-070",
+    "rarity": "RR",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=190",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-070OSR",
+    "card_base_id": "EBP01-070",
+    "rarity": "OSR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=191",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-070SP",
+    "card_base_id": "EBP01-070",
+    "rarity": "SP",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=192",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-071",
+    "card_base_id": "EBP01-071",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=193",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-072",
+    "card_base_id": "EBP01-072",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=194",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-073",
+    "card_base_id": "EBP01-073",
+    "rarity": "RR",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=195",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-073OSR",
+    "card_base_id": "EBP01-073",
+    "rarity": "OSR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=196",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-073SSP",
+    "card_base_id": "EBP01-073",
+    "rarity": "SSP",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=197",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-074",
+    "card_base_id": "EBP01-074",
+    "rarity": "RR",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=198",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-074OSR",
+    "card_base_id": "EBP01-074",
+    "rarity": "OSR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=199",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-074SP",
+    "card_base_id": "EBP01-074",
+    "rarity": "SP",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=200",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-075",
+    "card_base_id": "EBP01-075",
+    "rarity": "R",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=201",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-075OSR",
+    "card_base_id": "EBP01-075",
+    "rarity": "OSR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=202",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-075SP",
+    "card_base_id": "EBP01-075",
+    "rarity": "SP",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=203",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-076",
+    "card_base_id": "EBP01-076",
+    "rarity": "R",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=204",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-076SR",
+    "card_base_id": "EBP01-076",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=205",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-077",
+    "card_base_id": "EBP01-077",
+    "rarity": "R",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=206",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-077SR",
+    "card_base_id": "EBP01-077",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=207",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-078",
+    "card_base_id": "EBP01-078",
+    "rarity": "R",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=208",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-078SR",
+    "card_base_id": "EBP01-078",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=209",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-079",
+    "card_base_id": "EBP01-079",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=210",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-079SR",
+    "card_base_id": "EBP01-079",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=211",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-080",
+    "card_base_id": "EBP01-080",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=212",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-080SR",
+    "card_base_id": "EBP01-080",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=213",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-081",
+    "card_base_id": "EBP01-081",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=214",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-081SR",
+    "card_base_id": "EBP01-081",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=215",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-082",
+    "card_base_id": "EBP01-082",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=216",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-083",
+    "card_base_id": "EBP01-083",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=217",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-084",
+    "card_base_id": "EBP01-084",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=218",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-085",
+    "card_base_id": "EBP01-085",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=219",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-086",
+    "card_base_id": "EBP01-086",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=220",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-087",
+    "card_base_id": "EBP01-087",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=221",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-088",
+    "card_base_id": "EBP01-088",
+    "rarity": "R",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=222",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-088SR",
+    "card_base_id": "EBP01-088",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=223",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-089",
+    "card_base_id": "EBP01-089",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=224",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-090",
+    "card_base_id": "EBP01-090",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=225",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-091",
+    "card_base_id": "EBP01-091",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=226",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-092",
+    "card_base_id": "EBP01-092",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=227",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-093",
+    "card_base_id": "EBP01-093",
+    "rarity": "R",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=228",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-093SR",
+    "card_base_id": "EBP01-093",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=229",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-094",
+    "card_base_id": "EBP01-094",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=230",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-095",
+    "card_base_id": "EBP01-095",
+    "rarity": "RR",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=231",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-095OSR",
+    "card_base_id": "EBP01-095",
+    "rarity": "OSR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=232",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-095SP",
+    "card_base_id": "EBP01-095",
+    "rarity": "SP",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=233",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-096",
+    "card_base_id": "EBP01-096",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=234",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-097",
+    "card_base_id": "EBP01-097",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=235",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-098",
+    "card_base_id": "EBP01-098",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=236",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-099",
+    "card_base_id": "EBP01-099",
+    "rarity": "C",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=237",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-100",
+    "card_base_id": "EBP01-100",
+    "rarity": "U",
+    "is_parallel": false,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=238",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "printing_id": "EBP01-100SR",
+    "card_base_id": "EBP01-100",
+    "rarity": "SR",
+    "is_parallel": true,
+    "official_image_url": null,
+    "source_url": "https://en.palworld-official-cardgame.com/cardlist/detail?id=239",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  }
+]

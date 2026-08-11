@@ -1,0 +1,2395 @@
+[
+  {
+    "card_base_id": "EBP01-001",
+    "name_ja": null,
+    "name_en": "Jormuntide Ignis – Savage Lava Dragon",
+    "card_type": "Pal",
+    "subtype": "Lucky Pal",
+    "color": "Red",
+    "cost": 8,
+    "power_or_durability": 1700,
+    "strike": 4,
+    "elements": [
+      "Dragon",
+      "Fire"
+    ],
+    "aptitudes": [
+      "Kindling"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@1Turn@[③] OR [Discard 2 cards from hand] Stand this card.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=79",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-002",
+    "name_ja": null,
+    "name_en": "Suzaku – Hellfire Wings",
+    "card_type": "Pal",
+    "subtype": "Lucky Pal",
+    "color": "Red",
+    "cost": 7,
+    "power_or_durability": 1200,
+    "strike": 3,
+    "elements": [
+      "Fire"
+    ],
+    "aptitudes": [
+      "Kindling"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "CONT@When your red card would deal Damage@ other than battle damage to a Pal, deal +200 Damage@ instead (Strengthens this card's ability too). \nAUTO@OnDeploy@Choose up to 1 Pal, and deal 700 Damage@.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=82",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-003",
+    "name_ja": null,
+    "name_en": "Gobfin Ignis – Blazing Hothead",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Red",
+    "cost": 4,
+    "power_or_durability": 400,
+    "strike": 2,
+    "elements": [
+      "Fire"
+    ],
+    "aptitudes": [
+      "Kindling",
+      "Crafting",
+      "Transporting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "CONT@All of your other red Pals get Power@+300.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=85",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-004",
+    "name_ja": null,
+    "name_en": "Bushi – Ephemeral Blade",
+    "card_type": "Pal",
+    "subtype": "Lucky Pal",
+    "color": "Red",
+    "cost": 5,
+    "power_or_durability": 800,
+    "strike": 2,
+    "elements": [
+      "Fire"
+    ],
+    "aptitudes": [
+      "Kindling",
+      "Crafting",
+      "Collecting",
+      "Transporting"
+    ],
+    "keywords": [
+      "Interrupt"
+    ],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@At the end of the battle this card attacked, you may return this card to hand. \nACT@Interrupt (Hand@Quick@[①, discard this card] OR [Discard this card and 1 other card from hand] Nullify the opponent's attack. Battle damage does not occur)",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=87",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-005",
+    "name_ja": null,
+    "name_en": "Reptyro – Ore Gorger",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Red",
+    "cost": 8,
+    "power_or_durability": 1500,
+    "strike": 3,
+    "elements": [
+      "Fire",
+      "Ground"
+    ],
+    "aptitudes": [
+      "Kindling",
+      "Collecting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@OnDeploy@Get 3 Material@. \nACT@1Turn@[Consume 3 Material@] Look at the top 5 cards of your deck, choose up to 1 ◇8 or less gear from among them and deploy it, and shuffle the rest of the cards with the deck.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=89",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-006",
+    "name_ja": null,
+    "name_en": "Foxparks – Light of Courage",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Red",
+    "cost": 2,
+    "power_or_durability": 200,
+    "strike": 1,
+    "elements": [
+      "Fire"
+    ],
+    "aptitudes": [
+      "Kindling"
+    ],
+    "keywords": [
+      "Brave"
+    ],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@Brave 300 (OnAttack@This card gets Power@+300 until end of turn)",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=91",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-007",
+    "name_ja": null,
+    "name_en": "Kitsun – Wyrmbane Fangs",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Red",
+    "cost": 5,
+    "power_or_durability": 400,
+    "strike": 2,
+    "elements": [
+      "Fire"
+    ],
+    "aptitudes": [
+      "Kindling"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@OnDeploy@Choose up to 1 ◇7 or greater Pal, and deal 1200 Damage@.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=93",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-008",
+    "name_ja": null,
+    "name_en": "Sparkit – Hazardous Contact",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Red",
+    "cost": 3,
+    "power_or_durability": 400,
+    "strike": 1,
+    "elements": [
+      "Electric"
+    ],
+    "aptitudes": [
+      "Electricity",
+      "Crafting",
+      "Transporting",
+      "Farming"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@OnDeploy@Choose up to 1 Pal in the stand state, and deal 500 Damage@.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=95",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-009",
+    "name_ja": null,
+    "name_en": "Univolt – Valiant Thunderclap",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Red",
+    "cost": 4,
+    "power_or_durability": 600,
+    "strike": 2,
+    "elements": [
+      "Electric"
+    ],
+    "aptitudes": [
+      "Electricity",
+      "Collecting"
+    ],
+    "keywords": [
+      "Brave"
+    ],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@Brave 300 (OnAttack@This card gets Power@+300 until end of turn)",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=96",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-010",
+    "name_ja": null,
+    "name_en": "Ragnahawk – Emberwing Striker",
+    "card_type": "Pal",
+    "subtype": "Lucky Pal",
+    "color": "Red",
+    "cost": 6,
+    "power_or_durability": 1000,
+    "strike": 2,
+    "elements": [
+      "Fire"
+    ],
+    "aptitudes": [
+      "Kindling",
+      "Transporting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@OnAttack@Choose all of your red Pals, and they get Power@+500/Strike@+1 until end of turn.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=97",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-011",
+    "name_ja": null,
+    "name_en": "Rooby – Brave Sparks",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Red",
+    "cost": 2,
+    "power_or_durability": 200,
+    "strike": 1,
+    "elements": [
+      "Fire"
+    ],
+    "aptitudes": [
+      "Kindling",
+      "Farming"
+    ],
+    "keywords": [
+      "Serious"
+    ],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@Serious 400 (OnAssign@Choose 1 Pal, and it gets Power@+400 until end of turn)",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=98",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-012",
+    "name_ja": null,
+    "name_en": "Flambelle – Scorching Tears",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Red",
+    "cost": 3,
+    "power_or_durability": 400,
+    "strike": 1,
+    "elements": [
+      "Fire"
+    ],
+    "aptitudes": [
+      "Kindling",
+      "Crafting",
+      "Transporting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@OnDeploy@Get 2 Material@.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=99",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-013",
+    "name_ja": null,
+    "name_en": "Pyrin – Cinder Steed",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Red",
+    "cost": 6,
+    "power_or_durability": 1200,
+    "strike": 2,
+    "elements": [
+      "Fire"
+    ],
+    "aptitudes": [
+      "Kindling",
+      "Collecting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": null,
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=100",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-014",
+    "name_ja": null,
+    "name_en": "Blazehowl – Hellflame Defender",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Red",
+    "cost": 7,
+    "power_or_durability": 1200,
+    "strike": 3,
+    "elements": [
+      "Fire"
+    ],
+    "aptitudes": [
+      "Kindling",
+      "Collecting"
+    ],
+    "keywords": [
+      "Interrupt"
+    ],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@Interrupt (Hand@Quick@[①, discard this card] OR [Discard this card and 1 other card from hand] Nullify the opponent's attack. Battle damage does not occur)",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=101",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-015",
+    "name_ja": null,
+    "name_en": "Mounted Machine Gun",
+    "card_type": "Structure",
+    "subtype": null,
+    "color": "Red",
+    "cost": 4,
+    "power_or_durability": 1000,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [
+      "Crafting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@1Turn@[Consume X Material@, assign 1 Pal] Perform 〈Choose 1 Pal, and deal 500 Damage@. 〉 X times.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=102",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-016",
+    "name_ja": null,
+    "name_en": "Primitive Furnace",
+    "card_type": "Structure",
+    "subtype": null,
+    "color": "Red",
+    "cost": 2,
+    "power_or_durability": 800,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [
+      "Kindling"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@1Turn@[Assign 1 Pal] Get 3 Material@, and draw 1 card. \nACT@1Turn@[Consume X Material@] Reduce the cost of playing your next gear from hand by X until end of turn. It does not become ◇0 or less from this ability.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=104",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-017",
+    "name_ja": null,
+    "name_en": "Flame Cauldron",
+    "card_type": "Structure",
+    "subtype": null,
+    "color": "Red",
+    "cost": 2,
+    "power_or_durability": 900,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [
+      "Kindling"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "CONT@All of your red Pals get Power@+200. \nAUTO@When your red Pal is deployed, get 1 Material@.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=105",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-018",
+    "name_ja": null,
+    "name_en": "Alarm Bell",
+    "card_type": "Structure",
+    "subtype": null,
+    "color": "Red",
+    "cost": 3,
+    "power_or_durability": 1100,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@1Turn@[①, assign 1 Pal] Stand all Pals assigned this turn. Until end of turn, your Pals cannot be assigned, and must attack as much as possible (Includes Pals deployed after activating this ability).",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=106",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-019",
+    "name_ja": null,
+    "name_en": "Foxparks' Harness",
+    "card_type": "Gear",
+    "subtype": null,
+    "color": "Red",
+    "cost": 3,
+    "power_or_durability": null,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@[Rest this card] Choose 1 Pal, and it gets Power@+200 until end of turn. If its main name is 《Foxparks》, it gets the skill in 〈〉 until end of turn. 〈AUTO@OnAttack@Choose up to 1 Pal, and deal 700 Damage@〉.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=107",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-020",
+    "name_ja": null,
+    "name_en": "Pump-Action Shotgun",
+    "card_type": "Gear",
+    "subtype": null,
+    "color": "Red",
+    "cost": 7,
+    "power_or_durability": null,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@OnDeploy@Choose all of your opponent's Pals, and deal 1200 Damage@. \nACT@[Rest this card] Choose 1 Pal, and it gets Power@+200 until end of turn.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=109",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-021",
+    "name_ja": null,
+    "name_en": "Makeshift Handgun",
+    "card_type": "Gear",
+    "subtype": null,
+    "color": "Red",
+    "cost": 2,
+    "power_or_durability": null,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@OnDeploy@Choose up to 1 Pal, and deal 500 Damage@. \nACT@[Rest this card] Choose 1 Pal, and it gets Power@+200 until end of turn.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=111",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-022",
+    "name_ja": null,
+    "name_en": "Stone Pickaxe",
+    "card_type": "Gear",
+    "subtype": null,
+    "color": "Red",
+    "cost": 3,
+    "power_or_durability": null,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@[Rest this card] Choose 1 Pal, it gets Power@+200 until end of turn, and you get 1 Material@.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=112",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-023",
+    "name_ja": null,
+    "name_en": "Axel's Strategy",
+    "card_type": "Event",
+    "subtype": null,
+    "color": "Red",
+    "cost": 4,
+    "power_or_durability": null,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "Choose 1 of the following:\n・Choose 1 Pal, and deal 1500 Damage@. \n・Choose up to X Pals, and stand them. X is equal to your number of gears. \n・Choose all of your opponent's ◇5 or greater Pals, and they cannot block until end of turn.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=113",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-024",
+    "name_ja": null,
+    "name_en": "Treasure Chest Found!",
+    "card_type": "Event",
+    "subtype": null,
+    "color": "Red",
+    "cost": 2,
+    "power_or_durability": null,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "Look at the top 5 cards of your deck, choose up to 1 red structure or red gear from among them and add it to hand, and shuffle the rest of the cards with the deck. If you chose 0 cards, get 3 Material@.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=116",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-025",
+    "name_ja": null,
+    "name_en": "Chillet – Dragon Whisperer",
+    "card_type": "Pal",
+    "subtype": "Lucky Pal",
+    "color": "Blue",
+    "cost": 5,
+    "power_or_durability": 900,
+    "strike": 2,
+    "elements": [
+      "Ice",
+      "Dragon"
+    ],
+    "aptitudes": [
+      "Harvesting",
+      "Cooling"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@OnDeploy@Reveal the top card of your deck, and if it is a ◇8 or less Dragon@Pal, you may deploy it. If you did not deploy it, add it to hand.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=117",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-026",
+    "name_ja": null,
+    "name_en": "Relaxaurus – Hungry Gunner",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Blue",
+    "cost": 7,
+    "power_or_durability": 1200,
+    "strike": 3,
+    "elements": [
+      "Dragon",
+      "Water"
+    ],
+    "aptitudes": [
+      "Harvesting",
+      "Transporting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@OnDeploy@Choose up to 1 ◇6 or less Pal, and rest it. While this card is in the base, that card does not stand.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=120",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-027",
+    "name_ja": null,
+    "name_en": "Jormuntide – Surging Sea Serpent",
+    "card_type": "Pal",
+    "subtype": "Lucky Pal",
+    "color": "Blue",
+    "cost": 8,
+    "power_or_durability": 1600,
+    "strike": 3,
+    "elements": [
+      "Dragon",
+      "Water"
+    ],
+    "aptitudes": [
+      "Harvesting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@OnDeploy@Draw 1 card, choose up to 1 ◇7 or less Pal, and rest it. That card does not stand during your opponent's next stand phase.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=123",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-028",
+    "name_ja": null,
+    "name_en": "Pengullet – Yearning for the Sky",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Blue",
+    "cost": 4,
+    "power_or_durability": 600,
+    "strike": 2,
+    "elements": [
+      "Water",
+      "Ice"
+    ],
+    "aptitudes": [
+      "Harvesting",
+      "Crafting",
+      "Cooling",
+      "Transporting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@When this card is put into the graveyard, draw 1 card.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=126",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-029",
+    "name_ja": null,
+    "name_en": "Azurobe – Water Dragon Waltz",
+    "card_type": "Pal",
+    "subtype": "Lucky Pal",
+    "color": "Blue",
+    "cost": 6,
+    "power_or_durability": 1200,
+    "strike": 2,
+    "elements": [
+      "Water",
+      "Dragon"
+    ],
+    "aptitudes": [
+      "Harvesting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@OnDeploy@Draw 1 card, choose up to 1 Pal, and rest it.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=128",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-030",
+    "name_ja": null,
+    "name_en": "Reptyro Cryst – Glacial Devourer",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Blue",
+    "cost": 8,
+    "power_or_durability": 1200,
+    "strike": 3,
+    "elements": [
+      "Ice",
+      "Ground"
+    ],
+    "aptitudes": [
+      "Collecting",
+      "Cooling"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@OnDeploy@Draw 1 card. \nACT@1Turn@[Discard 1 card from hand] Look at the top 5 cards of your deck, choose up to 2 ◇6 or less structures from among them and deploy them, and shuffle the rest of the cards with the deck.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=130",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-031",
+    "name_ja": null,
+    "name_en": "Penking – Mighty Warrior of the Deep",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Blue",
+    "cost": 5,
+    "power_or_durability": 600,
+    "strike": 2,
+    "elements": [
+      "Water",
+      "Ice"
+    ],
+    "aptitudes": [
+      "Harvesting",
+      "Crafting",
+      "Cooling",
+      "Transporting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "CONT@All of your main name 《Pengullet》 Pals get Power@+700.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=132",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-032",
+    "name_ja": null,
+    "name_en": "Fuack – Manic Wave Ripper",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Blue",
+    "cost": 2,
+    "power_or_durability": 200,
+    "strike": 1,
+    "elements": [
+      "Water"
+    ],
+    "aptitudes": [
+      "Harvesting",
+      "Crafting",
+      "Transporting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@When this card is attacked, this card gets Power@+300 until end of turn.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=134",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-033",
+    "name_ja": null,
+    "name_en": "Wumpo – Frostpeak Sentinel",
+    "card_type": "Pal",
+    "subtype": "Lucky Pal",
+    "color": "Blue",
+    "cost": 7,
+    "power_or_durability": 1500,
+    "strike": 3,
+    "elements": [
+      "Ice"
+    ],
+    "aptitudes": [
+      "Crafting",
+      "Collecting",
+      "Cooling",
+      "Transporting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "CONT@If this card is in the rest state, all of your opponent's Pals get Strike@-1.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=135",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-034",
+    "name_ja": null,
+    "name_en": "Teafant – Fountain of Cheer",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Blue",
+    "cost": 2,
+    "power_or_durability": 200,
+    "strike": 1,
+    "elements": [
+      "Water"
+    ],
+    "aptitudes": [
+      "Harvesting",
+      "Farming"
+    ],
+    "keywords": [
+      "Serious"
+    ],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@Serious 400 (OnAssign@Choose 1 Pal, and it gets Power@+400 until end of turn)",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=136",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-035",
+    "name_ja": null,
+    "name_en": "Mau Cryst – Harbinger of Riches",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Blue",
+    "cost": 3,
+    "power_or_durability": 400,
+    "strike": 1,
+    "elements": [
+      "Ice"
+    ],
+    "aptitudes": [
+      "Cooling",
+      "Farming"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@When this card is assigned to a 「Farming」 structure, draw 1 card.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=137",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-036",
+    "name_ja": null,
+    "name_en": "Celaray – Loop De Loop",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Blue",
+    "cost": 3,
+    "power_or_durability": 400,
+    "strike": 1,
+    "elements": [
+      "Water"
+    ],
+    "aptitudes": [
+      "Harvesting",
+      "Transporting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@OnAttack@Draw 1 card, choose 1 card from your hand, and discard it.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=138",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-037",
+    "name_ja": null,
+    "name_en": "Surfent – Swift Swimmer",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Blue",
+    "cost": 4,
+    "power_or_durability": 700,
+    "strike": 2,
+    "elements": [
+      "Water"
+    ],
+    "aptitudes": [
+      "Harvesting",
+      "Farming"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": null,
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=139",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-038",
+    "name_ja": null,
+    "name_en": "Cryolinx – Arctic Ordeal",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Blue",
+    "cost": 6,
+    "power_or_durability": 900,
+    "strike": 2,
+    "elements": [
+      "Ice"
+    ],
+    "aptitudes": [
+      "Crafting",
+      "Collecting",
+      "Cooling",
+      "Transporting"
+    ],
+    "keywords": [
+      "Interrupt"
+    ],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@Interrupt (Hand@Quick@[①, discard this card] OR [Discard this card and 1 other card from hand] Nullify the opponent's attack. Battle damage does not occur)",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=140",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-039",
+    "name_ja": null,
+    "name_en": "Antique Curtain",
+    "card_type": "Structure",
+    "subtype": null,
+    "color": "Blue",
+    "cost": 5,
+    "power_or_durability": 1400,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@OnDeploy@Choose up to X of your opponent's Pals, and return them to hand. X is equal to the number of different card names among your structures with 《Antique》 in their card names (For example, if the current state has 4 《Antique Mirror》, and 《Antique Curtain》 is deployed, return up to 2 cards).",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=141",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-040",
+    "name_ja": null,
+    "name_en": "Antique Dresser",
+    "card_type": "Structure",
+    "subtype": null,
+    "color": "Blue",
+    "cost": 4,
+    "power_or_durability": 1400,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@1Turn@[Discard 1 card from hand] Declare 1 card name. Choose all of your cards, and they get that declared card name in addition until end of turn. \nACT@1Turn@[Discard X cards from hand] Choose X of your Pals, and they get Power@+1000/Strike@+1 until end of turn.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=143",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-041",
+    "name_ja": null,
+    "name_en": "Hot Spring",
+    "card_type": "Structure",
+    "subtype": null,
+    "color": "Blue",
+    "cost": 6,
+    "power_or_durability": 1000,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@1Turn@[Assign 1 Pal] Choose up to 2 ◇6 or less Pals, and rest them. Those cards do not stand during your opponent's next stand phase.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=144",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-042",
+    "name_ja": null,
+    "name_en": "Antique Mirror",
+    "card_type": "Structure",
+    "subtype": null,
+    "color": "Blue",
+    "cost": 1,
+    "power_or_durability": 1000,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@OnDeploy@Draw 1 card.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=145",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-043",
+    "name_ja": null,
+    "name_en": "Sphere Workbench",
+    "card_type": "Structure",
+    "subtype": null,
+    "color": "Blue",
+    "cost": 2,
+    "power_or_durability": 900,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [
+      "Crafting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@1Turn@[Assign 1 Pal] Draw 2 cards, choose 1 card from your hand, and discard it.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=146",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-044",
+    "name_ja": null,
+    "name_en": "Pengullet Rocket Launcher",
+    "card_type": "Gear",
+    "subtype": null,
+    "color": "Blue",
+    "cost": 4,
+    "power_or_durability": null,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@[Rest this card] Choose 1 Pal, and it gets Power@+200 until end of turn. If its main name is 《Pengullet》, instead it gets Power@+500 and the skill in 〈〉 until end of turn. 〈ACT@[Rest this card] Choose all of your opponent's Pals, and they get X Damage@. X is equal to this card's Power@. Put this card into the graveyard〉.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=147",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-045",
+    "name_ja": null,
+    "name_en": "Grappling Gun",
+    "card_type": "Gear",
+    "subtype": null,
+    "color": "Blue",
+    "cost": 5,
+    "power_or_durability": null,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [
+      "Vigilance"
+    ],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@[Rest this card] Choose 1 Pal, and it gets Power@+200 and the skill in 〈〉 until end of turn. 〈AUTO@Vigilance (At the end of your turn, stand this card)〉.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=149",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-046",
+    "name_ja": null,
+    "name_en": "Victor's Strategy",
+    "card_type": "Event",
+    "subtype": null,
+    "color": "Blue",
+    "cost": 3,
+    "power_or_durability": null,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "Choose 1 of the following:\n・Look at the top 5 cards of your deck, choose 1 card from among them and add it to hand, and shuffle the rest of the cards with the deck. \n・Choose 1 Pal, and return it to hand. \n・Draw X cards. X is equal to the number of your structures.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=150",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-047",
+    "name_ja": null,
+    "name_en": "Pal Sphere",
+    "card_type": "Event",
+    "subtype": null,
+    "color": "Blue",
+    "cost": 4,
+    "power_or_durability": null,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "Draw 3 cards.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=153",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-048",
+    "name_ja": null,
+    "name_en": "Aurora Guide",
+    "card_type": "Event",
+    "subtype": null,
+    "color": "Blue",
+    "cost": 2,
+    "power_or_durability": null,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "Quick@Draw 1 card, choose up to 1 card from your hand, and put it on the top of the deck.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=155",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-049",
+    "name_ja": null,
+    "name_en": "Lyleen – Blessing of the Goddess",
+    "card_type": "Pal",
+    "subtype": "Lucky Pal",
+    "color": "Green",
+    "cost": 7,
+    "power_or_durability": 900,
+    "strike": 3,
+    "elements": [
+      "Grass"
+    ],
+    "aptitudes": [
+      "Harvesting",
+      "Crafting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@OnDeploy@Get 3 Ingredient@. \nACT@1Turn@[Consume 3 Ingredient@] Look at the top 5 cards of your deck, choose up to 1 ◇6 or less Pal from among them and deploy it, and shuffle the rest of the cards with the deck.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=156",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-050",
+    "name_ja": null,
+    "name_en": "Digtoise – Seismic Drillback",
+    "card_type": "Pal",
+    "subtype": "Lucky Pal",
+    "color": "Green",
+    "cost": 6,
+    "power_or_durability": 900,
+    "strike": 2,
+    "elements": [
+      "Ground"
+    ],
+    "aptitudes": [
+      "Collecting"
+    ],
+    "keywords": [
+      "Breakthrough"
+    ],
+    "effect_text_ja": null,
+    "effect_text_en": "CONT@If you have 10 or more souls, this card gets Power@+1000/Strike@+1. \nACT@1Turn@[Consume 2 Ingredient@] Until end of turn, this card gets Power@+500, and the skill in 〈〉. 〈AUTO@Breakthrough (When the opposing combat Pal is put into the graveyard during this card's attack, the opposing player is also dealt Damage@)〉.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=159",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-051",
+    "name_ja": null,
+    "name_en": "Petallia – Sweet Blessings",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Green",
+    "cost": 6,
+    "power_or_durability": 700,
+    "strike": 2,
+    "elements": [
+      "Grass"
+    ],
+    "aptitudes": [
+      "Harvesting",
+      "Crafting",
+      "Transporting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@OnDeploy@Gain 1 life, choose 2 souls, and stand them.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=162",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-052",
+    "name_ja": null,
+    "name_en": "Rushoar – Reckless Destruction",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Green",
+    "cost": 2,
+    "power_or_durability": 200,
+    "strike": 1,
+    "elements": [
+      "Ground"
+    ],
+    "aptitudes": [
+      "Collecting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@When this card attacks a structure, this card gets Power@+800 until end of turn.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=165",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-053",
+    "name_ja": null,
+    "name_en": "Elizabee – Queen of the Flower Garden",
+    "card_type": "Pal",
+    "subtype": "Lucky Pal",
+    "color": "Green",
+    "cost": 5,
+    "power_or_durability": 700,
+    "strike": 2,
+    "elements": [
+      "Grass"
+    ],
+    "aptitudes": [
+      "Harvesting",
+      "Crafting",
+      "Collecting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "CONT@This card gets Power@+300 for each of your main name 《Beegarde》 Pals.\nACT@[Consume 1 Ingredient@] Look at the top card of your deck, and if that is a main name 《Beegarde》 Pal, you may play it with its cost reduced by 2. It does not become ◇0 or less from this ability.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=167",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-054",
+    "name_ja": null,
+    "name_en": "Warsect – Iron Fortress",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Green",
+    "cost": 8,
+    "power_or_durability": 1500,
+    "strike": 3,
+    "elements": [
+      "Ground",
+      "Grass"
+    ],
+    "aptitudes": [
+      "Harvesting",
+      "Crafting",
+      "Collecting",
+      "Transporting"
+    ],
+    "keywords": [
+      "Taunt"
+    ],
+    "effect_text_ja": null,
+    "effect_text_en": "CONT@Taunt (Your opponent cannot attack other targets if a card with taunt can be targeted for an attack)",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=169",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-055",
+    "name_ja": null,
+    "name_en": "Vaelet – Bewitching Blossom",
+    "card_type": "Pal",
+    "subtype": "Lucky Pal",
+    "color": "Green",
+    "cost": 8,
+    "power_or_durability": 1600,
+    "strike": 3,
+    "elements": [
+      "Grass"
+    ],
+    "aptitudes": [
+      "Harvesting",
+      "Crafting",
+      "Transporting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@1Turn@[Discard 1 card from hand] If you assigned this card this turn, stand this card.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=171",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-056",
+    "name_ja": null,
+    "name_en": "Lifmunk – Promising Newbie",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Green",
+    "cost": 3,
+    "power_or_durability": 500,
+    "strike": 1,
+    "elements": [
+      "Grass"
+    ],
+    "aptitudes": [
+      "Harvesting",
+      "Crafting",
+      "Collecting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": null,
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=173",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-057",
+    "name_ja": null,
+    "name_en": "Dumud – Mellow Bounty",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Green",
+    "cost": 4,
+    "power_or_durability": 500,
+    "strike": 2,
+    "elements": [
+      "Ground",
+      "Water"
+    ],
+    "aptitudes": [
+      "Harvesting",
+      "Collecting",
+      "Transporting",
+      "Farming"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@OnDeploy@Get 2 Ingredient@. \nAUTO@When this card is assigned to a 「Farming」 structure, increase your soul by 1 card in the rest state.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=175",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-058",
+    "name_ja": null,
+    "name_en": "Gumoss – Curious Sprout",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Green",
+    "cost": 4,
+    "power_or_durability": 600,
+    "strike": 2,
+    "elements": [
+      "Grass",
+      "Ground"
+    ],
+    "aptitudes": [
+      "Harvesting"
+    ],
+    "keywords": [
+      "Assault"
+    ],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@OnDeploy@This card gets Power@+300 and the skill in 〈〉 until end of turn. 〈CONT@Assault (This card can attack Pals in the stand state)〉.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=176",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-059",
+    "name_ja": null,
+    "name_en": "Digtoise – Keen Needleback",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Green",
+    "cost": 5,
+    "power_or_durability": 800,
+    "strike": 2,
+    "elements": [
+      "Ground"
+    ],
+    "aptitudes": [
+      "Collecting"
+    ],
+    "keywords": [
+      "Breakthrough"
+    ],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@1Turn@[Consume 2 Ingredient@] This card gets Power@+500 and the skill in 〈〉 until end of turn. 〈AUTO@Breakthrough (When the opposing combat Pal is put into the graveyard during this card's attack, the opposing player is also dealt Damage@)〉.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=177",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-060",
+    "name_ja": null,
+    "name_en": "Tanzee – Cheerful Worker",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Green",
+    "cost": 2,
+    "power_or_durability": 200,
+    "strike": 1,
+    "elements": [
+      "Grass"
+    ],
+    "aptitudes": [
+      "Harvesting",
+      "Crafting",
+      "Collecting",
+      "Transporting"
+    ],
+    "keywords": [
+      "Serious"
+    ],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@Serious 400 (OnAssign@Choose 1 Pal, and it gets Power@+400 until end of turn)",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=178",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-061",
+    "name_ja": null,
+    "name_en": "Beegarde – Knight of the Flower Garden",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Green",
+    "cost": 3,
+    "power_or_durability": 400,
+    "strike": 1,
+    "elements": [
+      "Grass"
+    ],
+    "aptitudes": [
+      "Harvesting",
+      "Collecting",
+      "Transporting",
+      "Farming"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "CONT@You may put any number of cards with the same card name as this card into your deck. \nAUTO@OnDeploy@Get 1 Ingredient@. If you have a 「Farming」 structure, this card gets Power@+500 until end of turn.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=179",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-062",
+    "name_ja": null,
+    "name_en": "Wumpo Botan – Tropical Sentinel",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Green",
+    "cost": 7,
+    "power_or_durability": 1200,
+    "strike": 3,
+    "elements": [
+      "Grass"
+    ],
+    "aptitudes": [
+      "Harvesting",
+      "Crafting",
+      "Collecting",
+      "Transporting"
+    ],
+    "keywords": [
+      "Interrupt"
+    ],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@Interrupt (Hand@Quick@[①, discard this card] OR [Discard this card and 1 other card from hand] Nullify the opponent's attack. Battle damage does not occur)",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=180",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-063",
+    "name_ja": null,
+    "name_en": "Breeding Farm",
+    "card_type": "Structure",
+    "subtype": null,
+    "color": "Green",
+    "cost": 3,
+    "power_or_durability": 1100,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [
+      "Farming"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@1Turn@[Consume 2 Ingredient@] Reveal the top card of your deck, add it to hand if it is a ◇8 or less Pal, otherwise put it into the graveyard.\nACT@1Turn@[Consume 2 Ingredient@, assign 2 Pals] Choose 1 ◇8 or less Pal from hand, and deploy it.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=181",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-064",
+    "name_ja": null,
+    "name_en": "Cola Vending Machine",
+    "card_type": "Structure",
+    "subtype": null,
+    "color": "Green",
+    "cost": 6,
+    "power_or_durability": 1500,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@1Turn@[Consume X Ingredient@, assign 1 Pal] Choose 1 soul, and stand it. Then, choose up to 3 times of X number of souls, and stand them.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=183",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-065",
+    "name_ja": null,
+    "name_en": "Feed Box",
+    "card_type": "Structure",
+    "subtype": null,
+    "color": "Green",
+    "cost": 2,
+    "power_or_durability": 900,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@1Turn@[Consume 1 Ingredient@] Increase your soul by 1 card in the rest state. If there were 10 or more souls before increasing, choose 2 souls, and stand them.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=185",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-066",
+    "name_ja": null,
+    "name_en": "Ranch",
+    "card_type": "Structure",
+    "subtype": null,
+    "color": "Green",
+    "cost": 2,
+    "power_or_durability": 800,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [
+      "Farming"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@1Turn@[Assign 1 Pal] Get either 3 Material@ or 3 Ingredient@, and draw 1 card.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=186",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-067",
+    "name_ja": null,
+    "name_en": "No Pals Beyond Sign",
+    "card_type": "Structure",
+    "subtype": null,
+    "color": "Green",
+    "cost": 5,
+    "power_or_durability": 1100,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [
+      "Taunt"
+    ],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@1Turn@[Assign 1 Pal] The Pal assigned to this card gets the skill in 〈〉 until the end of the opponent's next turn. 〈CONT@Taunt (Your opponent cannot attack other targets if a card with taunt can be targeted for an attack)〉.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=187",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-068",
+    "name_ja": null,
+    "name_en": "Digtoise's Headband",
+    "card_type": "Gear",
+    "subtype": null,
+    "color": "Green",
+    "cost": 3,
+    "power_or_durability": null,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@[Rest this card] Choose 1 Pal, and it gets Power@+200 until end of turn. If its main name is 《Digtoise》, get either 2 Material@ or 2 Ingredient@.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=188",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-069",
+    "name_ja": null,
+    "name_en": "Farming Hat",
+    "card_type": "Gear",
+    "subtype": null,
+    "color": "Green",
+    "cost": 3,
+    "power_or_durability": null,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@[Rest this card] Choose 1 Pal, it gets Power@+200 until end of turn, and you get 1 Ingredient@.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=189",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-070",
+    "name_ja": null,
+    "name_en": "Lily's Strategy",
+    "card_type": "Event",
+    "subtype": null,
+    "color": "Green",
+    "cost": 3,
+    "power_or_durability": null,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "Choose 1 of the following:\n・Choose all of your Pals, and they get Power@+1000 until end of turn. \n・Choose 1 structure or gear, and put it into the graveyard.\n・Increase your soul by 1 card in the rest state.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=190",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-071",
+    "name_ja": null,
+    "name_en": "Found an Egg!",
+    "card_type": "Event",
+    "subtype": null,
+    "color": "Green",
+    "cost": 2,
+    "power_or_durability": null,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "Look at the top 5 cards of your deck, choose up to 1 Pal from among them and add it to hand, and shuffle the rest of the cards with the deck. If you choose 0 cards, get 3 Ingredient@.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=193",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-072",
+    "name_ja": null,
+    "name_en": "Blessing of the Flower Spirit",
+    "card_type": "Event",
+    "subtype": null,
+    "color": "Green",
+    "cost": 3,
+    "power_or_durability": null,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "Gain 1 life, and draw 1 card.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=194",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-073",
+    "name_ja": null,
+    "name_en": "Helzephyr – Wings of the Moonless Night",
+    "card_type": "Pal",
+    "subtype": "Lucky Pal",
+    "color": "Purple",
+    "cost": 7,
+    "power_or_durability": 700,
+    "strike": 3,
+    "elements": [
+      "Dark"
+    ],
+    "aptitudes": [
+      "Transporting"
+    ],
+    "keywords": [
+      "Nocturnal"
+    ],
+    "effect_text_ja": null,
+    "effect_text_en": "CONT@Nocturnal (If it is night, this card gets Power@+300)\nAUTO@When your 〈Nocturnal〉 Pal is deployed, if it is night, choose up to 1 Pal with cost less than or equal to that, and put it into the graveyard. If you put 1 or more Pals this way, at the end of that turn, rest this card.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=195",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-074",
+    "name_ja": null,
+    "name_en": "Shadowbeak – Seed of Despair",
+    "card_type": "Pal",
+    "subtype": "Lucky Pal",
+    "color": "Purple",
+    "cost": 8,
+    "power_or_durability": 1300,
+    "strike": 3,
+    "elements": [
+      "Dark"
+    ],
+    "aptitudes": [
+      "Harvesting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "CONT@While this card is in the rest state, it is night. \nCONT@If it is night, your Pal's AUTO@ activates twice. \nAUTO@At the end of your turn, choose up to 1 of your Pals, and butcher it. If you butchered 1 or more cards this way, your opponent chooses 1 of their Pals, and puts it into the graveyard.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=198",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-075",
+    "name_ja": null,
+    "name_en": "Katress – Abyssal Sorcerer",
+    "card_type": "Pal",
+    "subtype": "Lucky Pal",
+    "color": "Purple",
+    "cost": 6,
+    "power_or_durability": 900,
+    "strike": 2,
+    "elements": [
+      "Dark"
+    ],
+    "aptitudes": [
+      "Crafting",
+      "Transporting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@1Turn@[Butcher 1 other Pal] This card gets Power@+1000/Strike@+1 until end of turn.\nAUTO@When your Pal is butchered, choose up to 1 cost X normal Pal from your graveyard, and deploy it in the rest state. X is equal to the cost of the butchered Pal -1.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=201",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-076",
+    "name_ja": null,
+    "name_en": "Tombat – Out of Nowhere!?",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Purple",
+    "cost": 5,
+    "power_or_durability": 600,
+    "strike": 2,
+    "elements": [
+      "Dark"
+    ],
+    "aptitudes": [
+      "Harvesting",
+      "Collecting",
+      "Transporting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@OnDeploy@Reveal the top 3 cards of your deck, choose up to 1 Pal from among them and add it to hand, and put the remaining cards into the graveyard.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=204",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-077",
+    "name_ja": null,
+    "name_en": "Pyrin Noct – Steed of Azure Flames",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Purple",
+    "cost": 7,
+    "power_or_durability": 1100,
+    "strike": 3,
+    "elements": [
+      "Fire",
+      "Dark"
+    ],
+    "aptitudes": [
+      "Kindling",
+      "Collecting"
+    ],
+    "keywords": [
+      "Interrupt",
+      "Nocturnal"
+    ],
+    "effect_text_ja": null,
+    "effect_text_en": "CONT@Nocturnal (If it is night, this card gets Power@+300)\nACT@Interrupt (Hand@Quick@[①, discard this card] OR [Discard this card and 1 other card from hand] Nullify the opponent's attack. Battle damage does not occur)",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=206",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-078",
+    "name_ja": null,
+    "name_en": "Lyleen Noct – Providence of the Goddess",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Purple",
+    "cost": 8,
+    "power_or_durability": 1700,
+    "strike": 3,
+    "elements": [
+      "Dark"
+    ],
+    "aptitudes": [
+      "Harvesting",
+      "Crafting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@[Rest this card, discard 1 card from hand] Choose 1 ◇6 or less Pal from your graveyard, and deploy it in the rest state.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=208",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-079",
+    "name_ja": null,
+    "name_en": "Depresso – Late Night Hustler",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Purple",
+    "cost": 2,
+    "power_or_durability": 100,
+    "strike": 1,
+    "elements": [
+      "Dark"
+    ],
+    "aptitudes": [
+      "Crafting",
+      "Collecting",
+      "Transporting",
+      "Farming"
+    ],
+    "keywords": [
+      "Nocturnal"
+    ],
+    "effect_text_ja": null,
+    "effect_text_en": "CONT@Nocturnal (If it is night, this card gets Power@+300)\nCONT@Nocturnal (If it is night, this card gets Power@+300)",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=210",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-080",
+    "name_ja": null,
+    "name_en": "Daedream – First Slumber",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Purple",
+    "cost": 2,
+    "power_or_durability": 200,
+    "strike": 1,
+    "elements": [
+      "Dark"
+    ],
+    "aptitudes": [
+      "Harvesting",
+      "Crafting",
+      "Transporting"
+    ],
+    "keywords": [
+      "Nocturnal"
+    ],
+    "effect_text_ja": null,
+    "effect_text_en": "CONT@Nocturnal (If it is night, this card gets Power@+300)",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=212",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-081",
+    "name_ja": null,
+    "name_en": "Lovander – Heartstealer",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Purple",
+    "cost": 5,
+    "power_or_durability": 800,
+    "strike": 2,
+    "elements": [
+      "Dark"
+    ],
+    "aptitudes": [
+      "Crafting",
+      "Collecting",
+      "Transporting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@OnAttack@You may discard 1 card from hand. If you discarded this way, gain 1 life.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=214",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-082",
+    "name_ja": null,
+    "name_en": "Daedream – Deep Slumber",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Purple",
+    "cost": 3,
+    "power_or_durability": 400,
+    "strike": 1,
+    "elements": [
+      "Dark"
+    ],
+    "aptitudes": [
+      "Harvesting",
+      "Crafting",
+      "Transporting"
+    ],
+    "keywords": [
+      "Nocturnal"
+    ],
+    "effect_text_ja": null,
+    "effect_text_en": "CONT@Nocturnal (If it is night, this card gets Power@+300)",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=216",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-083",
+    "name_ja": null,
+    "name_en": "Vanwyrm – Marauder of the Skies",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Purple",
+    "cost": 4,
+    "power_or_durability": 600,
+    "strike": 2,
+    "elements": [
+      "Fire",
+      "Dark"
+    ],
+    "aptitudes": [
+      "Kindling",
+      "Transporting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@OnDeploy@Choose up to 1 Pal, and it gets Power@-300 until end of turn (It is not put into the graveyard even if Power@ becomes 0 or less).",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=217",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-084",
+    "name_ja": null,
+    "name_en": "Menasting – Darkness-Dwelling Scorpion",
+    "card_type": "Pal",
+    "subtype": "Lucky Pal",
+    "color": "Purple",
+    "cost": 5,
+    "power_or_durability": 700,
+    "strike": 2,
+    "elements": [
+      "Dark",
+      "Ground"
+    ],
+    "aptitudes": [
+      "Collecting"
+    ],
+    "keywords": [
+      "Retaliate"
+    ],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@Retaliate (When this card is put into the graveyard during battle, put the opposing combat Pal into the graveyard)\nAUTO@When this card is put into the graveyard, choose up to 1 normal Pal from your graveyard, and return it to hand.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=218",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-085",
+    "name_ja": null,
+    "name_en": "Maraith – Twilight Messenger",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Purple",
+    "cost": 6,
+    "power_or_durability": 900,
+    "strike": 2,
+    "elements": [
+      "Dark"
+    ],
+    "aptitudes": [
+      "Harvesting",
+      "Collecting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "CONT@While this card is in the rest state, it is night. \nCONT@If it is night, all of your opponent's Pals get Power@-200 (It is not put into the graveyard even if Power@ becomes 0 or less).",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=219",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-086",
+    "name_ja": null,
+    "name_en": "Nox – The Silent One",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Purple",
+    "cost": 3,
+    "power_or_durability": 500,
+    "strike": 1,
+    "elements": [
+      "Dark"
+    ],
+    "aptitudes": [
+      "Harvesting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": null,
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=220",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-087",
+    "name_ja": null,
+    "name_en": "Loupmoon – Glinting Moonlight",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Purple",
+    "cost": 4,
+    "power_or_durability": 500,
+    "strike": 2,
+    "elements": [
+      "Dark"
+    ],
+    "aptitudes": [
+      "Crafting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@OnDeploy@If it is night, choose up to 1 ◇6 or less Pal in the stand state, and put it into the graveyard.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=221",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-088",
+    "name_ja": null,
+    "name_en": "Lamp",
+    "card_type": "Structure",
+    "subtype": null,
+    "color": "Purple",
+    "cost": 4,
+    "power_or_durability": 1300,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [
+      "Nocturnal"
+    ],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@1Turn@[Put the top 3 cards of the deck into the graveyard] It becomes night until the end of the opponent's next turn.\nCONT@All of your Pals get the skill in 〈 〉. 〈CONT@Nocturnal (If it is night, this card gets Power@+300)〉.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=222",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-089",
+    "name_ja": null,
+    "name_en": "Shoddy Bed",
+    "card_type": "Structure",
+    "subtype": null,
+    "color": "Purple",
+    "cost": 2,
+    "power_or_durability": 700,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [
+      "Nocturnal"
+    ],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@1Turn@[Put the top 3 cards of the deck into the graveyard] It becomes night until the end of the opponent's next turn.\nAUTO@At the end of your turn, if you have a 〈Nocturnal〉 Pal in the rest state, draw 1 card.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=224",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-090",
+    "name_ja": null,
+    "name_en": "Medieval Medicine Workbench",
+    "card_type": "Structure",
+    "subtype": null,
+    "color": "Purple",
+    "cost": 4,
+    "power_or_durability": 1300,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [
+      "Crafting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@1Turn@[③, assign 1 Pal] Choose 1 cost X or less Pal from your graveyard, and deploy it in the rest state. X is equal to the cost of the assigned Pal +2.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=225",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-091",
+    "name_ja": null,
+    "name_en": "Wooden Wall",
+    "card_type": "Structure",
+    "subtype": null,
+    "color": "Purple",
+    "cost": 3,
+    "power_or_durability": 300,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [
+      "Taunt"
+    ],
+    "effect_text_ja": null,
+    "effect_text_en": "CONT@Taunt (Your opponent cannot attack other targets if a card with taunt can be targeted for an attack)\nAUTO@When this card is put into the graveyard, draw 1 card.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=226",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-092",
+    "name_ja": null,
+    "name_en": "Viewing Cage",
+    "card_type": "Structure",
+    "subtype": null,
+    "color": "Purple",
+    "cost": 3,
+    "power_or_durability": 1300,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@1Turn@[Assign 1 Pal] Exile the assigned Pal. Choose 1 cost X or less Pal, and exile it. X is equal to the cost of the assigned Pal +2.\nAUTO@When this card leaves the base, return all Pals exiled by this card to the owner's hand.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=227",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-093",
+    "name_ja": null,
+    "name_en": "Meat Cleaver",
+    "card_type": "Gear",
+    "subtype": null,
+    "color": "Purple",
+    "cost": 2,
+    "power_or_durability": null,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "ACT@[Rest this card, butcher 1 Pal] Reveal the top 3 cards of your deck, choose 1 card from among them and add it to hand, and put the remaining cards into the graveyard.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=228",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-094",
+    "name_ja": null,
+    "name_en": "Daedream's Necklace",
+    "card_type": "Gear",
+    "subtype": null,
+    "color": "Purple",
+    "cost": 3,
+    "power_or_durability": null,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@OnDeploy@Choose up to 1 main name 《Daedream》 Pal from your hand, and deploy it. \nACT@[Rest this card] Choose 1 Pal, and it gets Power@+200 until end of turn. It becomes night until the end of the opponent's next turn.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=230",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-095",
+    "name_ja": null,
+    "name_en": "Zoe's Strategy",
+    "card_type": "Event",
+    "subtype": null,
+    "color": "Purple",
+    "cost": 3,
+    "power_or_durability": null,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "Choose 1 of the following:\n・Choose up to 5 of your opponent's Material@ and/or Ingredient@ in total, and your opponent loses them. \n・Choose up to 1 Pal from your graveyard, and return it to hand. Your opponent chooses 1 card from their hand, and discards it.\n・Choose 1 of your Pals, and butcher it. If you butchered 1 or more cards this way, choose 1 of your opponent's Pals, and put it into the graveyard.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=231",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-096",
+    "name_ja": null,
+    "name_en": "Dark Cannon",
+    "card_type": "Event",
+    "subtype": null,
+    "color": "Purple",
+    "cost": 3,
+    "power_or_durability": null,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "Quick@Choose 1 ◇5 or less Pal, and put it into the graveyard.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=234",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-097",
+    "name_ja": null,
+    "name_en": "Black Marketeer",
+    "card_type": "Event",
+    "subtype": null,
+    "color": "Purple",
+    "cost": 5,
+    "power_or_durability": null,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [
+      "Interrupt"
+    ],
+    "effect_text_ja": null,
+    "effect_text_en": "Choose up to 2 Pals without 〈Interrupt〉 from your graveyard, and return them to hand. It becomes night until the end of the opponent's next turn.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=235",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-098",
+    "name_ja": null,
+    "name_en": "Elphidran – Gentle Radiance",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Colorless",
+    "cost": 4,
+    "power_or_durability": 600,
+    "strike": 2,
+    "elements": [
+      "Dragon"
+    ],
+    "aptitudes": [
+      "Collecting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "AUTO@OnAttack@You may reveal 1 card from your hand. If you revealed a Dragon@ Pal this way, this card gets Power@+500 until end of turn.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=236",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-099",
+    "name_ja": null,
+    "name_en": "Direhowl – Proud Fang",
+    "card_type": "Pal",
+    "subtype": "Normal Pal",
+    "color": "Colorless",
+    "cost": 3,
+    "power_or_durability": 500,
+    "strike": 1,
+    "elements": [
+      "Neutral"
+    ],
+    "aptitudes": [
+      "Harvesting"
+    ],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": null,
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=237",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  },
+  {
+    "card_base_id": "EBP01-100",
+    "name_ja": null,
+    "name_en": "The Adventure Begins",
+    "card_type": "Event",
+    "subtype": null,
+    "color": "Colorless",
+    "cost": 2,
+    "power_or_durability": null,
+    "strike": null,
+    "elements": [],
+    "aptitudes": [],
+    "keywords": [],
+    "effect_text_ja": null,
+    "effect_text_en": "If you have not played any other cards during this game, draw 2 cards.\nIf you have 3 or more Pals with 《My First》 in their different card names, choose all of your Pals, and they get Power@+1000/Strike@+5 until end of turn.",
+    "product_code": "EBP01",
+    "source_url_ja": null,
+    "source_url_en": "https://en.palworld-official-cardgame.com/cardlist/detail?id=238",
+    "source_checked_at": "2026-08-11T06:32:25+00:00"
+  }
+]
