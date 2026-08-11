@@ -6,6 +6,7 @@ on:
       - "backend/app/palworld_router.py"
       - "backend/app/services/palworld_card_service.py"
       - "backend/scripts/import_palworld_cards.py"
+      - "backend/scripts/diagnose_palworld_page.py"
       - "backend/tests/test_palworld_card_db.py"
       - "data/palworld/**"
       - "frontend/src/pages/PalworldCardSearchPage.tsx"
@@ -41,6 +42,9 @@ jobs:
 
       - name: Unit tests
         run: PYTHONPATH=.:backend uv run pytest backend/tests/test_palworld_card_db.py -q
+
+      - name: Diagnose official card feed
+        run: PYTHONPATH=.:backend uv run python backend/scripts/diagnose_palworld_page.py
 
       - name: Import official BP01 snapshot
         run: |
