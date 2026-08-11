@@ -277,6 +277,12 @@ def _build_printings(
     return printings, provenance
 
 
+def _community_type(card: PalworldCard) -> str:
+    if card.card_type == "Pal" and card.subtype:
+        return card.subtype
+    return card.card_type
+
+
 def compare_community_seed(
     community: dict[str, Any],
     cards: list[PalworldCard],
@@ -289,7 +295,7 @@ def compare_community_seed(
     provenance: list[dict[str, Any]] = []
     field_map = {
         "name": lambda card, printing: card.name_en,
-        "type": lambda card, printing: card.card_type,
+        "type": lambda card, printing: _community_type(card),
         "cost": lambda card, printing: card.cost,
         "Color": lambda card, printing: [card.color],
         "Power": lambda card, printing: "" if card.power_or_durability is None else str(card.power_or_durability),
@@ -330,6 +336,68 @@ def compare_community_seed(
     return mismatches, provenance
 
 
+def _stable_entity(row: dict[str, Any]) -> dict[str, Any]:
+    return {key: value for key, value in row.items() if key != "source_checked_at"}
+
+
+def _entity_diff(
+    previous_rows: list[dict[str, Any]],
+    current_rows: list[dict[str, Any]],
+    id_field: str,
+) -> dict[str, Any]:
+    previous = {row[id_field]: _stable_entity(row) for row in previous_rows}
+    current = {row[id_field]: _stable_entity(row) for row in current_rows}
+    previous_ids = set(previous)
+    current_ids = set(current)
+    changed: list[dict[str, Any]] = []
+    for entity_id in sorted(previous_ids & current_ids):
+        if previous[entity_id] == current[entity_id]:
+            continue
+        fields = sorted(
+            field
+            for field in set(previous[entity_id]) | set(current[entity_id])
+            if previous[entity_id].get(field) != current[entity_id].get(field)
+        )
+        changed.append({"id": entity_id, "fields": fields})
+    return {
+        "added_ids": sorted(current_ids - previous_ids),
+        "removed_ids": sorted(previous_ids - current_ids),
+        "changed": changed,
+    }
+
+
+def _snapshot_diff(
+    output_dir: Path,
+    cards: list[PalworldCard],
+    printings: list[PalworldPrinting],
+) -> dict[str, Any]:
+    current_cards = [card.model_dump() for card in cards]
+    current_printings = [printing.model_dump() for printing in printings]
+    cards_path = output_dir / "cards.json"
+    printings_path = output_dir / "printings.json"
+    if not cards_path.exists() or not printings_path.exists():
+        return {
+            "previous_snapshot_present": False,
+            "cards": {
+                "added_ids": [row["card_base_id"] for row in current_cards],
+                "removed_ids": [],
+                "changed": [],
+            },
+            "printings": {
+                "added_ids": [row["printing_id"] for row in current_printings],
+                "removed_ids": [],
+                "changed": [],
+            },
+        }
+    previous_cards = json.loads(cards_path.read_text(encoding="utf-8"))
+    previous_printings = json.loads(printings_path.read_text(encoding="utf-8"))
+    return {
+        "previous_snapshot_present": True,
+        "cards": _entity_diff(previous_cards, current_cards, "card_base_id"),
+        "printings": _entity_diff(previous_printings, current_printings, "printing_id"),
+    }
+
+
 def _write_json(path: Path, payload: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_suffix(path.suffix + ".tmp")
@@ -368,6 +436,7 @@ async def import_bp01(output_dir: Path, expected_cards: int, expected_printings:
     )
     provenance = card_provenance + printing_provenance + community_provenance
     provenance.sort(key=lambda row: (row["entity_type"], row["entity_id"], row["field"], row["source_type"]))
+    snapshot_diff = _snapshot_diff(output_dir, cards, printings)
 
     japanese_status = "available" if ja_rows else "unavailable_empty_official_api"
     manifest = {
@@ -406,6 +475,7 @@ async def import_bp01(output_dir: Path, expected_cards: int, expected_printings:
         "product_spec_vs_unique_api_delta": len(printings) - PRODUCT_SPEC_PRINTING_COUNT,
         "community_mismatch_count": len(community_mismatches),
         "community_mismatches": community_mismatches,
+        "snapshot_diff": snapshot_diff,
         "policy": "Canonical BP01 printings are official rows whose card_number starts with EBP01-. Official non-BP01 expansion records are audited but excluded. Official fields win over the community seed.",
     }
     _write_json(output_dir / "cards.json", [card.model_dump() for card in cards])
