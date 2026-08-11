@@ -40,17 +40,17 @@ jobs:
         run: uv run playwright install --with-deps chromium
 
       - name: Unit tests
-        run: PYTHONPATH=backend uv run pytest backend/tests/test_palworld_card_db.py -q
+        run: PYTHONPATH=.:backend uv run pytest backend/tests/test_palworld_card_db.py -q
 
       - name: Import official BP01 snapshot
         run: |
-          PYTHONPATH=backend uv run python backend/scripts/import_palworld_cards.py \
+          PYTHONPATH=.:backend uv run python backend/scripts/import_palworld_cards.py \
             --expected-cards 100 \
             --expected-printings 161
 
       - name: Validate generated snapshot
         run: |
-          PYTHONPATH=backend uv run python - <<'PY'
+          PYTHONPATH=.:backend uv run python - <<'PY'
           from app.services.palworld_card_service import load_snapshot
           snapshot = load_snapshot()
           assert len(snapshot["cards"]) == 100
