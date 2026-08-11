@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "product_code": "EBP01",
+  "logical_card_count": 100,
+  "printing_count": 161,
+  "product_spec_printing_count": 161,
+  "english_api_reported_total": 162,
+  "english_api_bp01_row_count": 161,
+  "english_api_unique_bp01_printings": 161,
+  "english_api_excluded_non_bp01_count": 1,
+  "japanese_api_reported_total": 0,
+  "japanese_source_status": "unavailable_empty_official_api",
+  "source_checked_at": "2026-08-11T06:32:25+00:00",
+  "official_sources": {
+    "english_api": "https://en.palworld-official-cardgame.com/manage/card-list-user/list",
+    "english_card_list": "https://en.palworld-official-cardgame.com/cardlist/searchresults?expansion=EBP01",
+    "english_product": "https://en.palworld-official-cardgame.com/products/bp01",
+    "japanese_api": "https://palworld-official-cardgame.com/manage/card-list-user/list",
+    "japanese_product": "https://palworld-official-cardgame.com/products/bp01"
+  },
+  "community_seed": {
+    "repository": "https://github.com/Balbi/TCG-Arena-Palworld",
+    "json": "https://raw.githubusercontent.com/Balbi/TCG-Arena-Palworld/main/PalworldCards.json"
+  }
+}

@@ -18,6 +18,7 @@ export const ProductShell: React.FC<ProductShellProps> = ({ children, mainId = '
         <NavLink to="/play" className={({ isActive }) => isActive ? 'mode-link active' : 'mode-link'}>プレイ中</NavLink>
         <NavLink to="/install" className={({ isActive }) => isActive ? 'mode-link active' : 'mode-link'}>開始前</NavLink>
         <NavLink to="/research" className={({ isActive }) => isActive ? 'mode-link active' : 'mode-link'}>作品・調査</NavLink>
+        <NavLink to="/cards/palworld" className={({ isActive }) => isActive ? 'mode-link active' : 'mode-link'}>カードDB</NavLink>
       </nav>
     </header>
     <main id={mainId}>{children}</main>
