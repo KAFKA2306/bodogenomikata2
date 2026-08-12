@@ -1,11 +1,13 @@
 name: Validate Palworld card database
 
 on:
-  pull_request:
+  push:
+    branches: [master]
     paths:
       - "backend/app/palworld_router.py"
       - "backend/app/services/palworld_card_service.py"
       - "backend/scripts/import_palworld_cards.py"
+      - "backend/scripts/verify_palworld_repository_ratchet.py"
       - "backend/tests/test_palworld_card_db.py"
       - "data/palworld/**"
       - "frontend/src/pages/PalworldCardSearchPage.tsx"
@@ -13,6 +15,21 @@ on:
       - "frontend/src/App.tsx"
       - "frontend/src/components/ProductShell.tsx"
       - ".github/workflows/palworld-card-db.yml"
+      - ".github/workflows/weekly-repo-research.yml"
+  pull_request:
+    paths:
+      - "backend/app/palworld_router.py"
+      - "backend/app/services/palworld_card_service.py"
+      - "backend/scripts/import_palworld_cards.py"
+      - "backend/scripts/verify_palworld_repository_ratchet.py"
+      - "backend/tests/test_palworld_card_db.py"
+      - "data/palworld/**"
+      - "frontend/src/pages/PalworldCardSearchPage.tsx"
+      - "frontend/src/pages/palworld-card-search.css"
+      - "frontend/src/App.tsx"
+      - "frontend/src/components/ProductShell.tsx"
+      - ".github/workflows/palworld-card-db.yml"
+      - ".github/workflows/weekly-repo-research.yml"
   workflow_dispatch:
 
 permissions:
@@ -23,10 +40,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
@@ -66,21 +83,30 @@ jobs:
           print(manifest)
           PY
 
+      - name: Verify provenance and search ratchet
+        run: PYTHONPATH=.:backend uv run python backend/scripts/verify_palworld_repository_ratchet.py
+
       - name: Upload canonical snapshot
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: palworld-bp01-canonical
           path: data/palworld/bp01
           if-no-files-found: error
 
+      - name: Verify clean checkout
+        run: |
+          git reset --hard HEAD
+          git clean -fdx
+          test -z "$(git status --porcelain --untracked-files=all)"
+
   frontend:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: "24"
           cache: npm
@@ -93,3 +119,9 @@ jobs:
       - name: Typecheck and build
         working-directory: frontend
         run: npm run build
+
+      - name: Verify clean checkout
+        run: |
+          git reset --hard HEAD
+          git clean -fdx
+          test -z "$(git status --porcelain --untracked-files=all)"
