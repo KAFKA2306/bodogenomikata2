@@ -1,0 +1,164 @@
+/* Game detail layout contract: sidebar holds metadata, main holds readable content. */
+.product-shell,
+.product-shell main,
+.detail-page,
+.detail-grid,
+.detail-sidebar,
+.detail-main,
+.review-section-wrapper,
+.review-section-wrapper > * {
+  min-width: 0;
+}
+
+/* index.css contains legacy generic header styles. ProductShell owns its own header. */
+.product-shell .product-header {
+  text-align: left;
+  margin-bottom: 34px;
+}
+
+.product-shell .product-header::after {
+  content: none;
+  display: none;
+}
+
+.detail-page {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.detail-sidebar {
+  display: grid;
+  gap: 1.5rem;
+  align-content: start;
+  width: 100%;
+}
+
+.detail-sidebar .detail-image-wrapper {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+.detail-sidebar-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  width: 100%;
+  margin: 0 !important;
+}
+
+.detail-sidebar-meta .meta-badge {
+  display: flex;
+  min-width: 0;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.65rem;
+  text-align: center;
+  white-space: normal;
+}
+
+.detail-main {
+  display: grid;
+  gap: 2rem;
+  width: 100%;
+  max-width: 900px;
+}
+
+.detail-main .detail-card {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.detail-main-header {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.detail-title {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.detail-subtitle-en {
+  margin-top: 0.65rem;
+  overflow-wrap: anywhere;
+}
+
+.desc-card h2,
+.mechanics-section h2 {
+  margin: 0 0 0.9rem;
+  color: var(--workflow-ink, var(--text-main));
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+}
+
+.game-description,
+.mechanic-tag,
+.review-comment {
+  overflow-wrap: anywhere;
+}
+
+.mechanics-section {
+  min-width: 0;
+}
+
+.review-section-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  margin-top: 0;
+}
+
+@media (max-width: 900px) {
+  .detail-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+
+  .detail-main {
+    max-width: none;
+  }
+
+  .detail-sidebar {
+    grid-template-columns: minmax(120px, 220px) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+@media (max-width: 680px) {
+  .detail-sidebar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .detail-sidebar .detail-image-wrapper {
+    max-width: 280px;
+    justify-self: center;
+  }
+
+  .review-section-wrapper {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .detail-card {
+    padding: 1.4rem;
+  }
+
+  .detail-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+}

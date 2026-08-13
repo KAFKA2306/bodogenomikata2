@@ -46,3 +46,13 @@ jobs:
           grep -q 'kafka-signal-v1.0.0' frontend/public/kafka-signal.lock.json
           grep -q 'answer-sequence' frontend/src/kafka-signal.css
           grep -q '公式ルール' frontend/src/components/KafkaSignalRuntime.tsx
+
+      - name: Validate game detail layout contract
+        run: |
+          grep -q "className='detail-card detail-sidebar'" frontend/src/pages/GameDetailPage.tsx
+          grep -q "className='detail-main'" frontend/src/pages/GameDetailPage.tsx
+          grep -q 'grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);' frontend/src/detail-layout.css
+          grep -q '@media (max-width: 900px)' frontend/src/detail-layout.css
+          grep -q 'min-width: 0;' frontend/src/detail-layout.css
+          grep -q '.product-shell .product-header::after' frontend/src/detail-layout.css
+          grep -q "import './detail-layout.css';" frontend/src/App.tsx

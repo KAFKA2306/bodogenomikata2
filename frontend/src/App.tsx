@@ -10,6 +10,7 @@ import { KafkaSignalRuntime } from './components/KafkaSignalRuntime';
 import './index.css';
 import './workflow.css';
 import './kafka-signal.css';
+import './detail-layout.css';
 
 function App() {
   return (
