@@ -24,8 +24,7 @@ export const GameDetailPage: React.FC = () => {
     );
   }
 
-  // Fallback image URL
-  const imgUrl = game.image_url 
+  const imgUrl = game.image_url
     ? (game.image_url.startsWith('//') ? 'https:' + game.image_url : game.image_url)
     : 'https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?auto=format&fit=crop&q=80&w=600';
 
@@ -48,49 +47,50 @@ export const GameDetailPage: React.FC = () => {
       </div>
 
       <div className='detail-grid'>
-        {/* Left Card: Image and Base Stats */}
-        <div className='detail-card main-info-card'>
+        <aside className='detail-card detail-sidebar' aria-label='ゲーム基本情報'>
           <div className='detail-image-wrapper'>
             <img className='detail-image' src={imgUrl} alt={game.title} />
           </div>
-          <div className='detail-main-header'>
-            <h1 className='detail-title'>{game.title_ja || game.title}</h1>
-            {game.title_ja && <h2 className='detail-subtitle-en'>{game.title}</h2>}
-            
-            <div className='game-meta' style={{ marginTop: '1.25rem' }}>
-              <span className='meta-badge players'>👤 {game.min_players}-{game.max_players}人</span>
-              <span className='meta-badge time'>⏱️ {game.play_time}分</span>
-              <span className='meta-badge year'>📅 {game.published_year}年</span>
-              <span className='meta-badge age'>🔞 {game.min_age}歳以上</span>
+          <div className='game-meta detail-sidebar-meta'>
+            <span className='meta-badge players'>👤 {game.min_players}-{game.max_players}人</span>
+            <span className='meta-badge time'>⏱️ {game.play_time}分</span>
+            <span className='meta-badge year'>📅 {game.published_year}年</span>
+            <span className='meta-badge age'>🔞 {game.min_age}歳以上</span>
+          </div>
+        </aside>
+
+        <div className='detail-main'>
+          <section className='detail-card desc-card' aria-labelledby='game-detail-title'>
+            <div className='detail-main-header'>
+              <h1 id='game-detail-title' className='detail-title'>{game.title_ja || game.title}</h1>
+              {game.title_ja && <p className='detail-subtitle-en'>{game.title}</p>}
+            </div>
+
+            <div className='detail-copy'>
+              <h2>ゲーム概要</h2>
+              <p className='game-description'>{game.description || '説明はありません。'}</p>
+            </div>
+
+            {mechanics.length > 0 && (
+              <div className='mechanics-section'>
+                <h2>メカニクス</h2>
+                <div className='mechanics-tags'>
+                  {mechanics.map((m: string, idx: number) => (
+                    <span key={idx} className='mechanic-tag'>{m}</span>
+                  ))}
+                </div>
+              </div>
+            )}
+          </section>
+
+          <div className='review-section-wrapper'>
+            <div className='detail-card review-write-card'>
+              <ReviewForm slug={slug!} onSubmitted={() => setReviewsUpdated(prev => prev + 1)} />
+            </div>
+            <div className='detail-card review-list-card'>
+              <ReviewList slug={slug!} key={reviewsUpdated} />
             </div>
           </div>
-        </div>
-
-        {/* Right Card: Visualization and Description */}
-        <div className='detail-card desc-card'>
-          <h3>ゲーム概要</h3>
-          <p className='game-description'>{game.description || '説明はありません。'}</p>
-          
-          {mechanics.length > 0 && (
-            <div className='mechanics-section'>
-              <h4>メカニクス</h4>
-              <div className='mechanics-tags'>
-                {mechanics.map((m: string, idx: number) => (
-                  <span key={idx} className='mechanic-tag'>{m}</span>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Review Section */}
-      <div className='review-section-wrapper'>
-        <div className='detail-card review-write-card'>
-          <ReviewForm slug={slug!} onSubmitted={() => setReviewsUpdated(prev => prev + 1)} />
-        </div>
-        <div className='detail-card review-list-card'>
-          <ReviewList slug={slug!} key={reviewsUpdated} />
         </div>
       </div>
     </div>
