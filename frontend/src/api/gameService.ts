@@ -53,7 +53,7 @@ export const fetchGameBySlug = async (slug: string): Promise<{ data: Game }> => 
 
 export const fetchReviews = async (slug: string) => {
   try {
-    const res = await apiClient.get<{ data: { rating: number, comment: string }[]>('/games/' + slug + '/review', {
+    const res = await apiClient.get<{ data: { rating: number, comment: string }[] }>('/games/' + slug + '/review', {
       params: { user_id: 'anonymous_user' }
     });
     return res.data;
@@ -83,7 +83,7 @@ export const postReview = async (slug: string, rating: number, comment: string) 
       localStorage.setItem(`reviews_${slug}`, JSON.stringify(localReviews));
       return { status: 'success', message: 'Saved to localStorage' };
     } catch (e) {
-      console.error('Failed to save review from localStorage:', e);
+      console.error('Failed to save review to localStorage:', e);
       return { status: 'error', message: 'Failed to save locally' };
     }
   }
