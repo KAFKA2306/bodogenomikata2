@@ -34,7 +34,7 @@ export const GameDetailPage: React.FC = () => {
     <div className='comparison-container detail-page'>
       <Helmet>
         <title>{`${game.title_ja || game.title} | ボドゲのミカタ`}</title>
-        <meta name='description' content={`${game.title_ja || game.title}のプレイ人数、時間、対象年齢、メカニクスなどの詳細データとプレイヤーのレビュー。`} />
+        <meta name='description' content={`${game.title_ja || game.title}のプレイ人数、時間、メカニクスなどの詳細データとプレイヤーのレビュー。`} />
       </Helmet>
 
       <div className='back-nav'>
@@ -55,7 +55,7 @@ export const GameDetailPage: React.FC = () => {
             <span className='meta-badge players'>👤 {game.min_players}-{game.max_players}人</span>
             <span className='meta-badge time'>⏱️ {game.play_time}分</span>
             <span className='meta-badge year'>📅 {game.published_year}年</span>
-            <span className='meta-badge age'>🔞 {game.min_age}歳以上</span>
+            {game.min_age != null && <span className='meta-badge age'>🔞 {game.min_age}歳以上</span>}
           </div>
         </aside>
 
