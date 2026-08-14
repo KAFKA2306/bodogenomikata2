@@ -38,7 +38,7 @@ export interface Game {
   min_players: number;
   max_players: number;
   play_time: number;
-  min_age: number;
+  min_age?: number;
   editions?: string[];
   structured_data?: {
     mechanics?: string[];
