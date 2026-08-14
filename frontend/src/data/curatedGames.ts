@@ -16,15 +16,14 @@ export const curatedGames: Game[] = [
     max_players: 6,
     play_time: 15,
     min_age: 7,
-    editions: ['Gigamic公式ルール 10-2025'],
+    editions: ['Gigamic公式ルール'],
     structured_data: {
-      mechanics: ['カードドラフト', 'セットコレクション', '昇順配置', 'オープンドラフト'],
       source_documents: [
         {
           id: 'ipso-gigamic-rulebook',
           title: 'IPSO Rulebook',
           url: gigamicRulebookUrl,
-          version: 'Gigamic公式ルール 10-2025',
+          version: 'Gigamic公式ルール',
           page_or_section: '全2ページ',
           language: 'en',
           source_type: 'OfficialRule',
