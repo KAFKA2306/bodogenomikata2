@@ -1,162 +1,219 @@
 # ボドゲのミカタ
 
-**プレイ中にルールで止まったとき、AIがそれらしく答えても「公式裁定」とは限らない。**
+**プレイ中にルールで止まったとき、欲しいのは「それらしい答え」ではなく、すぐ使えて根拠へ戻れる答えです。**
 
-同じゲームでも版やFAQで内容が変わり、翻訳・要約・図解には解釈が入ります。出典のない説明を公式ルールとして扱うと、正しい原文とAIの補助説明を区別できません。必要なのは、答えを速く出すことだけでなく「どこに書かれていたか」まで戻れることです。
+同じゲームでも版・FAQ・エラッタで内容は変わります。翻訳・要約・図解には解釈が入り、AIが自然に答えても公式裁定とは限りません。
 
-ボドゲのミカタは、ルールブックや公式FAQなどの出典を登録し、セットアップ、手番、合法手、終了条件、得点を検索しやすい補助情報へ変換するボードゲーム・コンパニオンです。公式ルール、抽出事実、AI要約、翻訳、図解、人間レビューを別の情報種別として保持します。
+ボドゲのミカタは、公式ルール・FAQ・登録済み資料を出典付きで構造化し、**セットアップ、手番、合法手、終了条件、得点を素早く確認しながら「どこに書いてあったか」まで戻れるボードゲーム・コンパニオン**です。
 
-**公開サイト:** https://bodogenomikata2.pages.dev/
+- 公開サイト: https://bodogenomikata2.pages.dev/
 
-## 想定する利用場面
+## Vision
+
+ルール確認を「全員が手を止めてPDFや検索結果を探す時間」から、**数十秒で論点を絞り、必要なら公式原文へ戻ってゲームを再開できる体験**へ変えます。
+
+対象:
 
 - ゲーム開始前の短時間インスト
+- プレイ中のrule lookup
 - 英語ルールの日本語補助
-- プレイ中のルール検索
-- セットアップや得点処理の確認
+- setup / scoring確認
 - 音声による説明補助
-- 複数サイトに分散したマーダーミステリー作品・版・販売・公演情報の出典付き統合
-- マダミス100作から制作技法、独自性、人間的手触り、驚き、感情設計を分析
+- 版・FAQ・公式リンクの確認
+- マーダーミステリー作品の非ネタバレ情報整理・創作研究
 
-## 情報処理の流れ
+## Design philosophy
+
+- **Official text before generated prose.** AI要約・翻訳・図解を公式ruleと同一視しない。
+- **Every ruling needs provenance.** game edition、source URL、page/sectionが不足する場合は`require_source`として断定しない。
+- **Meaning types stay separate.** OfficialRule / ExtractedFact / AI summary / Translation / DiagramInterpretation / DatabaseObservationを混ぜない。
+- **Version matters.** 同名gameでも版・FAQ・公演形態を一つへ潰さない。
+- **Fast answer, reversible path.** 短い補助説明から元資料へ戻れる導線を残す。
+- **No spoiler by default.** murder mysteryの公開dataへ真相・handout・重大spoilerを入れない。
+- **No unauthorized collection.** external serviceはmanual entry / official API / creator submission / seller export等、許可境界が確認できる経路だけを使う。
+
+## Why / 差別化
+
+一般的なAI rule assistantは「答えを生成できること」が価値になりがちです。ボドゲのミカタは、**答えを出した後に、その文が公式ruleなのか、抽出事実なのか、翻訳・要約・解釈なのかを見分けられること**を中心にします。
+
+FastAPI、SQLite、LLM、ontologyは差別化そのものではありません。これらは、速さを上げても裁定根拠を失わないための手段です。
+
+## Player journey
 
 ```text
-公式ルール・FAQ・登録済み資料
-  → 出典箇所の抽出
-  → 構造化されたルール事実
-  → AI要約・翻訳・図解
-  → 人間レビュー
-  → API・Web・音声による補助表示
+ルールで止まる
+  → game / editionを指定
+  → setup / turn / legal move / end / scoringを検索
+  → short answer
+  → evidence typeを確認
+  → source page / FAQへ戻る
+  → 必要なら公式裁定を優先
+  → play再開
 ```
 
-次の情報種別を分離して保持します。
+「AIが答えたから正しい」でflowを終わらせません。
 
-- `OfficialRule` — 公式資料に書かれた内容
-- `ExtractedFact` — 出典箇所から抽出した事実
-- `AIGeneratedSummary` — AIが生成した要約
-- `Translation` — 翻訳結果
-- `DiagramInterpretation` — 図や盤面の解釈
-- `DatabaseObservation` — DBに保存された観測値
+## Evidence model
 
-AI生成文は出版社・デザイナーの公式文ではありません。版、出典URL、ページまたは節が欠ける回答は`require_source`として扱い、裁定根拠として断定しません。
-
-機械可読な定義:
-
-- [プロジェクト・オントロジー](ontology/project.yaml)
-- [共通因果・証拠オントロジー](https://github.com/KAFKA2306/know/blob/main/ontology/causal-evidence-core.yaml)
-
-## マダミス横断オントロジー
-
-マーダーミステリーでは、作品そのものと、ウズ版・パッケージ版・店舗公演版などの版、販売条件、個別公演、レビュー集計を分離します。情報サイトごとの値は上書きせず、`SourceRecord`と`Assertion`で出典付きの主張として保持します。
-
-- [中核モデル](ontology/murder-mystery/core.yaml)
-- [基本統制語彙](ontology/murder-mystery/vocabulary.yaml)
-- [マダミス.jp・マダナビ・ウズ・BOOTHの項目対応](ontology/murder-mystery/source-mappings.yaml)
-- [正準レコードJSON Schema](ontology/murder-mystery/record.schema.json)
-- [創作分析オントロジー](ontology/murder-mystery/creative-analysis.yaml)
-- [創作分析の統制語彙](ontology/murder-mystery/creative-vocabulary.yaml)
-- [創作分析JSON Schema](ontology/murder-mystery/creative-analysis.schema.json)
-- [創作分析の非ネタバレ例](ontology/murder-mystery/creative-analysis.example.yaml)
-- [非ネタバレ検証用レコード](ontology/murder-mystery/example-record.yaml)
-- [人気100作の候補台帳](data/murder-mystery/popular-100-candidates.yaml)
-- [100作の創作パターン調査](research/murder-mystery/creative-patterns-100.md)
-
-### 人気100作の候補台帳
-
-公開プレイ履歴、検討リスト、作者公式カタログから、重複を除いた100作品を非ネタバレの候補集合として登録しています。これは予約数・投票数・レビュー数などに基づく確定ランキングではありません。
-
-- 100作品すべてに出典URLを保持
-- 94作品に販売・配布・プラットフォームURLを保持
-- 6作品は公開情報源上のタイトル確認だけで、公式URLの追加確認待ち
-- 人気順位、評価、価格、人数、時間、GM要否は、一次情報を確認するまで未登録
-- レビュー本文、画像、ハンドアウト、真相は収録しない
-
-### 100作から更新した創作分析オントロジー
-
-100作すべてをタイトル表層で同一規則により一次コーディングし、公開あらすじ・公開システム説明を確認できた38作から、次の6つを中核的な`creativeOperation`として定義しています。
-
-- `diegetic_form_integration` — 形式や媒体そのものの物語内化
-- `relationship_as_mechanic` — 関係性を密談・選択・情報差・個別結末へ変換
-- `tonal_collision` — 喜劇と死、可愛さと喪失などの感情衝突
-- `social_specificity` — 職業、共同体、制度、生活の具体性
-- `residual_risk` — 救済しない、不快さや未解決感を残す表現上のリスク
-- `production_integration` — 音楽、Web、改稿、難易度別版、他媒体展開の統合
-
-創作分析では、次を別の主張として保持します。
-
-- `observed_signal` — 公開情報上で実際に観測したシグナル
-- `creator_promise` — 作者・販売者が約束する体験
-- `audience_report` — 特定の受け手が報告した体験
-- `executed_assessment` — 版を特定した実プレイで確認した達成度
-- `authorized_text_observation` — 許諾済み本文から得た観測
-
-公開あらすじの「泣ける」「驚く」といった約束を、そのまま実際の感動や伏線公平性へ変換しません。`earned_emotion`、`foreshadowing_fairness`、`ending_integration`などは、実プレイまたは許諾済み本文を必須とします。
-
-「AIらしくなさ」を作者判定には使いません。固有語彙、社会的具体性、感情の矛盾、関係依存、表現上のリスク、未解決の余韻を`perceivedHumanTexture`として記述します。生成AI・ツールの利用は`ProductionCredit`として制作来歴へ記録し、作品の人間的手触りとは分離します。
-
-分析と検証:
-
-```bash
-task creativity:ontology-check
-task creativity:check
-task creativity:analyze
+```text
+OfficialRule
+  ↓ extraction
+ExtractedFact
+  ↓ optional assistance
+AIGeneratedSummary / Translation / DiagramInterpretation
+  ↓ human review
+API / Web / Voice assistance
 ```
 
-- `creativity:ontology-check` — 統制語彙、根拠境界、JSON Schema、非ネタバレ例を検証
-- `creativity:check` — 100件固定、連番、タイトル表層で許される推論範囲を検証
-- `creativity:analyze` — 再生成可能なタイトル表層シグナルデータを出力
+別種として保持するもの:
 
-データ取得は、`manual_entry`、`official_api`、`creator_submission`、`seller_export`だけを許可します。スクレイピング、クローリング、自動HTML抽出、レビュー本文の転載、無許諾画像ホットリンクは実装しません。公式API仕様または書面による許諾が確認できるまで、各サイトの自動取得は無効です。
+- `OfficialRule`
+- `ExtractedFact`
+- `AIGeneratedSummary`
+- `Translation`
+- `DiagramInterpretation`
+- `DatabaseObservation`
 
-オントロジー検証:
+Machine-readable contracts:
 
-```bash
-task ontology:validate
+- [Project ontology](ontology/project.yaml)
+- [Causal/evidence core](https://github.com/KAFKA2306/know/blob/main/ontology/causal-evidence-core.yaml)
+
+## Rule assistance boundary
+
+公開・利用前に最低限確認するもの:
+
+1. 対象gameが一致
+2. editionが一致
+3. source URLがある
+4. page / sectionが特定できる
+5. official textとgenerated proseが区別されている
+6. human review stateが分かる
+
+最終裁定、競技rule、errata、FAQはpublisher / designer / tournament organizerの最新公式情報を優先します。
+
+## Murder mystery research surface
+
+マーダーミステリーでは、作品・版・販売条件・公演・review aggregateを別entityとして扱います。
+
+```text
+Work
+  ├─ Edition
+  ├─ Distribution / Sale
+  ├─ Performance
+  └─ Source-backed assertions
 ```
 
-この検証は、取得方式、参照整合性、人数・時間範囲、価格単位、統制語彙、100件固定、タイトル重複、出典URL、創作分析の根拠水準、作者性誤推定、ネタバレ公開範囲を確認します。
+主なontology:
 
-## 技術構成
+- [core](ontology/murder-mystery/core.yaml)
+- [vocabulary](ontology/murder-mystery/vocabulary.yaml)
+- [source mappings](ontology/murder-mystery/source-mappings.yaml)
+- [record schema](ontology/murder-mystery/record.schema.json)
+- [creative analysis](ontology/murder-mystery/creative-analysis.yaml)
+- [creative vocabulary](ontology/murder-mystery/creative-vocabulary.yaml)
 
-- Backend — FastAPI / Python 3.11
-- Storage — SQLite (`backend/games.db`)
-- AI生成 — 設定されたLLMと外部生成ワークフロー
-- 実行管理 — Taskfile / uv
+### Popular-100 candidate ledger
 
-```mermaid
-graph TD
-    User[利用者] <--> API[FastAPI]
-    API <--> DB[(SQLite)]
-    API <--> AI[生成・要約処理]
-    API <--> Sources[公式資料・登録済み外部情報]
-```
+`data/murder-mystery/popular-100-candidates.yaml` は、公開プレイ履歴・検討list・creator catalogから重複除去した100作品の**候補集合**です。
 
-## クイックスタート
+確定popular rankingではありません。
+
+- source URLを全100件に保持
+- price / player count / duration / GM requirement等は一次情報確認前に埋めない
+- review本文・画像・handout・truthを収録しない
+
+### Creative analysis boundary
+
+公開あらすじで「泣ける」「驚く」と書かれていても、実際の感動・伏線公平性が実証されたとは扱いません。
+
+区別するclaim:
+
+- `observed_signal`
+- `creator_promise`
+- `audience_report`
+- `executed_assessment`
+- `authorized_text_observation`
+
+`earned_emotion`、`foreshadowing_fairness`、`ending_integration`等は、実playまたは許諾済み本文を必要とします。
+
+「AIらしくない」を作者判定には使いません。production creditとperceived human textureを別概念にします。
+
+## Data acquisition boundary
+
+許可する方式:
+
+- `manual_entry`
+- `official_api`
+- `creator_submission`
+- `seller_export`
+
+公式API仕様または許諾を確認できるまで、scraping / crawling / automated HTML extraction / review転載 / unauthorized image hotlinkを実装しません。
+
+## Quick start
 
 ```bash
 task setup
 task dev
 ```
 
-ゲーム情報を同期する例:
+Game sync example:
 
 ```bash
 curl -X POST "http://localhost:8000/api/games/sync?game_name=Catan"
 ```
 
-## 利用時の確認事項
+Ontology / creative research verification:
 
-生成結果を公開、翻訳配布、裁定補助へ利用する前に、次を確認してください。
+```bash
+task ontology:validate
+task creativity:ontology-check
+task creativity:check
+task creativity:analyze
+```
 
-1. 対象ゲームと版が一致している
-2. 出典URLが登録されている
-3. ページまたは節が特定されている
-4. 公式文とAI生成文が区別されている
-5. 人間レビューの状態が確認されている
-6. マダミスの公開データに重大なネタバレまたは真相が含まれていない
-7. 外部サイト由来データの取得方法と権利状態が記録されている
-8. 公開あらすじから伏線の公平性、実際の感動、作者性を推定していない
-9. 制作クレジットと`perceivedHumanTexture`を混同していない
-10. 版や公演形態が異なる創作評価を一つに潰していない
+## Architecture
 
-最終的な裁定、競技ルール、エラッタ、FAQは、出版社・デザイナー・大会運営の最新公式情報を優先してください。
+- Backend: FastAPI / Python 3.11
+- Storage: SQLite (`backend/games.db`)
+- AI assistance: configured LLM / generation workflow
+- Operations: Taskfile / uv
+
+```mermaid
+graph TD
+    User[Player] <--> API[FastAPI]
+    API <--> DB[(SQLite)]
+    API <--> AI[Summary / Translation / Assistance]
+    API <--> Sources[Official / Registered Sources]
+```
+
+## Repository map
+
+```text
+backend/                     game / rule API and storage
+ontology/                    evidence / game / murder-mystery semantics
+data/murder-mystery/         non-spoiler candidate ledgers
+research/murder-mystery/     creative-pattern research
+docs/                        contracts / source notes / product docs
+Taskfile.yml                 canonical local operations
+AGENTS.md                    agent working rules
+```
+
+## Safety checklist
+
+利用前・公開前に確認:
+
+- game / edition / source一致
+- official vs generated区分
+- review state
+- spoiler boundary
+- acquisition permission
+- creator promiseをexecuted resultへ昇格していない
+- edition / performanceごとの評価を混ぜていない
+- production creditとauthor inferenceを混ぜていない
+
+## Done
+
+成功指標は登録game数やAI回答数ではありません。
+
+**利用者がルールで止まったときに短時間で再開でき、その答えについて「何が公式で、何が補助解釈で、どの出典へ戻ればよいか」を説明できること**をDoneの中心に置きます。
