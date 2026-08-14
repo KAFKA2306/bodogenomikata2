@@ -1,4 +1,5 @@
 import { apiClient } from './client';
+import { findCuratedGameBySlug, mergeCuratedGames } from '../data/curatedGames';
 import type { Game } from '../types/game';
 
 const fetchStaticGames = async (query: string = '', limit: number = 20, offset: number = 0) => {
@@ -12,10 +13,11 @@ const fetchStaticGames = async (query: string = '', limit: number = 20, offset: 
       const titleJaMatch = g.title_ja?.toLowerCase().includes(q) || false;
       return titleMatch || titleJaMatch;
     });
-    return { data: filtered.slice(offset, offset + limit) };
+    const paged = filtered.slice(offset, offset + limit);
+    return { data: mergeCuratedGames(paged, query, limit, offset) };
   } catch (error) {
     console.error('Static fallback failed:', error);
-    return { data: [] };
+    return { data: mergeCuratedGames([], query, limit, offset) };
   }
 };
 
@@ -24,7 +26,7 @@ export const fetchGames = async (query: string = '', limit: number = 20, offset:
     const response = await apiClient.get<{ data: Game[] }>('/games/search', {
       params: { q: query, limit, offset }
     });
-    return response.data;
+    return { data: mergeCuratedGames(response.data.data, query, limit, offset) };
   } catch (error) {
     console.warn('Backend API request failed, falling back to static data.json...', error);
     return await fetchStaticGames(query, limit, offset);
@@ -32,9 +34,11 @@ export const fetchGames = async (query: string = '', limit: number = 20, offset:
 };
 
 export const fetchGameBySlug = async (slug: string): Promise<{ data: Game }> => {
+  const curatedGame = findCuratedGameBySlug(slug);
+  if (curatedGame) return { data: curatedGame };
+
   try {
     const response = await apiClient.get<{ data: Game }>(`/games/${slug}`);
-    // Extract Axios response data structure containing the game object inside 'data' property
     return response.data;
   } catch (error) {
     console.warn(`Backend API fetch for slug "${slug}" failed, falling back to static data.json...`, error);
@@ -84,4 +88,3 @@ export const postReview = async (slug: string, rating: number, comment: string) 
     }
   }
 };
-
