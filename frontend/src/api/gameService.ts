@@ -1,36 +1,6 @@
 import { apiClient } from './client';
 import { findCuratedGameBySlug, mergeCuratedGames } from '../data/curatedGames';
-import { flipSevenWithAVengeance } from '../data/flipSevenWithAVengeance';
 import type { Game } from '../types/game';
-
-const additionalCuratedGames: Game[] = [flipSevenWithAVengeance];
-
-const findAdditionalCuratedGameBySlug = (slug: string) =>
-  additionalCuratedGames.find(game => game.slug === slug);
-
-const mergeAdditionalCuratedGames = (games: Game[], query: string, limit: number, offset: number) => {
-  if (offset !== 0) return games;
-
-  const normalizedQuery = query.normalize('NFKC').toLocaleLowerCase('ja').trim();
-  const matches = additionalCuratedGames.filter(game => {
-    if (!normalizedQuery) return true;
-    return game.title.toLocaleLowerCase('ja').includes(normalizedQuery)
-      || game.title_ja?.toLocaleLowerCase('ja').includes(normalizedQuery);
-  });
-  const existingSlugs = new Set(games.map(game => game.slug));
-  return [
-    ...matches.filter(game => !existingSlugs.has(game.slug)),
-    ...games,
-  ].slice(0, limit);
-};
-
-const mergeAllCuratedGames = (games: Game[], query: string, limit: number, offset: number) =>
-  mergeAdditionalCuratedGames(
-    mergeCuratedGames(games, query, limit, offset),
-    query,
-    limit,
-    offset,
-  );
 
 const fetchStaticGames = async (query: string = '', limit: number = 20, offset: number = 0) => {
   try {
@@ -44,10 +14,10 @@ const fetchStaticGames = async (query: string = '', limit: number = 20, offset: 
       return titleMatch || titleJaMatch;
     });
     const paged = filtered.slice(offset, offset + limit);
-    return { data: mergeAllCuratedGames(paged, query, limit, offset) };
+    return { data: mergeCuratedGames(paged, query, limit, offset) };
   } catch (error) {
     console.error('Static fallback failed:', error);
-    return { data: mergeAllCuratedGames([], query, limit, offset) };
+    return { data: mergeCuratedGames([], query, limit, offset) };
   }
 };
 
@@ -56,7 +26,7 @@ export const fetchGames = async (query: string = '', limit: number = 20, offset:
     const response = await apiClient.get<{ data: Game[] }>('/games/search', {
       params: { q: query, limit, offset }
     });
-    return { data: mergeAllCuratedGames(response.data.data, query, limit, offset) };
+    return { data: mergeCuratedGames(response.data.data, query, limit, offset) };
   } catch (error) {
     console.warn('Backend API request failed, falling back to static data.json...', error);
     return await fetchStaticGames(query, limit, offset);
@@ -64,9 +34,6 @@ export const fetchGames = async (query: string = '', limit: number = 20, offset:
 };
 
 export const fetchGameBySlug = async (slug: string): Promise<{ data: Game }> => {
-  const additionalCuratedGame = findAdditionalCuratedGameBySlug(slug);
-  if (additionalCuratedGame) return { data: additionalCuratedGame };
-
   const curatedGame = findCuratedGameBySlug(slug);
   if (curatedGame) return { data: curatedGame };
 
