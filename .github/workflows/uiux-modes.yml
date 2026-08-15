@@ -56,3 +56,14 @@ jobs:
           grep -q 'min-width: 0;' frontend/src/detail-layout.css
           grep -q '.product-shell .product-header::after' frontend/src/detail-layout.css
           grep -q "import './detail-layout.css';" frontend/src/App.tsx
+
+      - name: Validate game detail accessibility contract
+        run: |
+          grep -q "role='status'" frontend/src/pages/GameDetailPage.tsx
+          grep -q "aria-busy='true'" frontend/src/pages/GameDetailPage.tsx
+          grep -q "className='loader-spinner' aria-hidden='true'" frontend/src/pages/GameDetailPage.tsx
+          grep -q "aria-hidden='true' focusable='false'" frontend/src/pages/GameDetailPage.tsx
+          grep -q "alt={hasGameImage ? displayTitle : ''}" frontend/src/pages/GameDetailPage.tsx
+          grep -q "<dl className='game-meta detail-sidebar-meta'>" frontend/src/pages/GameDetailPage.tsx
+          grep -q '<dt><span aria-hidden=' frontend/src/pages/GameDetailPage.tsx
+          grep -q '<dd>' frontend/src/pages/GameDetailPage.tsx

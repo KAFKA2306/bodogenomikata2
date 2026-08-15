@@ -17,13 +17,15 @@ export const GameDetailPage: React.FC = () => {
 
   if (!game) {
     return (
-      <div className='loader-wrapper'>
-        <div className='loader-spinner'></div>
+      <div className='loader-wrapper' role='status' aria-live='polite' aria-busy='true'>
+        <div className='loader-spinner' aria-hidden='true'></div>
         <p>ボードゲームの情報を読み込んでいます...</p>
       </div>
     );
   }
 
+  const displayTitle = game.title_ja || game.title;
+  const hasGameImage = Boolean(game.image_url);
   const imgUrl = game.image_url
     ? (game.image_url.startsWith('//') ? 'https:' + game.image_url : game.image_url)
     : 'https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?auto=format&fit=crop&q=80&w=600';
@@ -33,13 +35,13 @@ export const GameDetailPage: React.FC = () => {
   return (
     <div className='comparison-container detail-page'>
       <Helmet>
-        <title>{`${game.title_ja || game.title} | ボドゲのミカタ`}</title>
-        <meta name='description' content={`${game.title_ja || game.title}のプレイ人数、時間、メカニクスなどの詳細データとプレイヤーのレビュー。`} />
+        <title>{`${displayTitle} | ボドゲのミカタ`}</title>
+        <meta name='description' content={`${displayTitle}のプレイ人数、時間、メカニクスなどの詳細データとプレイヤーのレビュー。`} />
       </Helmet>
 
       <div className='back-nav'>
         <Link to="/" className='back-button'>
-          <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+          <svg aria-hidden='true' focusable='false' width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg>
           検索一覧に戻る
@@ -49,20 +51,34 @@ export const GameDetailPage: React.FC = () => {
       <div className='detail-grid'>
         <aside className='detail-card detail-sidebar' aria-label='ゲーム基本情報'>
           <div className='detail-image-wrapper'>
-            <img className='detail-image' src={imgUrl} alt={game.title} />
+            <img className='detail-image' src={imgUrl} alt={hasGameImage ? displayTitle : ''} />
           </div>
-          <div className='game-meta detail-sidebar-meta'>
-            <span className='meta-badge players'>👤 {game.min_players}-{game.max_players}人</span>
-            <span className='meta-badge time'>⏱️ {game.play_time}分</span>
-            <span className='meta-badge year'>📅 {game.published_year}年</span>
-            {game.min_age != null && <span className='meta-badge age'>🔞 {game.min_age}歳以上</span>}
-          </div>
+          <dl className='game-meta detail-sidebar-meta'>
+            <div className='meta-badge players'>
+              <dt><span aria-hidden='true'>👤</span> 人数</dt>
+              <dd>{game.min_players}-{game.max_players}人</dd>
+            </div>
+            <div className='meta-badge time'>
+              <dt><span aria-hidden='true'>⏱️</span> 時間</dt>
+              <dd>{game.play_time != null ? `${game.play_time}分` : '不明'}</dd>
+            </div>
+            <div className='meta-badge year'>
+              <dt><span aria-hidden='true'>📅</span> 発売年</dt>
+              <dd>{game.published_year}年</dd>
+            </div>
+            {game.min_age != null && (
+              <div className='meta-badge age'>
+                <dt><span aria-hidden='true'>🔞</span> 対象年齢</dt>
+                <dd>{game.min_age}歳以上</dd>
+              </div>
+            )}
+          </dl>
         </aside>
 
         <div className='detail-main'>
           <section className='detail-card desc-card' aria-labelledby='game-detail-title'>
             <div className='detail-main-header'>
-              <h1 id='game-detail-title' className='detail-title'>{game.title_ja || game.title}</h1>
+              <h1 id='game-detail-title' className='detail-title'>{displayTitle}</h1>
               {game.title_ja && <p className='detail-subtitle-en'>{game.title}</p>}
             </div>
 
