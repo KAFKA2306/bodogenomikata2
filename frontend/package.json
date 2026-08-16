@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && node scripts/generate-seo.mjs",
+    "build": "tsc -b && vite build && node scripts/generate-seo.mjs && node scripts/generate-indexnow-key.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
