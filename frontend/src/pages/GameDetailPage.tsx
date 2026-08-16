@@ -6,7 +6,7 @@ import { ReviewList } from "../components/ReviewList";
 import { fetchGameBySlug } from '../api/gameService';
 import type { Game } from '../types/game';
 
-const siteOrigin = (import.meta.env.VITE_SITE_ORIGIN || 'https://bodoge-no-mikata.vercel.app').replace(/\/$/, '');
+const siteOrigin = (import.meta.env.VITE_SITE_ORIGIN || 'https://bodogenomikata2.pages.dev').replace(/\/$/, '');
 
 export const GameDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();

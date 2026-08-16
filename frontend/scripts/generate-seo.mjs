@@ -5,7 +5,7 @@ import ts from 'typescript';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const dist = path.resolve(here, '../../static');
-const origin = (process.env.SITE_ORIGIN || process.env.VITE_SITE_ORIGIN || 'https://bodoge-no-mikata.vercel.app').replace(/\/$/, '');
+const origin = (process.env.SITE_ORIGIN || process.env.VITE_SITE_ORIGIN || 'https://bodogenomikata2.pages.dev').replace(/\/$/, '');
 
 const esc = (value = '') => String(value)
   .replaceAll('&', '&amp;')
@@ -124,6 +124,7 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://w
 await writeFile(path.join(dist, 'sitemap.xml'), sitemap);
 await writeFile(path.join(dist, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${canonical('/sitemap.xml')}\n`);
 
+console.log(`[seo] canonical origin: ${origin}`);
 console.log(`[seo] data.json games: ${gamesRaw.length}`);
 console.log(`[seo] curated games: ${curatedGames.length}`);
 console.log(`[seo] effective unique game URLs: ${games.length}`);
