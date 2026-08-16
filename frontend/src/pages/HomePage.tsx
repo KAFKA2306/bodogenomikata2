@@ -60,5 +60,6 @@ export const HomePage: React.FC = () => (
         <li><strong>情報種別</strong><span>公式ルール、抽出事実、AI要約、翻訳、人間レビューを区別します。</span></li>
       </ol>
     </section>
+    <p><a href="/games/">収録している全ゲームを見る</a></p>
   </ProductShell>
 );
