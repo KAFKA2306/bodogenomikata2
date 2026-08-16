@@ -1,6 +1,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import ts from 'typescript';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const dist = path.resolve(here, '../../static');
@@ -19,20 +20,26 @@ const canonical = (pathname) => `${origin}${pathname}`;
 const gamesRaw = JSON.parse(await readFile(path.join(dist, 'data.json'), 'utf8'));
 if (!Array.isArray(gamesRaw)) throw new Error('static/data.json must be an array');
 
+const curatedSource = await readFile(path.resolve(here, '../src/data/curatedGames.ts'), 'utf8');
+const curatedJs = ts.transpileModule(curatedSource, {
+  compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },
+}).outputText;
+const curatedModule = await import(`data:text/javascript;base64,${Buffer.from(curatedJs).toString('base64')}`);
+const curatedGames = curatedModule.curatedGames;
+if (!Array.isArray(curatedGames)) throw new Error('curatedGames must be an array');
+
+// Match runtime behavior: curated games are canonical for their slugs and may exist outside data.json.
 const gamesBySlug = new Map();
 for (const game of gamesRaw) {
   const slug = typeof game?.slug === 'string' ? game.slug.trim() : '';
-  if (!slug) continue;
-  if (!gamesBySlug.has(slug)) gamesBySlug.set(slug, game);
+  if (slug && !gamesBySlug.has(slug)) gamesBySlug.set(slug, game);
+}
+for (const game of curatedGames) {
+  const slug = typeof game?.slug === 'string' ? game.slug.trim() : '';
+  if (!slug) throw new Error('curated game without slug');
+  gamesBySlug.set(slug, game);
 }
 const games = [...gamesBySlug.values()];
-
-const curatedSource = await readFile(path.resolve(here, '../src/data/curatedGames.ts'), 'utf8');
-const curatedSlugs = [...curatedSource.matchAll(/\bslug:\s*['"]([^'"]+)['"]/g)].map((match) => match[1]);
-const missingCuratedSlugs = curatedSlugs.filter((slug) => !gamesBySlug.has(slug));
-if (missingCuratedSlugs.length) {
-  throw new Error(`curated slugs missing from data.json: ${missingCuratedSlugs.join(', ')}`);
-}
 
 const template = await readFile(path.join(dist, 'index.html'), 'utf8');
 const replaceHead = (html, { title, description, url, structuredData }) => {
@@ -117,9 +124,9 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://w
 await writeFile(path.join(dist, 'sitemap.xml'), sitemap);
 await writeFile(path.join(dist, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${canonical('/sitemap.xml')}\n`);
 
-console.log(`[seo] games total: ${gamesRaw.length}`);
-console.log(`[seo] unique game URLs: ${games.length}`);
-console.log(`[seo] curated slugs verified: ${curatedSlugs.length}`);
+console.log(`[seo] data.json games: ${gamesRaw.length}`);
+console.log(`[seo] curated games: ${curatedGames.length}`);
+console.log(`[seo] effective unique game URLs: ${games.length}`);
 console.log(`[seo] prerendered game pages: ${games.length}`);
 console.log(`[seo] missing core metadata: ${missingMetadata}`);
 console.log(`[seo] static URLs: ${staticPaths.length}`);
