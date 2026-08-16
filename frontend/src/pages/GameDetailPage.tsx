@@ -31,12 +31,24 @@ export const GameDetailPage: React.FC = () => {
     : 'https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?auto=format&fit=crop&q=80&w=600';
 
   const mechanics = game.structured_data?.mechanics || [];
+  const canonicalUrl = `${window.location.origin}/game/${encodeURIComponent(game.slug)}`;
+  const breadcrumb = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'ボドゲのミカタ', item: `${window.location.origin}/` },
+      { '@type': 'ListItem', position: 2, name: '全ゲーム', item: `${window.location.origin}/games/` },
+      { '@type': 'ListItem', position: 3, name: displayTitle, item: canonicalUrl },
+    ],
+  };
 
   return (
     <div className='comparison-container detail-page'>
       <Helmet>
         <title>{`${displayTitle} | ボドゲのミカタ`}</title>
         <meta name='description' content={`${displayTitle}のプレイ人数、時間、メカニクスなどの詳細データとプレイヤーのレビュー。`} />
+        <link rel='canonical' href={canonicalUrl} />
+        <script type='application/ld+json'>{JSON.stringify(breadcrumb)}</script>
       </Helmet>
 
       <div className='back-nav'>
