@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const dist = path.resolve(here, '../dist');
+const dist = path.resolve(here, '../../static');
 const origin = (process.env.SITE_ORIGIN || process.env.VITE_SITE_ORIGIN || 'https://bodoge-no-mikata.vercel.app').replace(/\/$/, '');
 
 const esc = (value = '') => String(value)
@@ -17,7 +17,7 @@ const jsonLd = (value) => JSON.stringify(value).replaceAll('<', '\\u003c');
 const canonical = (pathname) => `${origin}${pathname}`;
 
 const gamesRaw = JSON.parse(await readFile(path.join(dist, 'data.json'), 'utf8'));
-if (!Array.isArray(gamesRaw)) throw new Error('dist/data.json must be an array');
+if (!Array.isArray(gamesRaw)) throw new Error('static/data.json must be an array');
 
 const gamesBySlug = new Map();
 for (const game of gamesRaw) {
