@@ -27,6 +27,13 @@ for (const game of gamesRaw) {
 }
 const games = [...gamesBySlug.values()];
 
+const curatedSource = await readFile(path.resolve(here, '../src/data/curatedGames.ts'), 'utf8');
+const curatedSlugs = [...curatedSource.matchAll(/\bslug:\s*['"]([^'"]+)['"]/g)].map((match) => match[1]);
+const missingCuratedSlugs = curatedSlugs.filter((slug) => !gamesBySlug.has(slug));
+if (missingCuratedSlugs.length) {
+  throw new Error(`curated slugs missing from data.json: ${missingCuratedSlugs.join(', ')}`);
+}
+
 const template = await readFile(path.join(dist, 'index.html'), 'utf8');
 const replaceHead = (html, { title, description, url, structuredData }) => {
   let next = html
@@ -101,7 +108,8 @@ const home = replaceHead(template, {
 });
 await writeFile(path.join(dist, 'index.html'), home);
 
-const staticPaths = ['/', '/play', '/install', '/research', '/cards/palworld', '/games/'];
+// Only URLs with explicit, generated canonical HTML enter the sitemap.
+const staticPaths = ['/', '/games/'];
 const paths = [...staticPaths, ...games.map((game) => gamePath(game.slug.trim()))];
 if (new Set(paths).size !== paths.length) throw new Error('duplicate canonical URLs detected');
 
@@ -111,6 +119,7 @@ await writeFile(path.join(dist, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap
 
 console.log(`[seo] games total: ${gamesRaw.length}`);
 console.log(`[seo] unique game URLs: ${games.length}`);
+console.log(`[seo] curated slugs verified: ${curatedSlugs.length}`);
 console.log(`[seo] prerendered game pages: ${games.length}`);
 console.log(`[seo] missing core metadata: ${missingMetadata}`);
 console.log(`[seo] static URLs: ${staticPaths.length}`);
