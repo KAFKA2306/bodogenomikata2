@@ -1,5 +1,8 @@
 # ボドゲのミカタ
 
+[![Validate play and research modes](https://github.com/KAFKA2306/bodogenomikata2/actions/workflows/uiux-modes.yml/badge.svg)](https://github.com/KAFKA2306/bodogenomikata2/actions/workflows/uiux-modes.yml)
+[![Validate Palworld card database](https://github.com/KAFKA2306/bodogenomikata2/actions/workflows/palworld-card-db.yml/badge.svg)](https://github.com/KAFKA2306/bodogenomikata2/actions/workflows/palworld-card-db.yml)
+
 **プレイ中にルールで止まったとき、欲しいのは「それらしい答え」ではなく、すぐ使えて根拠へ戻れる答えです。**
 
 同じゲームでも版・FAQ・エラッタで内容は変わります。翻訳・要約・図解には解釈が入り、AIが自然に答えても公式裁定とは限りません。
