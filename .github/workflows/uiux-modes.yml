@@ -4,11 +4,13 @@ on:
   pull_request:
     paths:
       - "frontend/**"
+      - "CLAUDE.md"
       - ".github/workflows/uiux-modes.yml"
   push:
     branches: [master]
     paths:
       - "frontend/**"
+      - "CLAUDE.md"
       - ".github/workflows/uiux-modes.yml"
   workflow_dispatch:
 
