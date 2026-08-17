@@ -39,13 +39,17 @@ jobs:
         working-directory: frontend
         run: npm run build
 
+      - name: Test rule evidence scope
+        run: node frontend/scripts/test-rule-answer-scope.mjs
+
       - name: Validate mode and evidence contracts
         run: |
           grep -q 'path="/play"' frontend/src/App.tsx
           grep -q 'path="/install"' frontend/src/App.tsx
           grep -q 'path="/research"' frontend/src/App.tsx
-          grep -q '確認済みの回答が登録されていません' frontend/src/pages/PlayModePage.tsx
-          grep -q '指定版' frontend/src/pages/PlayModePage.tsx
+          grep -q '確認済みの回答が登録されていません' frontend/src/ruleAnswerResolver.ts
+          grep -q '指定版' frontend/src/ruleAnswerResolver.ts
+          grep -q 'language' frontend/src/ruleAnswerResolver.ts
           grep -q 'source_documents' frontend/src/types/game.ts
           grep -q 'review_status' frontend/src/types/game.ts
           grep -q 'spoiler_level' frontend/src/types/game.ts
