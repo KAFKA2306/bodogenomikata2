@@ -2,7 +2,6 @@ import type { Game } from '../types/game';
 
 const yroPublisherUrl = 'https://www.studiosupernova.it/products/yro';
 const yroBgaRulesUrl = 'https://en.boardgamearena.com/gamepanel?game=yro';
-const yroBgaReplayUrl = 'https://boardgamearena.com/archive/replay/260807-1629/?table=897403576&player=87325603&comments=84896785#';
 const gigamicRulebookUrl = 'https://en.gigamic.com/index.php?controller=attachment&id_attachment=668';
 const gigamicProductUrl = 'https://en.gigamic.com/family-games/1417-ipso.html';
 const bgaRulesUrl = 'https://en.boardgamearena.com/gamepanel?game=ipso';
@@ -40,16 +39,6 @@ export const curatedGames: Game[] = [
           page_or_section: 'Rules summary / Game description',
           language: 'en',
           source_type: 'ExtractedFact',
-          review_status: 'reviewed',
-        },
-        {
-          id: 'yro-bga-replay-897403576',
-          title: 'YRO BGA replay — table #897403576',
-          url: yroBgaReplayUrl,
-          version: null,
-          page_or_section: '2026-08-11 replay log supplied by player',
-          language: 'ja',
-          source_type: 'DatabaseObservation',
           review_status: 'reviewed',
         },
       ],
@@ -121,8 +110,8 @@ export const curatedGames: Game[] = [
           id: 'yro-after-40',
           question_keywords: ['40点後', '40点に到達', '40点を超えた', '達成後', 'なぜ続く', '即終了'],
           answer: '40勝利点への到達は終了条件を満たしますが、ゲームはそのラウンドの終了時まで続きます。そのため、到達後も残りの戦闘・生産・収入・勝利点フェイズやカード効果を通常どおり処理します。',
-          source_ids: ['yro-bga-rules', 'yro-bga-replay-897403576'],
-          answer_type: 'ExtractedFact',
+          source_ids: ['yro-bga-rules'],
+          answer_type: 'Translation',
           review_status: 'reviewed',
           spoiler_level: 'none',
         },
@@ -132,15 +121,6 @@ export const curatedGames: Game[] = [
           answer: 'ゲーム終了時、残っている3金ごとに1勝利点へ変換します。その後、終了時得点を含めた総勝利点で勝者を決めます。',
           source_ids: ['yro-bga-rules'],
           answer_type: 'Translation',
-          review_status: 'reviewed',
-          spoiler_level: 'none',
-        },
-        {
-          id: 'yro-replay-example-897403576',
-          question_keywords: ['この対局', '897403576', '実戦例', '1048576', 'なぜ勝った'],
-          answer: 'テーブル#897403576では、1048576が「彷徨える市場」のリンクボーナス5点で40点へ到達して終了条件を満たしました。その後も同じラウンドの戦闘・収入・勝利点処理が続き、最後に残金を3金=1点で変換しています。これは「条件達成ラウンドの終了時にゲーム終了」というルールと一致します。',
-          source_ids: ['yro-bga-rules', 'yro-bga-replay-897403576'],
-          answer_type: 'ExtractedFact',
           review_status: 'reviewed',
           spoiler_level: 'none',
         },
