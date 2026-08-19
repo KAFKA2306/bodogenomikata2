@@ -107,12 +107,13 @@ const website = {
   name: 'ボドゲのミカタ',
   url: canonical('/'),
 };
+const homeFallback = '<main><h1>ボドゲのミカタ</h1><p>出典付きのボードゲーム情報を確認できます。</p><p><a href="/games/">全ゲーム一覧</a></p></main>';
 const home = replaceHead(template, {
   title: 'ボドゲのミカタ | 出典付きボードゲーム補助',
   description: 'プレイ中、ゲーム開始前、作品調査を分離し、確認済み出典がある回答だけを表示するボードゲーム補助。',
   url: canonical('/'),
   structuredData: website,
-});
+}).replace(/<div id="root"><\/div>/i, `<div id="root">${homeFallback}</div>`);
 await writeFile(path.join(dist, 'index.html'), home);
 
 // Only URLs with explicit, generated canonical HTML enter the sitemap.
