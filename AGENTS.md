@@ -1,24 +1,26 @@
 # AGENTS.md
 
-This project is optimized for AI agents (Gemini CLI, Claude Code).
-必ず毎回まずweb検索する
-## Architecture (v2)
+このリポジトリでは、利用者に役立つ正確なゲーム情報と、保守しやすい公開サービスを優先する。
 
-- **Backend**: FastAPI + SQLite (local) + Gemini 2.5 Flash
-- **Content Engine**: NotebookLM CLI (Python/Playwright)
-- **Data Source**: BoardGameGeek (BGG) XML API v2
-- **Infrastructure**: Local-only by default
+## 基本方針
 
-## Core Workflows
+- 公開ルール・評価・分析は、公式一次資料と本番データを根拠にする。
+- 版・FAQ・エラッタの違いを混ぜない。根拠が不足する場合は推測で埋めず、未検証として扱う。
+- silent fallback、根拠のない既定値、例外の握り潰しを追加しない。
+- 新しい仕組みより既存実装と標準機能を優先し、不要なものは削除する。
+- dead code、obsolete config、重複workflow、古い文書、個別ゲーム専用の一回限りの処理を残さない。
 
-1. **Setup**: `task setup`
-2. **Sync**: `POST /api/games/sync?bgg_id=...`
-3. **Generate**: `POST /api/games/{slug}/generate`
-4. **Dev**: `task dev`
+## ドキュメント
 
-## Guidelines for Agents
+- 一般ドキュメントの置き場は `docs/` だけとする。
+- `README.md` は利用者向けの入口、`AGENTS.md` は開発規約としてルートに残す。
+- ツール固有の別ドキュメント置き場、archive、memory文書を作らない。
+- 内容が重複する場合は新規追加ではなく、既存文書へ統合するか削除する。
+- 公開Webサイトがある場合、`README.md` 冒頭にcanonical production URLを完全な `https://...` の平文で置く。
 
-- **Zero-Fat**: Do not add try-catch in business logic. Let it crash.
-- **Local Persistence**: All data in `backend/games.db`.
-- **Naming**: Use descriptive names, avoid comments.
-- **Japanese**: All rules and summaries must be in Japanese.
+## 変更と検証
+
+- 変更前に、現在のコード、Issue、Pull Request、CI、productionを確認する。
+- test / data validation → Pull Request → exact-head CI → merge → main read-back → production verificationまで確認する。
+- CI成功だけをproduction成功としない。
+- 同じ問題が再発する場合は、その場の修正を繰り返さず、このファイル、CI、schema、testのうち最小の正規箇所へ再発防止を入れる。
