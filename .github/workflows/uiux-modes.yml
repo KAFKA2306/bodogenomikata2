@@ -4,13 +4,19 @@ on:
   pull_request:
     paths:
       - "frontend/**"
+      - "docs/**"
+      - "AGENTS.md"
       - "CLAUDE.md"
+      - ".serena/**"
       - ".github/workflows/uiux-modes.yml"
   push:
     branches: [master]
     paths:
       - "frontend/**"
+      - "docs/**"
+      - "AGENTS.md"
       - "CLAUDE.md"
+      - ".serena/**"
       - ".github/workflows/uiux-modes.yml"
   workflow_dispatch:
 
@@ -41,6 +47,10 @@ jobs:
 
       - name: Test rule evidence scope
         run: node frontend/scripts/test-rule-answer-scope.mjs
+
+      - name: Validate documentation layout
+        run: |
+          test ! -e .serena/memories
 
       - name: Validate mode and evidence contracts
         run: |
