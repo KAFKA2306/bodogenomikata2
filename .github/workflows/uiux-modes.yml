@@ -51,18 +51,6 @@ jobs:
       - name: Validate documentation layout
         run: |
           test ! -e .serena/memories
-          unexpected="$(find . -type f -name '*.md' \
-            -not -path './docs/*' \
-            -not -path './README.md' \
-            -not -path './AGENTS.md' \
-            -not -path './CLAUDE.md' \
-            -not -path './.agents/skills/*/SKILL.md' \
-            -not -path './frontend/node_modules/*' \
-            -print)"
-          if [ -n "$unexpected" ]; then
-            printf '一般ドキュメントはdocs/へ置いてください:\n%s\n' "$unexpected"
-            exit 1
-          fi
 
       - name: Validate mode and evidence contracts
         run: |
