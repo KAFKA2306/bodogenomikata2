@@ -5,6 +5,7 @@ on:
     paths:
       - "frontend/**"
       - "docs/**"
+      - "README.md"
       - "AGENTS.md"
       - "CLAUDE.md"
       - ".serena/**"
@@ -14,6 +15,7 @@ on:
     paths:
       - "frontend/**"
       - "docs/**"
+      - "README.md"
       - "AGENTS.md"
       - "CLAUDE.md"
       - ".serena/**"
@@ -51,6 +53,7 @@ jobs:
       - name: Validate documentation layout
         run: |
           test ! -e .serena/memories
+          test "$(head -n 1 README.md)" = "https://bodogenomikata2.pages.dev/"
 
       - name: Validate mode and evidence contracts
         run: |
