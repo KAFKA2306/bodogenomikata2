@@ -4,13 +4,19 @@ on:
   pull_request:
     paths:
       - "frontend/**"
+      - "docs/**"
+      - "AGENTS.md"
       - "CLAUDE.md"
+      - ".serena/**"
       - ".github/workflows/uiux-modes.yml"
   push:
     branches: [master]
     paths:
       - "frontend/**"
+      - "docs/**"
+      - "AGENTS.md"
       - "CLAUDE.md"
+      - ".serena/**"
       - ".github/workflows/uiux-modes.yml"
   workflow_dispatch:
 
@@ -41,6 +47,22 @@ jobs:
 
       - name: Test rule evidence scope
         run: node frontend/scripts/test-rule-answer-scope.mjs
+
+      - name: Validate documentation layout
+        run: |
+          test ! -e .serena/memories
+          unexpected="$(find . -type f -name '*.md' \
+            -not -path './docs/*' \
+            -not -path './README.md' \
+            -not -path './AGENTS.md' \
+            -not -path './CLAUDE.md' \
+            -not -path './.agents/skills/*/SKILL.md' \
+            -not -path './frontend/node_modules/*' \
+            -print)"
+          if [ -n "$unexpected" ]; then
+            printf '一般ドキュメントはdocs/へ置いてください:\n%s\n' "$unexpected"
+            exit 1
+          fi
 
       - name: Validate mode and evidence contracts
         run: |
