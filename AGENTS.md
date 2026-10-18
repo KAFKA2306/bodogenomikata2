@@ -32,3 +32,7 @@
 - **Range:** Combine code, data, tests, runtime/UI, and domain expertise when that materially improves the outcome, while respecting canonical owners and avoiding duplicate systems.
 - **Speed:** Complete authorized read-only and reversible work through implementation, focused checks, and read-back without unnecessary approval loops. Bound retries and stop at the proven outcome.
 - These principles never bypass repository-specific security, privacy, permission, publication, spending, destructive-action, or release boundaries. State verified results and any remaining `UNVERIFIED` layers.
+
+## Compute-scaling adoption
+
+Scale the search candidate count, local OSS retrieval/reranking model and explanation budget only after a frozen set of game-edition-specific queries demonstrates better answer quality. Measure edition/expansion/version correctness, cited official-source match, spoiler leakage, unsupported rule assertions, retrieval success, latency and memory on equal inputs. Treat deterministic card/rule validation and exact published corrections as authoritative, not LLM guesses. Preserve the current non-spoiler public surface and existing task/CI/Pages gates. Keep the low-compute baseline if higher budgets fail to improve measured accuracy.
