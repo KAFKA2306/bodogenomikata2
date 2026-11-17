@@ -14,7 +14,7 @@ const esc = (value = '') => String(value)
   .replaceAll('"', '&quot;')
   .replaceAll("'", '&#39;');
 const xml = esc;
-const jsonLd = (value) => JSON.stringify(value).replaceAll('<', '\\u003c');
+const scriptJson = (value) => JSON.stringify(value).replaceAll('<', '\\u003c');
 const canonical = (pathname) => `${origin}${pathname}`;
 
 const gamesRaw = JSON.parse(await readFile(path.join(dist, 'data.json'), 'utf8'));
@@ -48,7 +48,7 @@ const replaceHead = (html, { title, description, url, structuredData }) => {
     .replace(/<meta\s+name=["']description["'][^>]*>/i, `<meta name="description" content="${esc(description)}" />`);
   const extras = [
     `<link rel="canonical" href="${esc(url)}" />`,
-    structuredData ? `<script type="application/ld+json">${jsonLd(structuredData)}</script>` : '',
+    structuredData ? `<script type="application/ld+json">${scriptJson(structuredData)}</script>` : '',
   ].filter(Boolean).join('\n    ');
   return next.replace('</head>', `    ${extras}\n  </head>`);
 };
@@ -80,13 +80,33 @@ for (const game of games) {
   ].filter(Boolean).join('');
   const mechanicsHtml = mechanics.length ? `<section><h2>メカニクス</h2><ul>${mechanics.map((m) => `<li>${esc(m)}</li>`).join('')}</ul></section>` : '';
   const staticContent = `<main class="comparison-container detail-page" data-prerendered-game="${esc(slug)}"><nav><a href="/games/">全ゲーム一覧</a></nav><article><h1>${esc(title)}</h1><dl>${details}</dl><section><h2>ゲーム概要</h2><p>${esc(description)}</p></section>${mechanicsHtml}</article></main>`;
+  const snapshot = {
+    id: game.id,
+    slug,
+    title: game.title,
+    title_ja: game.title_ja,
+    description: game.description,
+    image_url: game.image_url,
+    published_year: game.published_year,
+    min_players: game.min_players,
+    max_players: game.max_players,
+    play_time: game.play_time,
+    min_age: game.min_age,
+    structured_data: {
+      mechanics,
+      source_documents: game.structured_data?.source_documents,
+      rule_answers: game.structured_data?.rule_answers,
+    },
+  };
 
   const html = replaceHead(template, {
     title: `${title} | ボドゲのミカタ`,
     description: `${title}のプレイ人数、時間、メカニクスなどの詳細データとプレイヤーのレビュー。`,
     url,
     structuredData: breadcrumb,
-  }).replace(/<div id="root"><\/div>/i, `<div id="root">${staticContent}</div>`);
+  }).replace(/<div id="root"><\/div>/i, () =>
+    `<div id="root">${staticContent}</div><script id="prerendered-game" type="application/json">${scriptJson(snapshot)}</script>`,
+  );
 
   const outDir = path.join(dist, 'game', encodeURIComponent(slug));
   await mkdir(outDir, { recursive: true });
