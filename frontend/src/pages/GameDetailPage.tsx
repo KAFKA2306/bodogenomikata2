@@ -3,20 +3,68 @@ import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { ReviewForm } from "../components/ReviewForm";
 import { ReviewList } from "../components/ReviewList";
-import { fetchGameBySlug } from '../api/gameService';
+import { fetchGameBySlug, fetchPublishedGameBySlug } from '../api/gameService';
+import { findCuratedGameBySlug } from '../data/curatedGames';
 import { resolveAnswer } from '../ruleAnswerResolver';
 import type { Game } from '../types/game';
 
 const siteOrigin = (import.meta.env.VITE_SITE_ORIGIN || 'https://bodogenomikata2.pages.dev').replace(/\/$/, '');
 
+function readPrerenderedGame(slug: string): Game | null {
+  const snapshot = document.getElementById('prerendered-game')?.textContent;
+  if (!snapshot) return null;
+
+  try {
+    const game: Game | null = JSON.parse(snapshot);
+    return game?.slug === slug ? game : null;
+  } catch (error) {
+    if (!(error instanceof SyntaxError)) throw error;
+    console.error('Prerendered game data could not be read:', error);
+    return null;
+  }
+}
+
 export const GameDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
-  const [game, setGame] = useState<Game | null>(null);
+  return slug ? <GameDetail key={slug} slug={slug} /> : null;
+};
+
+function GameDetail({ slug }: { slug: string }) {
+  const [initialGame] = useState(() => readPrerenderedGame(slug) ?? findCuratedGameBySlug(slug) ?? null);
+  const [game, setGame] = useState(initialGame);
+  const [loadFailed, setLoadFailed] = useState(false);
   const [reviewsUpdated, setReviewsUpdated] = useState(0);
 
   useEffect(() => {
-    fetchGameBySlug(slug!).then(res => setGame(res.data));
-  }, [slug]);
+    let active = true;
+    const publishedGame = initialGame ? Promise.resolve(initialGame) : fetchPublishedGameBySlug(slug)
+      .then(data => {
+        if (active && data) setGame(current => current ?? data);
+        return data;
+      }).catch(error => {
+        if (active) console.warn('Published game data could not be loaded:', error);
+        return null;
+      });
+
+    fetchGameBySlug(slug).then(data => {
+      if (active) setGame(data);
+    }).catch(async error => {
+      await publishedGame;
+      if (!active) return;
+      console.error('Game detail could not be loaded:', error);
+      setLoadFailed(true);
+    });
+    return () => { active = false; };
+  }, [initialGame, slug]);
+
+  if (!game && loadFailed) {
+    return (
+      <div className='comparison-container detail-page'>
+        <p className='workflow-error' role='alert'>ゲーム情報を取得できませんでした。</p>
+        <Link to='/research' className='back-button'>検索一覧に戻る</Link>
+      </div>
+    );
+  }
 
   if (!game) {
     return (
@@ -69,6 +117,8 @@ export const GameDetailPage: React.FC = () => {
           検索一覧に戻る
         </Link>
       </div>
+
+      {loadFailed && <p role='status'>公開時点のゲーム情報を表示しています。最新情報を取得できませんでした。</p>}
 
       {quickRuleSearch && (
         <Link
@@ -132,14 +182,14 @@ export const GameDetailPage: React.FC = () => {
 
           <div className='review-section-wrapper'>
             <div className='detail-card review-write-card'>
-              <ReviewForm slug={slug!} onSubmitted={() => setReviewsUpdated(prev => prev + 1)} />
+              <ReviewForm slug={slug} onSubmitted={() => setReviewsUpdated(prev => prev + 1)} />
             </div>
             <div className='detail-card review-list-card'>
-              <ReviewList slug={slug!} key={reviewsUpdated} />
+              <ReviewList slug={slug} key={reviewsUpdated} />
             </div>
           </div>
         </div>
       </div>
     </div>
   );
-};
+}
