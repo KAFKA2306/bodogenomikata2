@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { useSearchParams } from 'react-router-dom';
 import { ProductShell } from '../components/ProductShell';
 import { fetchGames } from '../api/gameService';
+import { findCuratedGameBySlug } from '../data/curatedGames';
 import { resolveAnswer } from '../ruleAnswerResolver.ts';
 import type { Game, RuleSource } from '../types/game';
 
@@ -23,11 +24,12 @@ export const PlayModePage: React.FC<PlayModePageProps> = ({ intent }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [submittedQuestion, setSubmittedQuestion] = useState(params.get('q') || '');
+  const [answerFirst] = useState(() => Boolean(params.get('q')));
   const gameSlug = params.get('game') || '';
   const version = params.get('version') || '';
   const language = params.get('lang') || 'ja';
   const question = params.get('q') || '';
-  const game = games.find(item => item.slug === gameSlug);
+  const game = findCuratedGameBySlug(gameSlug) ?? games.find(item => item.slug === gameSlug);
   const result = useMemo(
     () => resolveAnswer(game, submittedQuestion, version, language),
     [game, submittedQuestion, version, language],
@@ -53,19 +55,39 @@ export const PlayModePage: React.FC<PlayModePageProps> = ({ intent }) => {
   const helper = intent === 'play'
     ? '版・言語と質問を固定し、確認済み出典がある回答だけを表示します。'
     : '版・言語を固定し、セットアップ、手番、終了条件など、確認済みの短い説明だけを使います。';
+  const answerPanel = (
+    <section className={`answer-panel ${result.answer ? 'answer-available' : 'answer-unavailable'}`} aria-labelledby="answer-title" aria-live="polite">
+      <div className="answer-status"><span aria-hidden="true">{result.answer ? '✓' : '!'}</span><div><h2 id="answer-title">{result.answer ? '確認済み回答' : '回答できません'}</h2></div></div>
+      {result.answer ? (
+        <>
+          <p className="answer-text">{result.answer.answer}</p>
+          <div className="answer-type-row">
+            <span className={`source-type source-type-${result.answer.answer_type}`}>{sourceLabels[result.answer.answer_type]}</span>
+            <span className="reviewed-badge">{result.answer.review_status === 'source_checked' ? '公式資料で確認' : '人間レビュー済み'}</span>
+          </div>
+          <div className="source-list" aria-label="回答の出典">
+            {result.sources.map(source => <article key={source.id}><div><span className={`source-type source-type-${source.source_type}`}>{sourceLabels[source.source_type]}</span><strong>{source.title}</strong></div><dl><div><dt>版</dt><dd>{source.version || '未登録'}</dd></div><div><dt>箇所</dt><dd>{source.page_or_section || '未登録'}</dd></div><div><dt>言語</dt><dd>{source.language || '未登録'}</dd></div></dl>{source.url ? <a href={source.url} target="_blank" rel="noreferrer">出典を開く ↗</a> : <span className="source-missing">URL未登録</span>}</article>)}
+          </div>
+        </>
+      ) : (
+        <><p className="answer-reason">{result.reason}</p><div className="answer-next"><strong>次に確認すること</strong><ul><li>ゲーム・版・言語が一致しているか</li><li>公式URLとページ・節が登録されているか</li><li>回答の出典が確認済みか</li></ul></div></>
+      )}
+    </section>
+  );
 
   return (
     <ProductShell mainId="play-workspace">
       <Helmet><html lang="ja" /><title>{title} | ボドゲのミカタ</title></Helmet>
-      <section className="play-layout" id="play-workspace" tabIndex={-1}>
+      <section className="play-layout">
         <header className="play-heading">
-          <p className="workflow-eyebrow">{intent === 'play' ? 'AT THE TABLE' : 'BEFORE PLAY'}</p>
           <h1>{title}</h1>
           <p>{helper}</p>
         </header>
 
+        {answerFirst && answerPanel}
+
         <section className="play-context" aria-labelledby="context-title">
-          <div className="section-heading"><div><p className="workflow-eyebrow">STICKY CONTEXT</p><h2 id="context-title">対象を固定</h2></div><span>URLで共有・再読込可能</span></div>
+          <div className="section-heading"><div><h2 id="context-title">対象を固定</h2></div><span>URLで共有・再読込可能</span></div>
           <div className="play-context-grid">
             <label><span>ゲーム</span><select value={gameSlug} onChange={event => updateParam('game', event.target.value)} disabled={loading}><option value="">選択してください</option>{games.map(item => <option value={item.slug} key={item.slug}>{item.title_ja || item.title}</option>)}</select></label>
             <label><span>版</span>{editions.length ? <select value={version} onChange={event => updateParam('version', event.target.value)}><option value="">選択してください</option>{editions.map(edition => <option value={edition} key={edition}>{edition}</option>)}</select> : <input value={version} onChange={event => updateParam('version', event.target.value)} placeholder="例：日本語第2版" />}</label>
@@ -75,29 +97,16 @@ export const PlayModePage: React.FC<PlayModePageProps> = ({ intent }) => {
         </section>
 
         <section className="question-panel" aria-labelledby="question-title">
-          <div className="section-heading"><div><p className="workflow-eyebrow">QUESTION</p><h2 id="question-title">短く質問する</h2></div></div>
+          <div className="section-heading"><div><h2 id="question-title">短く質問する</h2></div></div>
           <form onSubmit={event => { event.preventDefault(); setSubmittedQuestion(question); }}>
             <label className="question-field"><span>確認したいこと</span><textarea value={question} onChange={event => updateParam('q', event.target.value)} placeholder={intent === 'play' ? '例：このカードは手番中に何回使えますか？' : '例：最初のセットアップを教えてください'} /></label>
             <button type="submit" className="workflow-action workflow-button">根拠付き回答を確認</button>
           </form>
         </section>
 
-        <section className={`answer-panel ${result.answer ? 'answer-available' : 'answer-unavailable'}`} aria-labelledby="answer-title" aria-live="polite">
-          <div className="answer-status"><span aria-hidden="true">{result.answer ? '✓' : '!'}</span><div><p className="workflow-eyebrow">ANSWER STATUS</p><h2 id="answer-title">{result.answer ? '確認済み回答' : '回答できません'}</h2></div></div>
-          {result.answer ? (
-            <>
-              <p className="answer-text">{result.answer.answer}</p>
-              <div className="answer-type-row"><span className={`source-type source-type-${result.answer.answer_type}`}>{sourceLabels[result.answer.answer_type]}</span><span className="reviewed-badge">人間レビュー済み</span></div>
-              <div className="source-list" aria-label="回答の出典">
-                {result.sources.map(source => <article key={source.id}><div><span className={`source-type source-type-${source.source_type}`}>{sourceLabels[source.source_type]}</span><strong>{source.title}</strong></div><dl><div><dt>版</dt><dd>{source.version || '未登録'}</dd></div><div><dt>箇所</dt><dd>{source.page_or_section || '未登録'}</dd></div><div><dt>言語</dt><dd>{source.language || '未登録'}</dd></div></dl>{source.url ? <a href={source.url} target="_blank" rel="noreferrer">出典を開く ↗</a> : <span className="source-missing">URL未登録</span>}</article>)}
-              </div>
-            </>
-          ) : (
-            <><p className="answer-reason">{result.reason}</p><div className="answer-next"><strong>次に確認すること</strong><ul><li>ゲーム・版・言語が一致しているか</li><li>公式URLとページ・節が登録されているか</li><li>人間レビューが完了しているか</li></ul></div></>
-          )}
-        </section>
+        {!answerFirst && answerPanel}
 
-        <aside className="spoiler-boundary" aria-labelledby="spoiler-title"><div><p className="workflow-eyebrow">SPOILER SAFE</p><h2 id="spoiler-title">ネタバレは既定で非表示</h2></div><p>重大なネタバレを含む回答は、このモードの検索結果・読み上げ・回答領域へ表示しません。</p></aside>
+        <aside className="spoiler-boundary" aria-labelledby="spoiler-title"><div><h2 id="spoiler-title">ネタバレは既定で非表示</h2></div><p>重大なネタバレを含む回答は、このモードの検索結果・読み上げ・回答領域へ表示しません。</p></aside>
       </section>
     </ProductShell>
   );

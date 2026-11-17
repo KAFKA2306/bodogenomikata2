@@ -5,6 +5,7 @@ const yroBgaRulesUrl = 'https://en.boardgamearena.com/gamepanel?game=yro';
 const gigamicRulebookUrl = 'https://en.gigamic.com/index.php?controller=attachment&id_attachment=668';
 const gigamicProductUrl = 'https://en.gigamic.com/family-games/1417-ipso.html';
 const bgaRulesUrl = 'https://en.boardgamearena.com/gamepanel?game=ipso';
+const catanBaseEdition = '基本ゲーム（日本カタン協会・通常ルール）';
 
 export const curatedGames: Game[] = [
   {
@@ -252,6 +253,46 @@ export const curatedGames: Game[] = [
           source_ids: ['ipso-gigamic-rulebook'],
           answer_type: 'Translation',
           review_status: 'reviewed',
+          spoiler_level: 'none',
+        },
+      ],
+    },
+  },
+  {
+    id: 13,
+    slug: 'catan-13',
+    title: 'Catan',
+    title_ja: 'カタン',
+    description: '資源を集めて取引し、街道や開拓地、都市を建設するボードゲームです。',
+    image_url: '//cf.geekdo-images.com/images/pic2419375.jpg',
+    published_year: 1995,
+    min_players: 3,
+    max_players: 4,
+    play_time: 120,
+    min_age: 10,
+    editions: [catanBaseEdition],
+    structured_data: {
+      mechanics: ['Dice Rolling', 'Hand Management', 'Modular Board', 'Route/Network Building', 'Trading'],
+      source_documents: [
+        {
+          id: 'catan-jp-setup',
+          title: '日本カタン協会「セットアップ」',
+          url: 'https://catan.jp/guide/howto/setup_phase/',
+          version: catanBaseEdition,
+          page_or_section: '第２ラウンド',
+          language: 'ja',
+          source_type: 'OfficialRule',
+          review_status: 'source_checked',
+        },
+      ],
+      rule_answers: [
+        {
+          id: 'catan-starting-resources',
+          question_keywords: ['初期資源', '最初の資源', '開始時の資源', '資源カードはどこから'],
+          answer: '2つ目の開拓地を置いたら、その開拓地に接する資源を産む地形ごとに、対応する資源カードを場の山から1枚ずつ取ります。',
+          source_ids: ['catan-jp-setup'],
+          answer_type: 'ExtractedFact',
+          review_status: 'source_checked',
           spoiler_level: 'none',
         },
       ],

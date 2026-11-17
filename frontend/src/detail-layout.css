@@ -27,6 +27,10 @@
   margin: 0 auto;
 }
 
+.detail-rule-link {
+  margin-bottom: 1rem;
+}
+
 .detail-grid {
   display: grid;
   grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);

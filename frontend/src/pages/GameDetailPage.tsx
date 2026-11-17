@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { ReviewForm } from "../components/ReviewForm";
 import { ReviewList } from "../components/ReviewList";
 import { fetchGameBySlug } from '../api/gameService';
+import { resolveAnswer } from '../ruleAnswerResolver';
 import type { Game } from '../types/game';
 
 const siteOrigin = (import.meta.env.VITE_SITE_ORIGIN || 'https://bodogenomikata2.pages.dev').replace(/\/$/, '');
@@ -33,6 +34,13 @@ export const GameDetailPage: React.FC = () => {
     : 'https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?auto=format&fit=crop&q=80&w=600';
 
   const mechanics = game.structured_data?.mechanics || [];
+  const ruleQuestion = game.structured_data?.rule_answers?.find(answer => answer.review_status === 'source_checked');
+  const ruleSource = game.structured_data?.source_documents?.find(source => ruleQuestion?.source_ids.includes(source.id));
+  const ruleKeyword = ruleQuestion?.question_keywords[0];
+  const quickRuleSearch = ruleKeyword && ruleSource?.version && ruleSource.language
+    && resolveAnswer(game, ruleKeyword, ruleSource.version, ruleSource.language).answer?.id === ruleQuestion?.id
+    ? new URLSearchParams({ game: game.slug, version: ruleSource.version, lang: ruleSource.language, q: ruleKeyword })
+    : null;
   const canonicalUrl = `${siteOrigin}/game/${encodeURIComponent(game.slug)}`;
   const breadcrumb = {
     '@context': 'https://schema.org',
@@ -54,13 +62,22 @@ export const GameDetailPage: React.FC = () => {
       </Helmet>
 
       <div className='back-nav'>
-        <Link to="/" className='back-button'>
+        <Link to="/research" className='back-button'>
           <svg aria-hidden='true' focusable='false' width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg>
           検索一覧に戻る
         </Link>
       </div>
+
+      {quickRuleSearch && (
+        <Link
+          className="workflow-action detail-rule-link"
+          to={{ pathname: '/play', search: quickRuleSearch.toString() }}
+        >
+          {ruleKeyword}を確認
+        </Link>
+      )}
 
       <div className='detail-grid'>
         <aside className='detail-card detail-sidebar' aria-label='ゲーム基本情報'>
