@@ -33,22 +33,21 @@ export const fetchGames = async (query: string = '', limit: number = 20, offset:
   }
 };
 
-export const fetchGameBySlug = async (slug: string): Promise<{ data: Game }> => {
+export const fetchGameBySlug = async (slug: string): Promise<Game> => {
   const curatedGame = findCuratedGameBySlug(slug);
-  if (curatedGame) return { data: curatedGame };
+  if (curatedGame) return curatedGame;
 
-  try {
-    const response = await apiClient.get<{ data: Game }>(`/games/${slug}`);
-    return response.data;
-  } catch (error) {
-    console.warn(`Backend API fetch for slug "${slug}" failed, falling back to static data.json...`, error);
-    const response = await fetch('/data.json');
-    if (!response.ok) throw new Error('Failed to fetch data.json');
-    const allGames: Game[] = await response.json();
-    const game = allGames.find(g => g.slug === slug);
-    if (!game) throw new Error(`Game with slug "${slug}" not found in static data`);
-    return { data: game };
-  }
+  const response = await apiClient.get<{ data: Game }>(`/games/${slug}`);
+  const game = response.data.data;
+  if (game?.slug !== slug) throw new Error(`Unexpected game response for ${slug}`);
+  return game;
+};
+
+export const fetchPublishedGameBySlug = async (slug: string): Promise<Game | null> => {
+  const response = await fetch('/data.json');
+  if (!response.ok) throw new Error(`Failed to fetch data.json: HTTP ${response.status}`);
+  const allGames: Game[] = await response.json();
+  return allGames.find(game => game.slug === slug) ?? null;
 };
 
 export const fetchReviews = async (slug: string) => {

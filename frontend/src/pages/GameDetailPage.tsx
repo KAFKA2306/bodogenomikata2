@@ -3,7 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { ReviewForm } from "../components/ReviewForm";
 import { ReviewList } from "../components/ReviewList";
-import { fetchGameBySlug } from '../api/gameService';
+import { fetchGameBySlug, fetchPublishedGameBySlug } from '../api/gameService';
+import { findCuratedGameBySlug } from '../data/curatedGames';
 import { resolveAnswer } from '../ruleAnswerResolver';
 import type { Game } from '../types/game';
 
@@ -29,22 +30,32 @@ export const GameDetailPage: React.FC = () => {
 };
 
 function GameDetail({ slug }: { slug: string }) {
-  const [game, setGame] = useState(() => readPrerenderedGame(slug));
+  const [initialGame] = useState(() => readPrerenderedGame(slug) ?? findCuratedGameBySlug(slug) ?? null);
+  const [game, setGame] = useState(initialGame);
   const [loadFailed, setLoadFailed] = useState(false);
   const [reviewsUpdated, setReviewsUpdated] = useState(0);
 
   useEffect(() => {
     let active = true;
-    fetchGameBySlug(slug).then(({ data }) => {
-      if (data?.slug !== slug) throw new Error(`Unexpected game response for ${slug}`);
+    const publishedGame = initialGame ? Promise.resolve(initialGame) : fetchPublishedGameBySlug(slug)
+      .then(data => {
+        if (active && data) setGame(current => current ?? data);
+        return data;
+      }).catch(error => {
+        if (active) console.warn('Published game data could not be loaded:', error);
+        return null;
+      });
+
+    fetchGameBySlug(slug).then(data => {
       if (active) setGame(data);
-    }).catch(error => {
+    }).catch(async error => {
+      await publishedGame;
       if (!active) return;
       console.error('Game detail could not be loaded:', error);
       setLoadFailed(true);
     });
     return () => { active = false; };
-  }, [slug]);
+  }, [initialGame, slug]);
 
   if (!game && loadFailed) {
     return (
