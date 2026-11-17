@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { resolveAnswer } from '../src/ruleAnswerResolver.ts';
+import { findCuratedGameBySlug } from '../src/data/curatedGames.ts';
 
 const game = {
   id: 1,
@@ -54,5 +55,21 @@ onlyUnscoped.structured_data.rule_answers[0].source_ids = ['missing-scope'];
 const unscoped = resolveAnswer(onlyUnscoped, '手番について', '日本語第2版', 'ja');
 assert.equal(unscoped.answer, null);
 assert.deepEqual(unscoped.sources, []);
+
+const catan = findCuratedGameBySlug('catan-13');
+const [catanEdition] = catan.editions;
+const officialFact = resolveAnswer(catan, '初期資源はどこから取る？', catanEdition, 'ja');
+assert.match(officialFact.answer?.answer || '', /2つ目の開拓地/);
+assert.equal(officialFact.sources[0].source_type, 'OfficialRule');
+assert.equal(resolveAnswer(catan, '初期資源', catanEdition, 'en').answer, null);
+assert.equal(resolveAnswer(catan, '初期資源', '航海者版', 'ja').answer, null);
+
+const noSection = structuredClone(catan);
+noSection.structured_data.source_documents[0].page_or_section = null;
+assert.equal(resolveAnswer(noSection, '初期資源', catanEdition, 'ja').answer, null);
+
+const generatedAnswer = structuredClone(catan);
+generatedAnswer.structured_data.rule_answers[0].answer_type = 'AIGeneratedSummary';
+assert.equal(resolveAnswer(generatedAnswer, '初期資源', catanEdition, 'ja').answer, null);
 
 console.log('rule answer scope: ok');

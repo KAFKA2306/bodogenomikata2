@@ -3,12 +3,16 @@ import { useEffect } from 'react';
 const RELEASE = 'kafka-signal-v1.0.0';
 
 function enhance(panel: Element) {
-  if ((panel as HTMLElement).dataset.kafkaSignalEnhanced) return;
-  (panel as HTMLElement).dataset.kafkaSignalEnhanced = 'true';
   const available = panel.classList.contains('answer-available');
   const title = panel.querySelector('#answer-title')?.textContent?.trim() || '状態不明';
   const reason = panel.querySelector('.answer-reason')?.textContent?.trim();
   const sources = panel.querySelectorAll('.source-list article').length;
+  const signature = JSON.stringify([available, title, reason, sources]);
+  const dataset = (panel as HTMLElement).dataset;
+  if (dataset.kafkaSignalEnhanced === signature) return;
+  dataset.kafkaSignalEnhanced = signature;
+  panel.querySelector(':scope > .answer-sequence')?.remove();
+  panel.querySelector(':scope > .authority-boundary')?.remove();
   const sequence = document.createElement('ol');
   sequence.className = 'answer-sequence';
   sequence.setAttribute('aria-label', '回答の検証順序');
@@ -21,10 +25,14 @@ function enhance(panel: Element) {
   ];
   items.forEach(([label, value]) => {
     const item = document.createElement('li');
-    item.innerHTML = `<strong>${label}</strong><span>${value}</span>`;
+    const heading = document.createElement('strong');
+    heading.textContent = label;
+    const detail = document.createElement('span');
+    detail.textContent = value;
+    item.append(heading, detail);
     sequence.append(item);
   });
-  panel.querySelector('.answer-status')?.insertAdjacentElement('afterend', sequence);
+  panel.append(sequence);
   const authority = document.createElement('p');
   authority.className = 'authority-boundary';
   authority.textContent = 'この回答の話者はキャラクターではありません。公式ルール、抽出事実、翻訳、AI要約、人間レビューを出典種別として分離します。';
@@ -44,7 +52,7 @@ export function KafkaSignalRuntime() {
     const run = () => document.querySelectorAll('.answer-panel').forEach(enhance);
     run();
     const observer = new MutationObserver(run);
-    observer.observe(document.body, { childList: true, subtree: true });
+    observer.observe(document.body, { childList: true, characterData: true, subtree: true });
     return () => observer.disconnect();
   }, []);
   return null;

@@ -6,6 +6,8 @@ export type RuleSourceType =
   | 'HumanReview'
   | 'DatabaseObservation';
 
+type RuleReviewStatus = 'reviewed' | 'source_checked' | 'pending' | 'rejected';
+
 export interface RuleSource {
   id: string;
   title: string;
@@ -14,7 +16,7 @@ export interface RuleSource {
   page_or_section?: string | null;
   language?: string | null;
   source_type: RuleSourceType;
-  review_status?: 'reviewed' | 'pending' | 'rejected';
+  review_status?: RuleReviewStatus;
 }
 
 export interface RuleAnswer {
@@ -23,7 +25,7 @@ export interface RuleAnswer {
   answer: string;
   source_ids: string[];
   answer_type: 'OfficialRule' | 'ExtractedFact' | 'AIGeneratedSummary' | 'Translation';
-  review_status: 'reviewed' | 'pending' | 'rejected';
+  review_status: RuleReviewStatus;
   spoiler_level?: 'none' | 'minor' | 'major';
 }
 

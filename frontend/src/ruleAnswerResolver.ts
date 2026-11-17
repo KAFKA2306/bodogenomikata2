@@ -34,7 +34,8 @@ export function resolveAnswer(
   const answers = game.structured_data?.rule_answers || [];
   const query = normalized(question);
   const candidates = answers.filter(candidate =>
-    candidate.review_status === 'reviewed'
+    (candidate.review_status === 'reviewed'
+      || (candidate.review_status === 'source_checked' && candidate.answer_type === 'ExtractedFact'))
     && candidate.spoiler_level !== 'major'
     && candidate.question_keywords.some(keyword => query.includes(normalized(keyword))),
   );
@@ -46,8 +47,12 @@ export function resolveAnswer(
     const sources = answer.source_ids
       .map(sourceId => documents.find(document => document.id === sourceId))
       .filter((source): source is RuleSource => Boolean(source))
-      .filter(source => source.review_status === 'reviewed')
-      .filter(source => sourceMatchesScope(source, version, language));
+      .filter(source => sourceMatchesScope(source, version, language))
+      .filter(source => answer.review_status === 'source_checked'
+        ? source.source_type === 'OfficialRule'
+          && source.review_status === 'source_checked'
+          && Boolean(source.url?.startsWith('https://') && source.page_or_section?.trim())
+        : source.review_status === 'reviewed');
     if (sources.length) return { answer, sources, reason: null };
   }
 
