@@ -2,9 +2,9 @@ import { apiClient } from './client';
 import { findCuratedGameBySlug, mergeCuratedGames } from '../data/curatedGames';
 import type { Game } from '../types/game';
 
-const fetchStaticGames = async (query: string = '', limit: number = 20, offset: number = 0) => {
+const fetchStaticGames = async (query: string, limit: number, offset: number, signal?: AbortSignal) => {
   try {
-    const response = await fetch('/data.json');
+    const response = await fetch('/data.json', { signal });
     if (!response.ok) throw new Error('Failed to fetch data.json');
     const allGames: Game[] = await response.json();
     const q = query.toLowerCase();
@@ -14,22 +14,31 @@ const fetchStaticGames = async (query: string = '', limit: number = 20, offset: 
       return titleMatch || titleJaMatch;
     });
     const paged = filtered.slice(offset, offset + limit);
-    return { data: mergeCuratedGames(paged, query, limit, offset) };
+    return { data: mergeCuratedGames(paged, query, limit, offset), source: 'published' as const };
   } catch (error) {
+    if (signal?.aborted) throw error;
     console.error('Static fallback failed:', error);
-    return { data: mergeCuratedGames([], query, limit, offset) };
+    return { data: mergeCuratedGames([], query, limit, offset), source: 'curated' as const };
   }
 };
 
-export const fetchGames = async (query: string = '', limit: number = 20, offset: number = 0) => {
+export const fetchGames = async (
+  query = '',
+  limit = 20,
+  offset = 0,
+  { signal, timeout }: { signal?: AbortSignal; timeout?: number } = {},
+) => {
   try {
     const response = await apiClient.get<{ data: Game[] }>('/games/search', {
-      params: { q: query, limit, offset }
+      params: { q: query, limit, offset },
+      signal,
+      timeout,
     });
-    return { data: mergeCuratedGames(response.data.data, query, limit, offset) };
+    return { data: mergeCuratedGames(response.data.data, query, limit, offset), source: 'api' as const };
   } catch (error) {
+    if (signal?.aborted) throw error;
     console.warn('Backend API request failed, falling back to static data.json...', error);
-    return await fetchStaticGames(query, limit, offset);
+    return fetchStaticGames(query, limit, offset, signal);
   }
 };
 
