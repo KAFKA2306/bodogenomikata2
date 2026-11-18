@@ -3,11 +3,19 @@ import { Helmet } from 'react-helmet-async';
 import { useSearchParams } from 'react-router-dom';
 import { ProductShell } from '../components/ProductShell';
 import { fetchGames } from '../api/gameService';
-import { findCuratedGameBySlug } from '../data/curatedGames';
+import { curatedGames, findCuratedGameBySlug } from '../data/curatedGames';
 import { resolveAnswer } from '../ruleAnswerResolver.ts';
 import type { Game, RuleSource } from '../types/game';
 
 type PlayModePageProps = { intent: 'play' | 'install' };
+type Catalog = Awaited<ReturnType<typeof fetchGames>> | { data: Game[]; source: 'loading' };
+
+const catalogStatus = {
+  loading: '一部のゲームを表示しています。ゲーム一覧を読み込み中です。',
+  published: '公開時点のゲーム一覧を表示しています。',
+  curated: 'ゲーム一覧を取得できなかったため、一部のゲームを表示しています。',
+  api: '',
+};
 
 const sourceLabels: Record<RuleSource['source_type'], string> = {
   OfficialRule: '公式ルール',
@@ -20,28 +28,29 @@ const sourceLabels: Record<RuleSource['source_type'], string> = {
 
 export const PlayModePage: React.FC<PlayModePageProps> = ({ intent }) => {
   const [params, setParams] = useSearchParams();
-  const [games, setGames] = useState<Game[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [catalog, setCatalog] = useState<Catalog>({ data: curatedGames, source: 'loading' });
   const [submittedQuestion, setSubmittedQuestion] = useState(params.get('q') || '');
   const [answerFirst] = useState(() => Boolean(params.get('q')));
   const gameSlug = params.get('game') || '';
   const version = params.get('version') || '';
   const language = params.get('lang') || 'ja';
   const question = params.get('q') || '';
-  const game = findCuratedGameBySlug(gameSlug) ?? games.find(item => item.slug === gameSlug);
+  const game = findCuratedGameBySlug(gameSlug) ?? catalog.data.find(item => item.slug === gameSlug);
   const result = useMemo(
     () => resolveAnswer(game, submittedQuestion, version, language),
     [game, submittedQuestion, version, language],
   );
 
   useEffect(() => {
-    let active = true;
-    fetchGames('', 200, 0)
-      .then(response => { if (active) setGames(response.data); })
-      .catch(() => { if (active) setError('ゲーム一覧を読み込めませんでした。'); })
-      .finally(() => { if (active) setLoading(false); });
-    return () => { active = false; };
+    const request = new AbortController();
+    fetchGames('', 200, 0, { signal: request.signal, timeout: 1_500 })
+      .then(response => { if (!request.signal.aborted) setCatalog(response); })
+      .catch(error => {
+        if (request.signal.aborted) return;
+        console.error('Game catalog could not be loaded:', error);
+        setCatalog({ data: curatedGames, source: 'curated' });
+      });
+    return () => request.abort();
   }, []);
 
   const updateParam = (key: string, value: string) => {
@@ -89,11 +98,11 @@ export const PlayModePage: React.FC<PlayModePageProps> = ({ intent }) => {
         <section className="play-context" aria-labelledby="context-title">
           <div className="section-heading"><div><h2 id="context-title">対象を固定</h2></div><span>URLで共有・再読込可能</span></div>
           <div className="play-context-grid">
-            <label><span>ゲーム</span><select value={gameSlug} onChange={event => updateParam('game', event.target.value)} disabled={loading}><option value="">選択してください</option>{games.map(item => <option value={item.slug} key={item.slug}>{item.title_ja || item.title}</option>)}</select></label>
+            <label><span>ゲーム</span><select value={gameSlug} onChange={event => updateParam('game', event.target.value)}><option value="">選択してください</option>{catalog.data.map(item => <option value={item.slug} key={item.slug}>{item.title_ja || item.title}</option>)}</select></label>
             <label><span>版</span>{editions.length ? <select value={version} onChange={event => updateParam('version', event.target.value)}><option value="">選択してください</option>{editions.map(edition => <option value={edition} key={edition}>{edition}</option>)}</select> : <input value={version} onChange={event => updateParam('version', event.target.value)} placeholder="例：日本語第2版" />}</label>
             <label><span>言語</span><select value={language} onChange={event => updateParam('lang', event.target.value)}><option value="ja">日本語</option><option value="en">English</option></select></label>
           </div>
-          {error && <p className="workflow-error" role="alert">{error}</p>}
+          {catalogStatus[catalog.source] && <p className="results-meta" role="status">{catalogStatus[catalog.source]}</p>}
         </section>
 
         <section className="question-panel" aria-labelledby="question-title">
